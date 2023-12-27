@@ -1,0 +1,1418 @@
+Model,Normalized Float,Tone Float,Tech Float,Preference Float
+1Custom SA02,3.5,3.5,4.0,
+1Custom SA03,4.0,4.0,4.0,
+1Custom SA05,4.0,4.0,4.0,
+1More Dual Driver,3.0,3.5,3.0,
+1More Piston,2.0,3.0,2.0,
+1More Quad,1.5,2.5,2.5,2.0
+1More Quad Driver,3.0,3.5,3.0,
+1More Single Driver,2.5,2.5,2.5,
+1More Stylish,2.0,2.5,2.0,
+1More Triple,1.5,2.0,1.5,2.0
+1More Triple Driver,2.5,3.0,2.5,
+64 Audio A/U12t,6.5,6.5,7.0,
+64 Audio A/U18 Tzar,6.0,5.5,7.0,
+64 Audio A18S,5.5,5.0,6.5,
+64 Audio A2e,3.5,3.5,4.0,
+64 Audio A3t,6.0,6.33,5.67,6.0
+64 Audio A4s,6.2,6.67,6.0,6.0
+64 Audio A4t,4.5,5.5,4.0,
+64 Audio A6t,5.0,6.0,4.5,
+64 Audio Duo,4.85,5.208,4.875,5.75
+64 Audio Fourte Blanc,6.4,5.67,7.67,6.0
+64 Audio N8,5.5,5.5,5.5,
+64 Audio Nio,6.367,7.11,6.0,7.0
+64 Audio Nio (M15),6.5,6.5,7.0,7.0
+64 Audio Tia Forte,5.5,5.0,7.9,5.5
+64 Audio Tia Fourte,6.4,5.0,8.33,6.0
+64 Audio Tia Trio,6.7,7.0,6.777,8.0
+64 Audio Trio,6.0,6.5,7.0,6.5
+64 Audio U12T,7.5,,,8.0
+64 Audio U12T (M15),7.9,7.9,8.7,8.7
+64 Audio U12t,8.7,8.0,9.0,9.0
+64 Audio U18S,6.5,6.67,7.0,6.0
+64 Audio U18T,4.9,5.085,6.25,4.75
+64 Audio U4s,7.7,7.67,7.33,8.0
+64 Audio U6t ,7.1,7.67,6.67,7.0
+64 Audio tia Fourte,5.0,4.0,6.5,
+64 Audio tia Fourte Noir,5.0,4.0,6.5,
+7Hz Eternal,4.025,3.958,4.75,4.75
+7Hz Legato,3.5,4.0,3.5,4.0
+7Hz Salnotes Dioko,5.05,5.0,5.17,5.0
+7Hz Salnotes Zero,5.5,7.9,4.5,6.0
+7Hz Timeless,6.2,6.208,6.25,6.25
+7Hz Timeless AE,5.5,,,5.5
+7Hz Zero,4.7,4.67,4.67,5.0
+7Hz x Crinacle Dioko,4.25,4.5,3.5,4.5
+7hz Timeless,5.5,,,5.5
+7th Acoustics Proxima,4.667,4.75,4.5,5.333
+7th Acoustics Supernova,7.15,8.5,7.0,7.0
+A&K T8iE,5.0,5.0,5.5,
+A&K x CFA Pathfinder,5.2,5.0,5.67,5.0
+AAW A2H Pro V1,0.5,2.0,0.5,
+AAW A2H-Pro V2,2.0,3.0,1.5,
+AAW A3H (2019),3.5,3.5,3.5,
+AAW A3H Plus,4.0,4.5,4.0,
+AAW A3H Pro V2,3.5,4.5,3.5,
+AAW ACH/Kingfisher,2.5,2.5,2.5,
+AAW ASH,5.0,5.0,5.5,
+AAW AXH (2019),4.5,4.5,5.5,
+AAW Canary,4.0,4.0,4.5,
+AAW Halcyon,4.0,4.5,4.0,
+AAW Halycon,3.5,3.5,4.0,
+AAW Mockingbird,4.0,4.0,4.0,
+AAW Nebula Two,3.0,3.5,3.0,
+AAW Nightingale,3.0,2.0,4.5,
+AAW W100,3.5,3.5,3.5,
+AAW x Custom Art Project 4+2,4.0,4.5,4.0,
+ACS Encore,3.5,3.5,3.5,
+AKG N40,3.5,4.5,3.5,
+AKG N400,5.5,7.0,5.0,
+AKG N5005,5.0,5.0,5.0,
+AKG Phone Buds,3.3,3.33,3.67,3.0
+ARC Mira,4.5,5.0,4.5,
+ARC Oculus,4.5,4.5,4.5,
+ARC Pollux,4.0,5.0,4.0,
+AVIOT TE-D01b/TE-D01d,3.5,3.5,3.5,
+AZLA Orta,3.0,3.0,4.0,
+Acoustune HS1001,3.0,2.5,4.5,
+Acoustune HS1003,3.0,3.0,4.0,
+Acoustune HS1004,3.5,3.5,4.5,
+Acoustune HS1300,4.5,4.5,5.5,
+Acoustune HS1501,4.0,3.5,5.5,
+Acoustune HS1503,3.5,2.5,5.0,
+Acoustune HS1551,4.5,4.0,5.5,
+Acoustune HS1650,5.0,5.0,6.0,
+Acoustune HS1655Cu,4.5,4.5,5.5,
+Acoustune HS1657,4.5,4.5,5.5,
+Acoustune HS1670,5.0,5.0,6.0,
+Acoustune HS1677,4.5,4.5,5.5,
+Acoustune HS1695Ti,5.0,5.0,6.0,
+Acoustune HS1697,4.5,3.5,6.0,
+Acoustune HS1750,5.0,5.0,5.5,
+Acoustune HS1790,4.0,3.5,5.5,
+Acoustune HS2000MX “SHO-笙-“,3.5,2.0,6.5,
+Advanced 747,3.0,3.0,3.0,
+Advanced Elise,2.5,2.5,3.0,
+Advanced Evo X,4.0,5.0,3.5,
+Advanced GT3,2.5,3.0,2.5,
+Advanced GT3 Superbass,2.5,3.0,2.5,
+Advanced M3,3.0,3.5,3.0,
+Advanced M4,3.0,4.0,3.0,
+Advanced M5-1D,3.0,3.0,3.5,
+Advanced M5-5D,2.5,2.5,3.5,
+Advanced Model X,2.5,2.5,2.5,
+Advanced S2000,3.5,3.5,3.5,
+Advanced Sleeper,2.0,3.0,2.0,
+Aful Performer 5,5.55,5.33,5.0,6.0
+Aful Performer 8,6.5,,,8.0
+Alclair Electro,4.0,5.0,4.0,
+Alclair Studio3,4.0,5.5,3.5,
+Alclair Studio4,4.0,4.5,4.0,
+Alclair Versa,3.5,3.5,3.5,
+Alpha & Delta KS3,3.0,3.5,3.0,
+Alpha&Delta D6,3.0,4.0,3.0,
+Ambient Acoustics AM16,1.5,1.5,2.5,
+Ambient Acoustics AM24,2.0,2.0,2.5,
+Ambient Acoustics AM7,2.5,2.5,2.5,
+Ambient Acoustics MAD16,3.5,3.0,5.0,
+Ambient Acoustics MAD24,4.0,3.5,5.0,
+Ambient Dynamics AD-006 “Lyndale”,4.0,5.0,4.0,
+Anker Soundcore Liberty 2 Pro,4.0,4.5,4.0,
+Anker Soundcore Liberty Air 2,4.0,4.5,4.0,
+Anthem Five E2,3.0,3.5,3.0,
+Anthem Five E4,4.5,5.0,4.5,
+Apple AirPods Pro,4.433,5.0,4.333,4.0
+Apple AirPods Pro 2,5.5,7.0,5.0,
+Apple Airpods 2nd Gen,3.0,3.5,3.0,3.5
+Apple Airpods Pro 2,5.0,5.0,5.0,5.0
+Apple Earpods,1.5,4.0,2.0,2.0
+Aroma Ace,4.5,3.5,6.0,
+Aroma Early,4.0,5.0,4.0,
+Aroma Shock,2.0,2.0,3.0,
+Aroma Star,4.0,4.0,4.0,
+Aroma Twins,4.0,4.0,5.0,
+Aroma Witch Girl Pro,3.5,3.5,4.5,
+Aroma Witch Girl S,4.5,4.0,5.5,
+Aroma Witch Girl W12,4.5,4.0,5.5,
+Aroma Yao,4.0,4.0,4.0,
+Astell & Kern T9iE,4.0,4.0,5.0,
+Astell&Kern ZERO1,5.3,5.0,6.0,5.0
+Astrotec Delphinus 5,2.0,1.5,3.5,
+Astrotec Volans,0.5,2.0,0.5,
+Atomic Floyd SuperDarts,3.5,3.5,3.5,
+Audeze Euclid,5.433,4.557,7.377,5.0
+Audeze LCD-i3 (No Cipher),3.5,2.0,8.7,
+Audeze LCD-i4,4.0,1.5,9.0,4.0
+Audeze LCDi4 (No Cipher),3.5,2.0,9.0,
+Audeze LCDi4 (w/ Cipher),7.1,7.0,8.67,6.0
+Audeze iSine 10,3.5,1.5,5.5,4.0
+Audeze iSine 10/20 (No Cipher),3.5,2.0,7.9,
+Audeze iSine 20,3.5,1.5,6.0,4.0
+Audio Genetic AG2,4.0,4.0,4.5,
+Audio Hekili,6.1,6.33,6.0,6.0
+Audio Lokahi,4.65,5.918,4.25,5.25
+Audio Technica ATH-ANC300TW,3.5,3.5,3.5,
+Audio Technica ATH-CK2000Ti,2.5,2.0,3.5,
+Audio Technica ATH-CK3TW,2.0,2.0,2.5,
+Audio Technica ATH-CKR7TW,1.5,1.5,1.5,
+Audio Technica ATH-CKS5TW,1.5,1.5,1.5,
+Audio Technica ATH-E70,3.5,3.5,3.5,
+Audio Technica ATH-IEX1,2.5,2.0,4.0,
+Audio Technica ATH-IM01,3.0,3.0,3.5,
+Audio Technica ATH-IM02,4.0,4.0,4.5,
+Audio Technica ATH-IM03,3.0,3.0,4.0,
+Audio Technica ATH-LS200,4.5,4.5,4.5,
+Audio Technica ATH-LS300,3.0,3.0,3.5,
+Audio Technica ATH-LS400,3.0,3.0,3.5,
+Audio Technica ATH-LS50,1.5,1.5,2.0,
+Audio Technica ATH-SPORT7TW,3.5,4.0,3.5,
+Audio Technica LS200is,4.0,5.0,4.0,4.5
+AudioSense T800,3.2,3.67,3.0,3.0
+Audiofly AF1120 MK2,0.1,0.0,0.5,0.5
+Audiofly AF160,2.0,2.0,2.5,
+Audiosense AQ3,4.5,5.5,4.0,
+Audiosense AQ4,4.0,5.0,4.0,
+Audiosense AQ7,2.933,2.333,4.223,2.0
+Audiosense DT100,4.0,5.0,3.5,
+Audiosense DT200,4.533,6.333,3.667,3.0
+Audiosense DT600,5.0,5.5,5.0,
+Audiosense T800,3.5,3.5,3.5,
+Aune Jasper,4.333,4.667,4.333,4.5
+Aure Elixir,4.5,4.5,4.5,
+Aure Flame,4.5,5.0,4.5,
+Aurisonics Kicker,3.0,3.0,3.5,
+Aya Audio Siren,5.3,5.33,5.67,5.0
+Aya Siren,5.0,6.0,5.0,
+Aya Trident,5.0,5.0,5.0,
+Azla 01R Mk2,3.5,3.5,3.5,
+Azla Horizon,4.0,4.0,4.0,
+B&O Beoplay E8,2.5,2.5,2.5,
+BGVP Art Magic V12,4.0,4.5,4.5,4.5
+BGVP DM6,3.167,3.5,4.0,4.0
+BGVP DM7,4.5,4.667,4.333,5.0
+BGVP DM8,5.0,5.0,5.0,5.0
+BGVP DMG,3.333,3.833,3.333,3.5
+BGVP DMS,3.167,3.5,3.167,3.0
+BGVP DN3,2.0,2.5,2.0,
+BGVP DS1 Pro,3.5,3.5,3.5,
+BGVP ES12,3.5,3.5,4.0,
+BGVP NS9,2.4,2.33,3.0,2.0
+BGVP Q2,3.0,3.5,3.0,
+BGVP Zero,2.0,2.0,2.5,
+BLON BL-A8 Prometheus,3.5,3.5,3.5,
+BLON BL-Max,3.5,3.5,3.5,
+BLON BL01,3.5,3.5,3.5,
+BLON BL03,4.0,5.0,3.5,
+BLON BL05,3.5,3.5,4.0,
+BQEYZ Autumn,3.425,3.832,3.582,3.5
+BQEYZ Spring 1,3.5,3.5,4.5,
+BQEYZ Spring 2,3.0,3.5,3.5,3.5
+Beats PowerBeats 3,0.2,0.0,0.5,1.0
+Beyerdynamic Xelento,4.5,4.5,5.5,
+Blon A8 Prometheus,2.6,3.0,3.0,2.0
+Blon BL-03,3.5,4.5,3.0,4.0
+Blon BL-05,2.0,2.5,2.5,2.5
+Blon BL-A8,2.5,4.0,2.5,3.0
+Blon BL03,4.0,4.33,3.67,4.0
+Bose QuietComfort Buds,4.4,5.0,4.33,4.0
+Bose SoundSport Free,4.5,5.5,4.0,
+Brainwavz B400,3.0,3.5,3.0,
+CCZ Plume,3.0,3.0,3.0,3.0
+Campfire Andromeda 2019,5.7,5.585,6.25,6.0
+Campfire Andromeda 2020,5.88,5.792,6.25,7.333
+Campfire Andromeda Gold,5.0,4.5,6.5,5.5
+Campfire Andromeda S,5.167,5.167,5.833,6.0
+Campfire Ara,4.4,3.777,5.89,3.0
+Campfire Atlas,3.8,4.208,4.0,4.5
+Campfire Audio Saber,2.6,3.0,3.0,2.0
+Campfire Comet,3.167,3.167,3.167,3.0
+Campfire Dorado,2.5,2.0,3.5,
+Campfire Dorado 2020,1.625,1.918,2.458,1.25
+Campfire Equinox,2.0,2.0,2.5,
+Campfire Holocene,4.05,3.25,5.5,4.0
+Campfire Honeydew,1.525,1.832,2.0,1.75
+Campfire IO,1.0,1.167,3.333,2.0
+Campfire Jupiter,3.5,3.5,4.0,
+Campfire Lyra II,3.5,3.5,3.5,
+Campfire Mammoth,2.25,2.0,3.0,2.5
+Campfire Nova,3.0,3.0,3.5,
+Campfire Orion,3.333,3.5,3.833,3.5
+Campfire Polaris V1,4.0,4.0,5.0,
+Campfire Polaris V2,3.0,3.0,3.0,
+Campfire Satsuma,2.9,2.958,2.875,2.5
+Campfire Solaris,5.5,6.0,6.0,6.0
+Campfire Solaris (2020),4.0,3.5,5.5,
+Campfire Solaris (SE),4.5,4.0,5.5,
+Campfire Solaris 2020,4.55,4.665,6.165,4.0
+Campfire Solaris OG,5.6,5.33,6.67,5.0
+Campfire Solstice,3.0,3.0,3.5,
+Campfire Vega,3.5,3.0,4.5,
+Campfire Vega (2020),1.5,2.5,1.5,
+Campfire Vega 2020,1.1,1.25,2.415,1.1
+Canal Works CW-U77,4.0,4.0,4.5,
+Canal Works CW-U91,4.0,3.5,5.5,
+Cardas A8,3.0,3.0,3.0,
+Cat Ear Mia,2.5,3.0,2.5,3.0
+CatEar Mia,3.5,3.5,3.5,
+Cayin Fantasy,2.7,2.223,4.333,2.0
+Cayin YB04,3.0,3.0,3.5,
+Chikyu-Sekai 16/Cosmos,4.5,4.5,5.5,
+Clariar i430,5.5,6.5,5.5,
+Clariar i640,5.5,6.5,5.5,
+Clear Tune Monitors CT-200,3.5,4.0,3.5,
+Clear Tune Monitors CT-300 Pro,2.5,2.5,3.0,
+Clear Tune Monitors CT-500 Elite,3.0,2.5,4.0,
+Clear Tune Monitors CT-6E,4.5,4.5,4.5,
+Colorfly Quintet,4.333,4.333,4.333,4.0
+Cozoy Trio,2.5,2.5,2.5,
+Craft Ears Argentum,4.5,5.0,4.5,
+Craft Ears Aurum,4.5,5.5,4.5,
+Craft Ears Aurum ,6.1,6.33,6.0,6.0
+Craft Ears Craft TWO,4.0,4.0,4.0,
+Craft Ears Cuprum,4.0,4.0,4.5,
+Creative Aurvana Trio,3.5,3.5,3.5,
+Custom Art Ei.3,3.5,3.5,3.5,
+Custom Art FIBAE 1,3.0,3.0,3.5,
+Custom Art FIBAE 2,3.5,3.5,4.0,
+Custom Art FIBAE 3,3.0,2.5,4.5,
+Custom Art FIBAE 4,3.5,3.5,4.0,
+Custom Art FIBAE 7,4.5,5.0,4.5,
+Custom Art FIBAE 7U,6.3,6.0,7.0,6.0
+Custom Art FIBAE Black,3.667,3.777,3.557,3.0
+Custom Art FIBAE ME,2.5,2.5,3.5,
+Custom Art Harmony 8.2,3.5,4.0,3.5,
+Custom Art Pro330v2,2.5,2.5,3.5,
+CustomArt Fibae 7,4.0,5.5,5.0,4.5
+DUNU DK-2001,4.5,4.5,5.0,
+DUNU DK-3001 Pro,5.5,6.0,5.5,
+DUNU DK-4001,4.5,4.5,5.5,
+DUNU DN-1000,3.5,4.5,3.5,
+DUNU DN-2000,4.0,4.0,4.0,
+DUNU DN-2002,4.0,4.0,4.0,
+DUNU EST 112,5.0,5.5,5.0,
+DUNU Falcon Pro,4.4,4.443,4.777,5.0
+DUNU Falcon Pro (Experimental),5.8,5.33,6.0,6.0
+DUNU Kima,4.0,4.5,4.0,
+DUNU Luna,5.0,4.0,7.9,
+DUNU SA6,5.0,5.0,6.0,
+DUNU SA6 Ultra,6.7,7.0,6.0,7.0
+DUNU Talos,5.9,5.667,6.0,5.0
+DUNU Titan 1,4.5,4.5,4.5,
+DUNU Titan 3,4.5,4.5,5.0,
+DUNU Titan S,5.0,5.777,4.89,5.0
+DUNU Vulkan,6.0,6.667,5.667,6.0
+DUNU Zen Pro,5.433,5.777,5.557,6.0
+DUNU x Z Reviews SA6 Ultra,5.5,5.0,6.5,
+Delta Air complimentary earphones,0.0,0.0,0.0,
+Dethonray Tender I,2.0,1.5,3.0,
+Dita Dream,5.0,4.0,7.9,
+Dita Dream XLS,4.5,4.0,5.5,
+Dita Fealty,3.5,3.5,4.5,
+Dita Fidelity,4.5,4.0,6.0,
+Dita Perpetua,4.5,3.5,6.0,
+Dita Project 71,3.5,3.5,4.5,
+Dita Sakura 71,5.0,4.0,6.5,
+Dita Truth,4.0,3.5,5.5,
+Dita Truth Answer Edition,4.0,3.5,5.5,
+Dita Truth Brass,3.0,2.5,4.5,
+Drop + Grell TWS1X,3.4,4.33,3.0,3.0
+Drop + JVC HA-FDX1,6.0,6.5,6.0,
+Drop x Empire Ears Zeus,3.5,3.5,5.0,4.0
+Drop x Grell TWS1/X,1.0,4.0,1.5,1.5
+Drop x JVC HA-FDX1,5.2,5.0,5.67,5.0
+Dunu DK-2001,4.9,4.67,5.0,5.0
+Dunu DK-3001 Pro,5.0,5.0,5.0,5.0
+Dunu DK2001,4.0,3.5,4.0,4.5
+Dunu DK3001 Pro,4.5,6.0,5.0,5.0
+Dunu EST 112,4.5,5.5,5.5,5.0
+Dunu EST112,5.075,5.0,5.5,4.5
+Dunu Falcon Pro,4.5,4.5,4.5,5.0
+Dunu Kima,4.5,5.0,4.5,4.75
+Dunu Luna,4.75,4.415,6.25,4.5
+Dunu SA3,2.0,2.0,2.0,2.0
+Dunu SA6,6.167,6.585,6.085,6.667
+Dunu SA6 MK2,8.0,,,9.0
+Dunu SA6 Ultra,8.0,,,9.5
+Dunu Talos (Planar Mode),5.5,,,6.0
+Dunu Titan S,5.0,,,4.5
+Dunu Titan-S Prototype,5.0,6.0,4.0,5.5
+Dunu Vulkan,4.5,5.0,5.0,5.0
+Dunu Zen,5.45,5.415,6.0,5.5
+Dunu Zen Pro,6.0,6.5,6.5,6.5
+Dynamic Motion DM200H,3.5,3.5,3.5,
+EarFun Free Pro 2,3.4,4.33,3.0,3.0
+EarFun x Oluv Free,4.0,5.0,3.5,
+EarFun x Oluv Free Pro,4.0,5.0,4.0,
+EarWerkz Legend Omega,3.0,2.0,5.0,
+Earfun Oluv Edition,3.4,4.33,3.0,3.0
+Earsonics Blade,2.0,2.0,3.0,
+Earsonics EM10/Grace,2.5,2.5,3.5,
+Earsonics EM32,2.5,2.0,3.5,
+Earsonics ES2,2.5,2.5,3.5,
+Earsonics ES3,3.0,3.0,4.0,
+Earsonics ES5,3.0,2.5,4.0,
+Earsonics Purple,4.0,4.0,4.5,
+Earsonics S-EM9,2.5,2.0,3.5,
+Earsonics SM3,3.5,3.5,3.5,
+Earsonics SM64v2,1.5,1.5,2.5,
+Earsonics Stark,2.0,2.0,3.0,
+Earsonics Velvet,3.0,2.5,4.5,
+Eartech Dual Driver,3.5,4.5,3.5,
+Eartech Quad Driver,3.5,3.5,4.0,
+Eartech Triple Driver,3.5,3.5,3.5,
+Edifier TWS1,3.5,3.5,3.5,
+Edifier TWS5,4.0,5.0,4.0,
+Edifier TWS6,4.0,5.0,3.5,
+Effect Audio Axiom,2.9,2.667,4.11,3.0
+Effect Audio King Arthur,1.5,1.5,1.5,
+Effect Audio Symphony,2.0,2.0,2.5,
+Effect Audio x Elysian Gaea,7.8,7.33,8.0,8.0
+Elysian Annihilator 2021,8.25,8.043,8.69,9.375
+Elysian Artemis,4.0,4.5,4.0,
+Elysian Artemis V2,4.5,4.5,5.5,
+Elysian Cora (2019),4.5,4.5,4.5,
+Elysian Diva,7.2,6.89,6.89,9.0
+Elysian Eros,3.5,3.5,3.5,
+Elysian Hades V2,5.5,5.5,6.0,
+Elysian Minerva,3.0,3.0,3.0,
+Elysian Poseidon,6.0,6.0,6.0,
+Elysian Terminator,5.5,5.5,6.0,
+Elysian Terminator V2,5.5,5.5,6.0,
+Elysian X,7.25,6.777,7.823,8.75
+Elysian x Effect Audio Gaea,8.0,,,9.5
+Empire Ears Bravado,4.0,4.0,4.0,
+Empire Ears Bravado MK.II,3.6,4.0,4.0,3.0
+Empire Ears Bravado Mk2,3.5,3.5,3.5,
+Empire Ears ESR,4.0,4.0,5.0,
+Empire Ears ESR MK.II,5.5,5.67,6.0,5.0
+Empire Ears ESR Mk2,6.0,6.5,6.0,
+Empire Ears EVO,7.3,7.33,7.67,7.0
+Empire Ears EVR,4.5,4.0,5.5,
+Empire Ears EVR Mk2,0.5,0.5,4.5,
+Empire Ears Hero,5.167,4.777,6.11,5.0
+Empire Ears Legend EVO,5.5,5.5,5.5,
+Empire Ears Legend X,6.067,6.0,6.223,6.0
+Empire Ears Legend X SE,6.4,6.443,6.443,7.0
+Empire Ears Nemesis,4.0,4.0,4.5,
+Empire Ears Odin,7.44,7.308,7.668,8.5
+Empire Ears Phantom,3.5,3.0,4.5,
+Empire Ears Phantom LE,4.0,4.0,4.5,
+Empire Ears Valkyrie,4.875,4.375,6.125,5.5
+Empire Ears Valkyrie MK.II,6.0,6.0,6.0,6.0
+Empire Ears Valkyrie Mk2,4.5,4.0,6.0,
+Empire Ears Vantage,5.0,5.0,5.0,
+Empire Ears Wraith,3.175,3.208,4.25,2.75
+Empire Ears Zeus XIV,4.8,3.67,5.67,5.0
+Empire Ears Zeus-XIV,3.5,2.0,7.9,
+Eternal Melody EM-2,3.0,4.0,2.5,
+Eternal Melody EM-4,3.0,3.0,3.5,
+Eternal Melody EM-5,4.0,4.0,4.5,
+Eternal Melody EM-5H,3.0,3.0,4.0,
+Eternal Melody EM-6,3.0,3.0,3.5,
+Eternal Melody EM-6W,3.0,3.0,4.0,
+Etymotic ER2SE,4.733,5.335,4.75,4.167
+Etymotic ER2SE/ER2XR,5.5,6.5,5.5,
+Etymotic ER2XR,5.4,6.0,5.0,5.167
+Etymotic ER3SE,3.5,4.5,4.5,4.0
+Etymotic ER3SE/ER3XR,5.5,6.0,5.5,
+Etymotic ER3XR,4.5,5.67,4.0,4.0
+Etymotic ER4B,6.0,6.0,6.0,
+Etymotic ER4PT,5.0,5.5,5.0,
+Etymotic ER4SR,4.5,5.0,4.5,5.0
+Etymotic ER4XR,5.575,5.792,5.582,5.25
+Etymotic EVO,5.3,5.0,6.0,5.0
+Eytmotic ER3XR,5.0,5.5,5.0,5.5
+F-Audio Major,2.5,3.0,4.0,3.0
+FAAEAL Hibiscus,2.0,2.0,2.5,
+FAudio Chorus,4.0,4.0,4.5,
+FAudio Dark Sky,5.533,6.0,5.667,5.0
+FAudio Major,4.0,3.5,5.5,
+FAudio Mezzo,4.5,4.5,5.5,
+FAudio Minor,5.0,6.0,5.0,
+FLC 8P,2.0,2.0,2.0,2.0
+FLC8S,4.0,4.5,4.0,
+FatFreq Maestro Mini,5.6,6.75,5.335,5.75
+Fatfreq 20.6,3.5,3.5,4.5,
+Fatfreq 20.8,3.5,3.5,4.0,
+Fatfreq Eden,3.0,3.0,3.5,
+Fatfreq Hayabusa,5.0,5.5,5.0,
+Fatfreq Maestro,5.5,6.5,5.0,
+Fatfreq Maestro Mini,5.5,7.0,5.0,6.5
+Fatfreq Maestro SE,5.5,6.5,5.5,
+Fatfreq Musician,3.5,3.5,3.5,
+Fatfreq Musician Plus,3.0,3.0,3.5,
+Fatfreq Musician Plus V2,4.5,6.0,4.0,
+Fatfreq Musician Pro,3.0,3.0,3.5,
+Fatfreq Musician Pro SE,4.0,5.5,3.5,
+Fatfreq Reference,3.5,4.5,3.5,
+Fatfreq Reference Plus,3.0,3.0,3.5,
+Fatfreq Reference Plus V2,4.0,5.0,3.5,
+Fatfreq Reference Pro,4.5,5.0,4.5,
+Fatfreq Sakura,5.0,6.0,5.0,
+Fatfreq Tsuru,5.0,5.5,5.0,
+Fearless ACME8,1.5,1.5,2.0,
+Fearless Audio Barcelona,2.9,3.33,2.33,3.0
+Fearless Audio Provence,3.0,3.33,2.67,3.0
+Fearless Audio S8P,5.5,5.0,5.33,6.0
+Fearless Audio Shangri-La,3.2,3.33,3.33,3.0
+Fearless Audio Tequila,2.4,2.33,3.0,2.0
+Fearless Barcelona,3.333,3.667,3.333,2.5
+Fearless Crinacle Dawn,5.5,8.7,5.0,5.5
+Fearless Crystal Ball,2.0,2.0,2.5,
+Fearless Crystal Pearl,3.0,3.0,3.0,
+Fearless HyperS 12BA,3.5,3.0,4.5,
+Fearless La Hire,5.0,5.0,5.0,
+Fearless Lancelot,5.0,5.0,6.0,
+Fearless Provence,3.5,4.667,3.333,3.0
+Fearless Roland,3.0,2.5,4.0,
+Fearless S10 Genie,3.5,3.0,4.5,
+Fearless S4,4.0,4.167,4.167,3.5
+Fearless S5H,4.5,4.5,4.5,
+Fearless S5T,2.5,2.5,2.5,
+Fearless S6Pro,5.5,5.5,5.5,
+Fearless S6Rui,4.5,4.5,5.0,
+Fearless S8F/S8Pro,5.0,5.0,5.5,
+Fearless S8Z,4.875,5.418,5.208,4.5
+Fearless Shangri-La,2.5,3.0,3.5,3.0
+Fearless Shangri-la,4.0,5.5,3.5,
+Fearless Start,3.5,3.5,3.5,
+Fearless Tequila,3.333,3.0,3.667,3.5
+Fearless X Crinacle Dawn,7.5,,,7.0
+Fearless x Crinacle Dawn,6.1,6.67,5.67,6.0
+Fender FXA9,2.0,1.5,3.5,
+Fender Ten 5,3.5,4.5,3.0,
+Fender Thirteen 6,0.5,0.5,2.0,
+FiR Krypton 5,2.5,2.5,3.5,
+FiR M2,3.0,2.0,4.5,
+FiR M3,5.5,5.5,5.5,
+FiR M4,5.5,5.5,5.5,
+FiR M5,5.5,5.5,5.5,
+FiR Neon 4,3.0,2.5,4.0,
+FiR VxV,4.5,4.0,5.5,
+FiR VxV (Five x Five),3.5,2.5,4.5,4.0
+FiR Xenon 6,2.5,2.0,3.5,
+Fidue A71,2.0,2.5,2.0,
+"Fidue A91 ""Sirius""",4.5,4.5,5.0,
+FiiO F3,3.5,4.5,3.5,
+FiiO F5,3.5,4.5,3.5,
+FiiO F9,4.0,4.0,4.0,
+FiiO F9 Pro,4.0,4.0,4.0,
+FiiO FA1,3.5,4.5,3.5,
+FiiO FA7,3.0,3.0,4.0,
+FiiO FA7S,3.5,3.5,4.5,
+FiiO FA9,4.5,4.5,4.5,
+FiiO FD1,3.5,3.5,3.5,
+FiiO FD5,4.5,4.5,5.0,
+FiiO FD7,5.0,5.0,5.0,
+FiiO FH1,3.5,4.0,3.5,
+FiiO FH1S,3.5,3.5,3.5,
+FiiO FH3,4.0,4.0,4.5,
+FiiO FH5,5.0,5.0,5.0,
+FiiO FH5s,3.5,3.5,4.5,
+FiiO FH7,4.0,4.0,5.0,
+FiiO FH9,5.0,5.0,5.0,
+Fiio FA7,0.0,0.0,0.1,0.1
+Fiio FD3,3.0,3.0,3.0,3.0
+Fiio FD5,4.4,4.33,5.0,4.0
+Fiio FH3,3.0,3.0,3.0,3.0
+Fiio FH5,5.0,5.0,5.0,5.0
+Fiio FH5S,3.0,3.0,3.0,3.0
+Fiio FH7,5.0,5.0,5.0,5.0
+Fiio FH7S,5.3,5.33,5.0,5.5
+Fiio FH9,5.0,5.0,5.0,5.0
+Fiio x Crinacle FHE Eclipse,3.7,4.0,3.0,4.0
+Fiio x Crinacle FHE: Eclipse,3.0,4.5,4.0,3.5
+Final Audio A4000,3.3,3.0,4.0,3.0
+Final Audio A8000,4.4,4.25,6.042,3.25
+Final Audio Adagio 3,0.5,0.5,2.0,
+Final Audio B1,3.5,3.5,4.0,
+Final Audio B2,4.0,4.0,4.0,
+Final Audio B3,4.667,5.0,4.667,5.0
+Final Audio E1000,3.0,4.0,2.667,1.5
+Final Audio E2000,3.167,4.0,3.0,3.0
+Final Audio E3000,3.0,3.833,3.0,2.5
+Final Audio E4000,3.5,4.5,3.5,
+Final Audio E500,4.067,4.89,3.667,4.0
+Final Audio E5000,3.5,4.5,3.5,
+Final Audio EVA,2.7,3.0,2.0,3.0
+Final Audio F4100,3.5,3.5,4.0,
+Final Audio F7200,3.5,3.5,4.0,
+Final Audio FI-DO6SS ANT20,3.0,3.0,4.0,
+Final Audio Heaven 4,4.0,4.0,4.0,
+Final Audio Heaven 7,3.5,3.5,4.0,
+Final Audio Heaven 8,3.0,3.0,4.0,
+Final Audio Heaven II,4.0,4.5,4.0,
+Final Audio Heaven S,3.5,3.5,4.0,
+Final Audio LAB 1,3.5,3.5,4.0,
+Final Audio LAB 2,0.5,0.5,3.5,
+Final x Dita Shichiku.Kangen,5.2,4.67,6.0,5.0
+Fischer Omega Spark,0.5,0.5,0.5,
+FitEar Air 2,3.5,3.5,3.5,
+FitEar Air 2/Titan,3.5,3.5,3.5,
+FitEar Aya,3.5,3.5,4.0,
+FitEar EST,3.0,4.0,3.0,
+FitEar F/A111,3.5,3.5,4.0,
+FitEar Fitear,3.0,3.0,3.5,
+FitEar MH334,4.5,4.5,4.5,
+FitEar MH334SR,5.5,5.5,5.5,
+FitEar MH335DW,4.0,4.0,5.0,
+FitEar Monet 17,4.0,4.0,5.0,
+FitEar Parterre,3.5,3.5,4.5,
+FitEar Private 222,3.0,2.5,4.5,
+FitEar Private 223,3.0,2.5,4.5,
+FitEar Private 333,4.5,4.0,5.5,
+FitEar Private C435,3.5,3.0,4.5,
+FitEar TG334,4.5,4.5,4.5,
+Flicker Ear Norma,2.5,3.5,2.5,
+Flipears Aurora,3.5,3.5,4.5,
+Focal Spark,1.0,2.0,1.5,1.5
+Focal Sphear,3.5,4.0,3.5,
+Fostex TE-02WP,3.0,3.5,3.0,
+Fostex TE100,3.5,3.5,3.5,
+Fostex TM2,4.0,4.0,4.0,
+Future Sonics G10,2.0,2.0,2.0,
+Future Sonics MG5HX,3.0,2.5,4.0,
+GS Audio GD3C,3.0,3.0,3.0,3.0
+GS Audio SE11,6.1,6.33,6.0,6.0
+Gaudio Clariden,4.5,4.5,5.0,
+Gaudio Nair,5.5,7.0,5.0,
+Geek Wold 10 (blocked vent),3.0,3.0,3.0,3.0
+Geek Wold GK3,0.5,0.5,1.5,
+Gold Planar GL12,0.5,0.2,2.5,1.0
+Gold Planar GL20,3.0,1.5,7.0,
+Grado GR8,3.0,3.0,3.5,
+Grado iGe,3.0,3.5,3.0,
+Guide Ray GR-I,2.5,3.0,2.5,3.0
+HUM Dolores,4.0,5.0,4.0,
+HUM Pristine Reference,3.5,3.5,4.0,
+HUM Reference,4.5,5.0,4.5,
+HUM TT,3.0,4.0,3.0,
+HYLA CE-5,5.5,5.5,6.5,
+HYLA Nerva-X,4.0,4.5,4.0,
+HYLA Sarda,5.5,5.5,6.5,
+HYLA TE-5B,5.5,5.5,6.5,
+HYLA TE-5T,5.0,4.5,6.5,
+HZSound Heart Mirror,3.733,3.667,3.89,3.0
+HZSound Heart Mirror Pro,4.5,5.5,4.5,
+HarmonicDyne Devil,4.5,4.5,4.5,5.0
+HarmonicDyne P.D.1,3.0,2.5,4.0,
+HarmonicDyne PD1,0.0,0.1,0.5,0.1
+Heartfield Acoustic Deer,3.0,3.5,3.0,
+Heir Audio Tzar 350,3.0,3.0,3.5,
+Heygears Anora,3.0,3.5,3.0,
+HiBy Crystal6,2.5,2.5,3.5,
+HiBy WH3,3.0,3.0,3.0,
+HiFi Boy OS V3,2.5,2.5,2.5,
+HiFiMAN Bolt,2.0,1.67,2.33,2.0
+Hiby Crystal6,2.6,2.0,4.0,2.0
+Hidition NT6,6.383,6.933,6.5,5.0
+Hidition NT6 Pro,5.5,5.0,6.5,
+Hidition NT8,6.0,6.0,6.5,
+Hidition T1,5.0,5.5,6.5,5.5
+Hidition Viento-B,7.14,8.168,6.625,7.8
+Hidition Viento-R Univ,6.0,6.0,6.5,6.5
+Hidition Violet,6.667,6.777,6.89,7.0
+Hidition Waltz,6.0,6.777,5.557,6.0
+Hidizs Mermaid MS4,3.0,3.0,3.5,
+Hifiman Bolt,0.0,0.1,0.0,0.0
+Hifiman RE1000,2.5,2.0,4.0,
+Hifiman RE2000,3.5,3.0,4.5,
+Hifiman RE2000 Pro,3.5,3.0,4.5,
+Hifiman RE400,4.0,5.5,3.5,
+Hifiman RE800,0.5,0.5,5.0,
+Hifiman TWS600,0.5,0.5,3.0,
+Horluchs HL4300,3.5,3.5,4.0,
+Hyla Sarda,6.9,7.0,6.67,7.0
+I-INTO i8,3.0,3.0,3.0,
+IKKO OH10,5.0,,,3.5
+IMR Aten,3.5,3.5,4.5,
+IMR R1,3.0,2.5,4.0,
+IMR R1 Zenith,3.0,3.0,3.5,
+IMR R2 Aten,4.0,4.0,4.0,
+IMR RAH,4.0,4.0,5.0,
+IMR Semper,2.5,2.5,3.0,
+IMR Zenith,4.0,4.5,4.0,
+INAIR M360,3.5,4.5,3.0,
+Ikko Gems OH1S,2.6,2.33,3.67,2.0
+Ikko OH10,4.8,5.0,5.165,5.0
+Ikko Opal OH2,3.7,4.085,4.085,3.75
+InEar Prophile-8,5.5,6.5,5.0,
+InEar SD5,6.0,6.0,6.0,
+InEar StageDiver SD-2,4.5,4.5,4.5,
+InEar StageDiver SD-3,2.5,2.5,3.5,
+InEar StageDiver SD-4,3.0,3.0,4.0,
+Intime Sora,4.3,5.333,3.89,4.0
+Itsfit Fusion,3.5,3.5,4.5,
+Itsfit R3,4.5,4.5,4.5,
+JBL LIVE 300TWS,4.5,5.5,4.0,
+JH Audio Angie,3.5,3.0,4.5,
+JH Audio Diana,0.5,0.5,2.0,
+JH Audio JH13v2 Performance Series,3.5,3.5,4.5,
+JH Audio JH16v2,3.5,3.0,5.0,
+JH Audio Jolene,2.5,1.5,4.5,
+JH Audio Layla,3.5,3.0,4.5,
+JH Audio Layla Aion,3.1,2.67,3.67,3.0
+JH Audio Lola,3.0,2.0,5.0,
+JH Audio Rosie,4.0,4.0,4.0,
+JH Audio Roxanne 2,3.5,3.0,5.0,
+JH Audio x L-Acoustics Contour XO,3.5,3.0,4.5,
+JH Billie Jean,3.0,3.5,3.0,
+JH Michelle,3.5,3.5,3.5,
+JH Roxanne,3.5,2.5,5.5,
+JQ Hua Jiang,5.5,5.5,5.5,
+JVC FWX1,3.3,3.0,4.0,3.0
+JVC FX7 Gumy,2.1,2.33,2.0,2.0
+JVC HA-FD01,5.0,5.0,6.0,
+JVC HA-FD02,5.0,5.0,6.0,
+JVC HA-FW01,3.5,3.5,3.5,
+JVC HA-FW02,4.0,4.0,4.0,
+JVC HA-FW03,4.5,6.0,4.0,
+JVC HA-FW10000,6.0,5.5,7.9,
+JVC HA-FW1500,3.5,3.5,4.5,
+JVC HA-FX99X-B,4.0,5.0,3.5,
+Jabra Elite 75t,3.0,3.0,4.0,
+Jabra Elite Active 65t,4.0,4.5,4.0,
+Jade Audio EA3,3.0,2.5,4.0,
+Jaybirds Vista,2.567,2.667,2.333,3.0
+Jomo Audio Trinity Brass,5.9,5.67,6.0,6.0
+Jomo Flamenco,5.5,4.5,7.0,
+Jomo Haka,2.0,2.5,2.0,
+Jomo Jazz,3.0,3.0,3.5,
+Jomo PLB,2.0,2.5,2.0,
+Jomo Quatre,4.0,4.0,5.0,
+Jomo Salsa,3.0,3.0,3.5,
+Jomo Samba,5.0,4.5,6.5,
+Jomo Tango,4.5,3.5,6.0,
+Jomo Trinity Brass,5.0,4.5,6.5,
+Jomo Trinity SS,5.5,5.5,6.5,
+Jomo x Pantheon Percussion P3,3.5,3.5,3.5,
+KB Ear Hi 7,2.0,3.0,3.0,2.5
+KBEar Aurora,3.5,4.5,3.5,
+KBEar F1,3.5,4.5,3.0,
+KBEar Neon,3.0,4.0,3.0,
+KBEar TRI I3,4.0,4.0,4.0,
+KBEar TRI I4,3.5,3.5,3.5,
+KBear Neon,2.9,3.33,2.33,3.0
+Kbear Diamond,4.1,4.33,4.0,4.0
+Kennerton Jimo,2.5,2.5,3.0,
+Kineara BD005 Pro,3.0,4.0,3.5,3.5
+Kinera BD005,2.0,2.0,2.0,
+Kinera BD005 Pro,3.0,3.5,3.0,
+Kinera Celest Pandamon,5.0,,,4.5
+Kinera Freya,3.0,3.0,3.0,3.0
+Kinera H3,0.5,0.5,3.0,
+Kinera Hodur,3.5,3.5,3.5,
+Kinera IDUN,3.5,3.5,3.5,
+Kinera IDUN Deluxe,3.5,3.5,3.5,
+Kinera Idun (Deluxe),3.0,3.0,3.0,
+Kinera Nanna,4.5,5.5,4.5,
+Kinera Nanna 2,5.0,,,5.5
+Kinera Nanna 2.0,5.133,5.333,5.11,5.0
+Kinera Norn,3.133,3.11,3.667,3.0
+Kinera Odin,3.5,4.0,3.5,
+Kinera SEED,2.5,2.5,2.5,
+Kinera SIF,3.0,3.0,3.5,
+Kinera Skuld,4.5,4.5,4.5,
+Kinera YH263,1.5,1.5,1.5,
+Kinera iDun 2.0,3.5,4.0,3.67,3.0
+Kiwi Ears Cadenza,3.5,5.0,3.5,4.0
+Kiwi Ears Dolce,2.0,3.5,2.5,2.5
+Kiwi Ears Orchestra,5.98,7.058,5.832,5.833
+Kiwi Ears Orchestra Lite,4.5,6.0,5.0,5.0
+Kiwiears Cadenza,5.0,,,5.0
+Klipsch T5 True Wireless,3.5,3.5,4.0,
+Kojo KJB-01 “Keyagu”,2.0,2.0,3.0,
+Kumitate KL-Corona,5.0,6.5,4.0,
+Kumitate KL-Focus,6.0,6.5,6.0,
+Kumitate KL-Kanon,3.0,2.5,4.0,
+Kumitate KL-Meteo,3.5,3.5,4.0,
+Kumitate KL-REF Type S,5.0,5.0,5.0,
+Kumitate KL-REF Type-S,4.0,3.5,5.5,
+Kumitate KL-Sanka,3.5,3.5,4.0,
+Kumitate KL-Sanka B,3.5,2.5,5.5,
+Kumitate KL-Sanka K,3.5,2.5,5.5,
+Kumitate KL-Sirius,6.0,6.5,6.0,
+LEAR NatroSound NS-U1,0.5,0.5,0.5,
+LETSHUOER Cadenza 12,6.2,6.0,6.67,6.0
+LETSHUOER D13,4.2,4.33,4.33,4.0
+LETSHUOER EJ07M,6.4,7.33,6.0,6.0
+LETSHUOER S12,5.8,5.33,6.0,6.0
+LETSHUOER x Gizaudio Galileo,4.7,5.0,4.0,5.0
+LG Tone Free,3.5,3.5,3.5,
+LH Stella,3.5,3.5,4.0,
+LH Verb,2.0,2.0,3.0,
+LZ A2 Pro,2.0,2.0,3.0,
+LZ A4 Pro,2.333,2.167,3.333,2.5
+LZ A7,3.0,3.0,4.5,3.5
+Lark Studio LSX,3.5,3.0,5.0,
+Lear LCM-BD4.2,3.5,2.5,5.5,
+LetShuoer D13,4.0,5.0,4.5,4.5
+LetShuoer EJ09,4.0,4.5,5.0,4.5
+LetShuoer Galileo,5.0,6.0,4.5,5.5
+LetShuoer S12,6.0,6.5,6.0,6.5
+Letshouer S12 Pro,5.5,,,6.0
+Letshuoer Cadenza 12,7.0,,,8.5
+Letshuoer S12,5.5,,,6.0
+Letshuore EJ07M Kinda Lava,6.5,,,8.0
+Letshuore Z12,5.5,,,6.0
+Libratone Track Air Plus,5.0,7.0,4.0,
+Lime Ears Aether,4.5,5.5,4.5,
+Lime Ears Aether R,4.0,3.5,5.0,
+Lime Ears LE2,4.0,4.0,4.5,
+Lime Ears Model X,6.0,6.0,6.0,
+Lypertek Bevi,4.0,5.5,3.5,
+Lypertek PurePlay Z3 2.0(PurePlay Z3)(Tevi),5.0,6.5,4.0,
+Lypertek PurePlay Z7,3.0,3.0,4.0,
+MEE Audio M6 Pro,0.1,0.5,0.2,0.2
+MEE M6 Pro,3.5,3.5,3.5,
+MEE Pinnacle P1,3.5,3.5,3.5,
+MMR Homunculus,3.025,3.292,4.25,2.25
+MMR Thummim,2.9,2.918,4.082,2.75
+MUNITIO Billets,2.0,2.0,3.0,
+MUNITIO Bullet In-Ear,2.5,3.0,2.5,
+Madoo Type 711,2.0,2.5,2.0,
+Mangird MT4,2.833,4.5,2.833,1.0
+Mangird Tea,4.075,4.5,4.375,4.25
+Mangird Xenns Top,6.8,6.33,6.0,7.5
+Massdrop Plus,4.0,4.833,4.167,4.5
+Massdrop x MEE Planamic,2.5,2.5,2.5,
+Massdrop x Noble K10,6.0,6.0,6.0,
+Massdrop x NuForce EDC3,3.5,3.5,3.5,
+Master & Dynamic MW07,2.5,2.5,3.0,
+Master & Dynamic MW07 Go,2.5,2.5,3.0,
+Master & Dynamic MW07 Plus,2.5,2.5,3.0,
+Meccaudio ME-04,3.0,3.0,3.0,
+Meccaudio ME20,3.5,3.5,4.0,
+Meze 12 Classics,3.5,3.5,3.5,
+Meze Rai Penta,4.333,4.5,4.5,4.5
+Meze Rai Solo,3.0,2.5,4.5,
+MiM Dark Magician,5.4,5.89,5.333,5.0
+Mofasest M14,5.5,5.5,5.5,
+Monoprice Monolith M-TWE,3.5,4.0,3.5,
+Moondrop A8,6.5,6.5,6.5,
+Moondrop Alice (IE Target Preset),5.5,,,2.0
+Moondrop Aria,5.14,6.168,4.875,5.0
+Moondrop Aria Snow,4.8,5.33,4.67,4.5
+Moondrop Aria Snow Edition,5.0,,,3.0
+Moondrop B2,6.0,6.0,6.0,6.0
+Moondrop Blessing,6.0,6.5,6.0,
+Moondrop Blessing 2,6.125,6.833,6.5,5.75
+Moondrop Blessing 2: Dusk,6.367,7.685,6.25,6.5
+Moondrop Blessing 3,6.35,6.33,6.33,7.0
+Moondrop Blessing OG,4.9,5.0,6.0,4.0
+Moondrop Chu,4.6,6.125,4.0,4.333
+Moondrop Crescent,5.0,6.5,4.0,
+Moondrop Illumination,4.833,5.0,4.89,4.0
+Moondrop Jiu (DSP),5.5,,,6.5
+Moondrop KXXS,4.925,5.792,4.875,5.0
+Moondrop KXXS / KXXX,5.0,,,4.5
+Moondrop KXXX,5.2,5.67,5.0,5.0
+Moondrop Kanas Pro,4.825,5.75,4.375,4.75
+Moondrop Kato,5.575,6.333,5.443,5.75
+Moondrop Nekocake,3.5,4.0,3.5,
+Moondrop Quarks,3.367,3.667,3.443,3.0
+Moondrop Quarks DSP,5.5,,,4.0
+Moondrop S8,6.65,7.71,6.667,6.5
+Moondrop SSP,3.667,3.557,4.443,4.0
+Moondrop SSR,3.025,3.042,4.082,2.5
+Moondrop Solis,5.133,6.223,4.89,5.0
+Moondrop Spaceship,3.075,3.5,3.5,2.25
+Moondrop Sparks,4.567,5.89,3.777,5.0
+Moondrop Starfield,5.05,5.89,5.0,4.5
+Moondrop Stellaris,4.6,4.33,5.67,4.0
+Moondrop Variations,7.125,8.243,6.557,6.75
+Muse HiFi Power,3.5,3.0,4.5,
+NCM Bella,4.0,4.0,4.5,
+NF Audio NA2+,3.5,3.0,4.67,3.0
+NF Audio NF2u,3.5,3.5,3.5,
+NF Audio NM2+,3.5,3.5,4.5,
+NXEars Basso,2.0,2.0,2.5,
+NXEars Opera,2.5,1.5,4.0,
+NXEars Sonata,4.0,5.5,3.5,
+Neusonik direm E3,4.0,5.0,3.5,
+Neusonik direm PRO,4.0,4.0,4.0,
+NiceHCK EP10,1.5,2.5,1.0,2.0
+NiceHCK NX7 Mk3,4.0,4.0,4.5,
+NiceHCK NX7 Pro,3.333,3.667,3.833,2.5
+Nicehck TopGuy,2.9,2.67,3.0,3.0
+Noble Audio K10 Encore,4.6,4.33,5.67,4.0
+Noble Audio Sultan,3.6,4.0,4.0,3.0
+Noble Audio X,2.2,2.67,2.0,2.0
+Noble Django,3.0,3.0,3.0,
+Noble Dulce Bass,3.0,3.0,4.0,
+Noble Falcon,3.0,3.0,3.0,
+Noble K10 Encore,6.0,6.0,6.0,
+Noble Kadence,4.0,3.5,5.0,
+Noble Katana,6.0,6.0,6.0,
+Noble Khan,5.5,5.0,7.0,
+Noble Kublai Khan,5.5,5.0,7.0,
+Noble M3,2.5,2.5,3.5,
+Noble Sage,3.5,4.5,3.5,
+Noble Savanna,3.5,3.5,3.5,
+Noble Savant 2,3.5,4.5,3.5,
+Noble Sultan,3.167,3.167,4.167,2.5
+Noble Trident,2.5,2.0,4.0,
+Noble Tux 5,4.5,4.5,5.0,
+Noble X,1.5,3.0,3.0,2.0
+NocturnaL Atlantis,4.5,4.5,5.0,
+NocturnaL Avalon,3.5,3.5,4.0,
+NocturnaL Eden,3.5,3.5,4.0,
+NocturnaL Gorham,3.5,4.0,3.5,
+None,,,,
+Nostalgia Benbulbin,4.5,6.0,4.0,
+Nothing Ear 1,2.5,2.0,3.5,
+Nothing Ear 2,3.667,4.333,3.333,2.0
+NuForce HEM1,3.0,3.5,3.0,
+NuForce Primo 8,2.0,2.5,2.0,
+Nuarl NT01,3.5,3.5,3.5,
+Nuarl NT100,3.5,4.0,3.5,
+Nuarl NT110,3.5,4.0,3.5,
+Nuforce HEM4,1.5,2.5,1.5,
+Nuforce HEM6,1.5,2.5,1.5,
+ORB CF-IEM Stella,3.0,3.0,3.5,
+Ocharaku Co-Donguri Shizuku,2.5,2.5,3.5,
+Ocharaku Co-Donguri Shizuku S2,2.5,2.5,3.0,
+Ocharaku Donguri Keyaki,2.5,2.5,3.5,
+Ocharaku Donguri Ti Plus,2.5,2.5,3.5,
+Ocharaku Flat-4 Akakeyaki,1.5,1.5,2.0,
+Ocharaku Flat-4 Akazakura,1.5,1.5,2.0,
+Ocharaku Flat-4 Kaede Type 1,1.5,1.5,2.0,
+Ocharaku Flat-4 Kaede Type 2,1.5,1.5,2.0,
+Ocharaku Flat-4 Ti Plus,1.5,1.5,2.0,
+Ola Bass,5.0,,,6.25
+Onkyo E900,3.5,3.5,3.5,
+Open Audio Mercury,4.0,4.5,4.0,
+OpenAudio Mercury,5.2,5.33,5.33,5.0
+Oppo MH130,0.0,0.0,0.0,
+Origami Audio Silver,2.0,2.5,2.0,
+Oriolus Finschi,3.5,4.5,3.5,
+Oriolus Forsteni,3.5,3.5,4.5,
+Oriolus Isabellae,5.0,5.5,5.0,
+Oriolus Isabellae ,4.3,4.33,4.67,4.0
+Oriolus MK2,5.5,5.5,5.5,
+Oriolus Mellianus,5.0,4.5,6.5,
+Oriolus Percivali,5.0,4.5,6.5,
+Oriolus Traillii,7.0,7.0,7.0,7.0
+Oriveti Basic,3.0,3.0,3.0,
+Oriveti New Primacy,3.5,3.5,3.5,
+Oriveti OH300,4.5,4.5,4.5,
+Oriveti OH500,4.5,4.5,4.5,
+Ovidius RX-100,4.5,4.5,4.5,5.0
+PEARS SH2,4.5,4.5,5.0,
+PEARS SH3,6.0,6.5,6.0,
+Pai Audio DM2A,3.0,3.0,3.0,
+Peacock Audio P1,3.5,3.5,3.5,
+Peacock P1,3.0,3.5,3.0,3.5
+Periodic Audio Be,3.667,3.777,4.223,3.0
+Periodic Audio Mg,4.0,4.0,4.0,
+Periodic Audio Ti,1.2,1.67,1.0,1.0
+Phonak PFE,3.0,3.5,3.0,
+Pioneer SE-CX9,3.0,3.5,3.0,
+Prisma Azul,4.975,6.292,4.792,5.0
+QCY T5,4.0,5.0,3.5,
+QDC Gemini,8.0,,,10.0
+QoA Adonis,4.0,5.0,4.0,
+QoA Mojito,3.5,3.5,3.5,
+QoA Pink Lady,3.5,3.5,4.0,
+QoA Vesper,3.5,3.5,4.0,
+Qudelix Qx-over,3.0,3.5,3.0,
+RHA CL1,0.5,0.5,5.0,
+RHA CL2,2.167,2.167,3.333,3.0
+RHA CL750,1.5,1.5,2.5,
+RHA MA750,3.5,3.5,3.5,
+RHA T20i,3.5,3.5,3.5,
+RHA TrueConnect,3.5,3.5,3.5,
+Radius HP-TWF41,2.0,2.5,2.0,
+Rapt-Go Bridge,1.5,3.5,2.5,2.0
+Rapt-Go Leaf,2.5,3.0,3.0,3.0
+Raptgo Hook X,5.8,5.67,5.67,6.0
+Raptgo Hook-X,5.5,6.5,5.0,5.5
+Raycon E25,1.5,1.5,2.5,
+Razer Moray,3.0,3.5,3.0,
+Rhapsodio Clipper,1.5,2.0,1.5,
+Rhapsodio Galaxy,3.5,3.5,4.5,
+Rhapsodio Infinity (Mk1),4.0,4.0,4.5,
+Rhapsodio Infinity Mk2,3.5,4.0,3.5,
+Rhapsodio Solar,4.5,4.5,4.5,
+Rhapsodio Zombie,2.0,2.0,2.5,
+Rhapsodio Zombie MK. II,2.0,2.0,2.0,2.0
+Rose BR5 Mk2,3.5,3.5,3.5,
+Rose Mini2,2.5,3.5,2.5,
+SIA complimentary earphones,0.0,0.0,0.0,
+Sabbat E12 Ultra TWS,2.0,3.5,2.5,2.5
+Samsung AKG EO-IG955,3.5,4.5,3.5,
+Samsung AKG Earbuds,2.5,4.5,3.0,3.0
+Samsung Galaxy Buds,4.95,5.832,4.375,5.25
+Samsung Galaxy Buds 2 Pro,6.0,,,6.5
+Samsung Galaxy Buds Live,2.0,3.0,2.0,2.5
+Samsung Galaxy Buds Pro,5.3,6.418,4.458,5.5
+Samsung Galaxy Buds+,4.7,5.375,4.625,4.5
+Samsung Galaxy Buds2 Pro,5.5,7.9,5.0,
+Satolex Tubomi DH298-A1Bk,3.5,3.5,3.5,
+Satolex Tubomi DH302-A1Bs,3.5,3.5,3.5,
+Satolex Tubomi DH310-A1SS,3.5,3.5,3.5,
+Satolex Tumuri DH303-A1,3.5,3.5,3.5,
+Seahf AWK-009,1.5,1.5,1.5,
+See Audio Kaguya,5.0,5.0,5.5,
+See Audio Neo,6.0,6.0,6.0,
+See Audio Yume,5.0,7.9,4.0,
+SeeAudio Bravery,4.467,5.223,4.557,5.0
+SeeAudio Miu,5.0,6.5,4.5,
+SeeAudio Yume,4.7,5.75,3.585,5.167
+SeeAudio Yume 2,5.75,7.9,5.0,6.25
+SeeAudio Yume Midnight,5.5,,,6.0
+SeeAudio Yume Ultra,5.0,,,5.0
+SeeAudio x Crinacle Midnight,5.1,5.67,4.67,5.0
+SeeAudio x Crinacle Yume: Midnight,5.0,7.0,4.0,5.5
+Seek Real Audio Airship,4.0,5.0,3.5,
+SeekReal Dawn Pro,2.0,3.0,3.5,2.0
+Sendiy M1221,0.5,0.5,0.5,
+Sennheiser IE 300,3.3,3.0,4.0,3.0
+Sennheiser IE200,5.9,6.0,5.67,6.0
+Sennheiser IE200 (After Market Tips),6.0,,,7.0
+Sennheiser IE300,5.0,5.0,5.0,4.0
+Sennheiser IE40 Pro,3.0,3.5,3.0,
+Sennheiser IE400 Pro,4.5,4.5,4.5,
+Sennheiser IE500 Pro,2.0,2.0,3.0,
+Sennheiser IE600,6.9,6.89,6.667,7.5
+Sennheiser IE80,2.0,2.0,2.0,
+Sennheiser IE800,4.5,4.0,5.5,
+Sennheiser IE800S,4.5,4.333,5.223,4.0
+Sennheiser IE80S,2.5,3.0,2.5,
+Sennheiser IE900,6.0,5.777,6.89,7.0
+Sennheiser Momentum In-Ear,3.0,3.0,3.0,
+Sennheiser Momentum TWS 2.0,3.0,3.0,3.0,3.0
+Sennheiser Momentum True Wireless,3.0,3.0,3.5,
+Sennheiser Momentum True Wireless 2(High-End Sound Tuning mode),3.5,4.5,3.5,
+Sennheiser Momentum True Wireless 3,4.0,4.5,4.0,
+Sensaphonics 2MAX,0.5,0.5,2.0,
+Sensaphonics 2X-S,0.5,0.5,2.0,
+Sensaphonics 3MAX,0.5,0.5,2.0,
+Shanling ME100,3.0,3.0,3.5,
+Shanling ME200,4.5,4.5,4.5,
+Shanling ME500,3.5,3.5,4.0,
+Shanling ME700 Lite,4.1,4.667,4.333,3.0
+Shanling ME800,4.0,4.0,4.667,4.0
+Shanling MTW200,3.5,4.5,3.5,
+Shozy & Neo BG,4.5,4.5,5.0,
+Shozy & Neo CP,4.0,4.0,4.0,
+Shozy B2,3.5,4.0,3.5,
+Shozy Black Hole,3.5,3.5,4.0,
+Shozy Black Hole Mini,2.667,2.667,3.333,2.0
+Shozy Ceres,0.5,0.5,2.0,1.0
+Shozy Elsa,1.5,1.5,2.0,
+Shozy Form 1.1,3.333,4.167,3.667,3.5
+Shozy Form 1.4,3.5,4.167,3.667,4.0
+Shozy Rouge,3.0,3.0,3.5,
+Shozy V33,0.0,0.0,0.2,0.0
+Shozy x AAW Hibiki,1.5,2.5,1.5,
+Shozy x AAW Hibiki Mk2,0.2,0.5,0.2,1.0
+Shozy x AAW Hibiki SE,2.0,2.0,3.0,
+Shozy x AAW Pola,0.5,0.5,1.5,
+Shuoer D13,3.5,3.5,4.0,
+Shuoer EJ07,5.067,5.557,5.0,5.0
+Shuoer EJ07M,6.0,7.0,6.0,6.5
+Shuoer EJ07M Kinda Lava,6.4,7.33,6.0,6.0
+Shuoer H27,2.4,2.5,2.667,1.0
+Shuoer Singer,2.0,1.733,2.733,0.2
+Shuoer Tape,4.0,4.0,4.5,
+Shuoer Tape Pro,2.025,1.692,2.792,1.05
+Shuoer x HBB EJ07M Kinda Lava Edition,5.0,6.0,5.0,
+Shure Aonic 3,4.0,5.5,3.5,
+Shure Aonic 4,4.0,5.0,3.5,
+Shure Aonic 5,3.5,4.5,3.5,
+Shure KSE1200,6.0,5.0,9.0,
+Shure KSE1200/1500,6.0,2.5,9.0,6.5
+Shure KSE1500,5.9,4.33,7.33,6.0
+Shure SE215,1.775,2.418,1.55,1.5
+Shure SE315,2.5,2.5,3.5,
+Shure SE425,3.0,3.0,3.0,
+Shure SE535,3.0,3.5,3.0,
+Shure SE846,4.0,4.5,4.0,
+Simgot EA500,4.0,4.5,3.5,3.5
+Simgot EK3,3.5,3.5,4.0,
+Simgot EN700,3.5,3.5,3.5,
+Simgot EN700 Pro,2.833,3.667,3.167,2.0
+Simgot EW100P,2.5,4.0,2.5,3.0
+Simphonio VR1,4.225,4.582,4.625,4.5
+SoftEars Cerberus,4.8,4.67,4.67,5.0
+SoftEars Volume,4.9,5.0,4.67,5.0
+Softears Cerberus,5.0,5.0,5.5,
+Softears RS10,6.975,6.667,7.11,6.25
+Softears RSV,6.375,8.357,6.0,7.0
+Softears Studio 4,6.0,5.0,5.0,7.0
+Softears Turii,6.1,5.777,6.89,6.0
+Softears Twilight,6.333,6.0,6.5,8.5
+Softears Volume,5.5,7.0,5.0,6.0
+Sony IER-M7,6.0,6.0,6.0,4.5
+Sony IER-M9,6.68,6.582,6.542,7.0
+Sony IER-Z1R,7.08,7.125,7.618,7.833
+"Sony Justear XJE-MH2 ""Club""",5.0,5.0,5.0,
+Sony MDR-AS800AP,4.5,7.9,3.5,
+Sony MDR-EX1000,4.833,4.167,6.0,5.0
+Sony MDR-EX1000 (no filter),5.4,4.67,6.67,5.0
+Sony MDR-EX15,3.3,3.67,3.33,3.0
+Sony MDR-EX600,4.0,3.5,5.0,
+Sony MDR-EX800ST,5.5,5.33,6.33,5.0
+Sony MDR-EX800ST/MDR7550,4.5,4.0,6.0,
+Sony MH-EX300AP,1.5,2.5,1.5,2.0
+Sony MH750,4.3,5.0,4.0,4.0
+Sony MH755,3.95,5.0,3.625,3.5
+Sony WF-1000XM3,4.333,5.167,4.333,4.5
+Sony WF-1000XM4,4.1,4.33,4.0,4.0
+Sony WF-SP800N,1.5,1.5,2.5,
+Sony WF-XB700,3.5,4.0,3.5,
+Sony XBA-300,3.5,3.5,3.5,
+Sony XBA-40,3.5,3.5,3.5,
+Sony XBA-A3,4.5,4.5,5.0,
+Sony XBA-H3,4.5,4.5,5.0,
+Sony XBA-N3,5.125,6.082,4.542,5.5
+Sony XBA-Z5,4.5,4.5,5.0,
+Soranik BMT,3.5,3.5,4.0,
+Soranik Bastille Signature,4.5,4.5,4.5,
+Soranik ION-4,4.0,4.0,4.5,
+Soranik Ion,4.5,4.5,5.0,
+Soranik SP3,4.0,4.0,5.0,
+Sound Linear Fitz 10 Flat,2.0,2.0,2.5,
+Sound Linear Fitz 3X,2.0,2.0,2.5,
+Soundmagic E11,3.5,3.5,3.5,
+Spiral Ears SE5U,2.0,2.0,3.0,
+Status Audio BT Transfer,0.1,0.2,1.0,0.2
+Stax SR-001 Mk1,3.0,3.0,3.0,
+Stax SR-001 Mk1 w/ CES-A1,3.5,4.0,3.5,
+Stax SR-001 Mk2,3.0,3.0,3.5,
+Stax SR-002,3.5,3.0,5.0,
+Stealthsonics U2,3.5,3.5,3.5,
+Stealthsonics U4,3.0,3.0,3.5,
+Stealthsonics U9,3.5,3.0,4.5,
+Stealthsonics U9 JDM,4.5,4.5,4.5,
+StereoPravda SB7,6.5,6.0,8.7,
+Subtonic Storm,9.0,9.0,9.0,9.0
+Subtonic Storm ,9.0,8.67,9.33,9.0
+"Super Audio ""Supermeme"" 2BA+2DD",3.0,3.0,3.5,
+Symphonium Audio Aurora,3.5,4.0,3.5,
+Symphonium Audio Meteor,6.9,7.0,6.67,7.0
+Symphonium Audio Mirage,2.5,3.0,2.5,
+Symphonium Aurora,3.5,4.5,3.5,
+Symphonium Helios,6.925,7.142,7.258,7.5
+Symphonium Meteor,4.5,6.0,5.0,5.0
+Symphonium Mirage,3.5,3.5,3.5,
+Symphonium Triton,5.333,5.667,5.5,6.5
+Symphonium Triton ,6.4,7.0,6.33,6.0
+TFZ 1S,1.5,1.5,1.5,
+TFZ 2S,3.5,4.0,3.5,
+TFZ 3S,2.0,2.0,3.0,
+TFZ 4S,3.5,4.0,3.5,
+TFZ 5S,3.5,3.5,3.5,
+TFZ Balance 2M,3.5,3.5,3.5,
+TFZ Exclusive 1,3.5,4.0,3.5,
+TFZ Exclusive 3,3.5,3.5,3.5,
+TFZ Exclusive 5,3.5,4.0,3.5,
+TFZ King,3.5,3.5,3.5,
+TFZ King Pro,4.0,4.0,4.0,
+TFZ Mylove,3.5,4.0,3.5,
+TFZ No 3,3.0,4.0,3.5,3.5
+TFZ Secret Garden,3.5,3.5,3.5,
+TFZ Tequila 1,3.5,3.5,3.5,
+TFZ Ti Galaxy,3.5,3.5,3.5,
+TRI Starlight,4.5,4.5,4.5,
+TRI Starsea,4.5,4.5,4.5,
+TRI Starshine,4.5,4.5,5.0,
+TRI x HBB Kai,3.5,4.5,3.0,
+TRN BA5,3.0,3.5,3.0,
+TRN BAX,3.667,3.833,3.833,4.5
+TRN MT1,3.0,3.0,3.0,
+TRN TA2,2.5,2.5,3.0,
+TRN V30,0.2,2.0,0.5,0.5
+TRN V80,2.0,1.5,1.5,3.0
+TRN V90,3.0,2.667,2.833,3.0
+TRN VX,2.5,4.0,3.0,3.0
+TRN X7,2.5,3.0,3.0,3.0
+Tago Studio T3-02,2.5,2.5,3.5,
+Tanchjim Cora,4.5,5.5,4.0,
+Tanchjim Darling,5.033,4.777,5.667,5.0
+Tanchjim Echo,4.0,4.5,4.0,
+Tanchjim Echo ,4.1,5.0,3.33,4.0
+Tanchjim Hana,3.967,4.11,4.557,3.0
+Tanchjim Hana 2021,5.45,6.0,5.67,5.25
+Tanchjim Kara,5.5,,,7.0
+Tanchjim New Hana (2021),5.0,5.5,5.0,
+Tanchjim Ola,3.767,4.333,3.667,4.0
+Tanchjim Oxygen,5.65,6.333,5.777,5.5
+Tanchjim Prism,5.067,5.0,5.223,5.0
+Tanchjim Tanya,4.067,4.333,3.89,4.0
+Tanchjim Tanya DSP,5.0,,,5.0
+Tanchjim Zero,3.533,4.333,3.667,3.0
+Tangzu Wan'er,5.0,,,6.25
+Tangzu Zetian Wu,5.833,6.0,6.0,4.0
+Tangzu Zetian Wu Heyday,6.0,,,6.0
+Tansio Mirai Land,4.333,4.11,4.557,5.0
+Tansio Mirai Spark,5.2,4.67,6.0,5.0
+"Tansio Mirai TSMR-12 ""Zodiac""",5.0,5.0,6.0,
+Tansio Mirai TSMR-3 Pro,4.0,5.0,4.0,
+Tansio Mirai TSMR-5,4.0,5.0,4.0,
+Tansio Mirai Zodiac,5.2,5.0,5.67,5.0
+Technics EAH-AZ70W,3.5,3.5,3.5,
+TenHz T4 Pro,2.5,3.5,2.0,3.0
+TenHz T5,2.5,3.5,3.0,3.0
+ThieAudio Clairvoyance,6.0,8.7,5.5,
+ThieAudio Elixir,4.3,5.0,4.223,6.0
+ThieAudio Excalibur,5.967,6.0,5.89,6.0
+ThieAudio Legacy 2,4.0,5.5,3.0,
+ThieAudio Legacy 3,4.0,5.0,4.0,
+ThieAudio Legacy 4,5.0,6.0,4.5,
+ThieAudio Legacy 5,4.333,4.667,4.333,4.0
+ThieAudio Legacy 9,4.7,4.89,4.89,5.0
+ThieAudio Monarch,6.5,7.9,6.5,
+ThieAudio Monarch Mk2,7.9,9.0,7.0,
+ThieAudio Oracle,6.167,7.91,5.777,5.0
+ThieAudio Oracle MKII,5.2,5.33,5.33,5.0
+ThieAudio Prestige,6.1,6.0,6.33,6.0
+ThieAudio V16 Divinity,7.0,7.9,7.0,
+ThieAudio V16 Divinity ,6.2,6.33,6.33,6.0
+ThieAudio Voyager 14,5.5,6.0,5.67,5.0
+ThieAudio Voyager 14 (V14),5.0,5.0,6.0,
+ThieAudio Voyager 3 (V3),4.0,4.0,4.5,
+Thieaudio Clairvoyance,6.633,7.515,6.165,6.833
+Thieaudio Elixir,4.75,5.0,5.0,4.5
+Thieaudio Legacy 2,3.3,4.335,3.085,3.5
+Thieaudio Legacy 3,3.2,3.67,3.0,3.0
+Thieaudio Legacy 3 CIEM,4.0,5.0,3.5,4.5
+Thieaudio Legacy 3 Univ,3.5,5.0,3.0,4.0
+Thieaudio Legacy 4,4.55,5.5,5.0,4.5
+Thieaudio Legacy 5,4.0,5.0,4.0,4.5
+Thieaudio Legacy 9,4.5,6.0,5.0,4.5
+Thieaudio Monarch,6.5,6.5,6.5,6.667
+Thieaudio Monarch MK2,7.95,8.7,7.9,8.7
+Thieaudio Monarch MKII,7.0,7.0,7.0,7.0
+Thieaudio Oracle,6.5,,,9.5
+Thieaudio Oracle MK2,5.5,,,3.0
+Thieaudio Prestige,6.0,,,5.0
+Thieaudio V16 Divinity,7.5,,,9.0
+Thieaudio Voyager 14,6.0,6.0,6.5,6.5
+Thieaudio Voyager 3,2.0,2.5,3.0,2.25
+Tiandirenhe TD1,3.5,3.5,3.5,
+Tin Audio P1 Max,5.1,5.0,5.33,5.0
+Tin Audio T2 Pro,3.5,3.5,4.0,
+Tin Buds 3,2.5,3.5,3.0,3.0
+Tin HiFI T1,3.0,4.0,3.0,
+Tin HiFi P1,3.0,4.0,3.0,
+Tin HiFi P1 Plus,4.0,4.0,4.0,
+Tin HiFi P2,4.0,4.0,4.5,
+Tin HiFi T1 Plus,3.0,3.5,3.0,
+Tin HiFi T2,4.0,4.5,4.0,
+Tin HiFi T2 Evo,3.0,2.5,4.0,
+Tin HiFi T2 Plus,4.0,5.5,3.5,
+Tin HiFi T2000,3.0,3.5,3.0,
+Tin HiFi T3,4.0,4.5,4.0,
+Tin HiFi T3 Plus,4.5,5.5,4.0,
+Tin HiFi T4,4.5,5.0,4.5,
+Tin HiFi T5,3.5,3.5,3.5,
+Tin Hifi C2,3.0,5.0,3.5,3.5
+Tin Hifi C3,2.5,4.5,3.0,3.0
+Tin Hifi C5,2.5,4.5,3.0,3.0
+Tin Hifi P1,1.5,2.5,3.5,2.0
+Tin Hifi P1 Plus,4.0,5.5,4.0,4.5
+Tin Hifi P2,2.5,3.0,4.0,3.0
+Tin Hifi T2,3.0,4.5,3.5,3.5
+Tin Hifi T2 DLC,2.5,4.5,2.5,3.0
+Tin Hifi T2 Evo,0.2,0.5,2.0,0.5
+Tin Hifi T2 Pro,1.0,2.0,2.5,1.5
+Tin Hifi T3,3.5,5.0,3.5,4.0
+Tin Hifi T4,4.0,5.5,4.5,4.5
+Tin Hifi T4 Plus,3.0,5.0,3.5,3.5
+Tin Hifi T5,0.5,1.0,1.0,1.5
+Tin P1 Max,4.5,5.0,4.5,5.0
+Tin T1 Plus,2.5,4.0,1.0,3.5
+Tin T2 Plus,4.0,5.0,3.5,4.5
+Tin T3 Plus,4.25,5.0,3.0,3.75
+Tin TWS 2000,0.0,0.2,0.1,0.1
+TinHifi C2 Mech Warrior,5.0,,,3.0
+TinHifi P2,3.0,2.67,4.67,2.0
+TinHifi T2,3.3,4.0,3.0,3.0
+TinHifi T2 Evo,3.0,2.67,3.33,3.0
+TinHifi T3,2.6,3.0,3.0,2.0
+TinHifi T4,4.8,5.33,4.0,5.0
+TinHifi T4 Plus,5.0,,,3.0
+TinHifi T5,3.0,3.0,3.0,3.0
+Tipsy Aurora,3.0,4.5,2.5,
+Tipsy Dunmer,3.5,3.5,3.5,
+Tipsy Dunmer Pro,2.667,2.5,3.167,2.0
+Tipsy TTROMSO,2.667,3.0,3.167,3.5
+Tralucent 1 Plus 1.2,3.5,4.5,3.5,
+Tralucent 1 Plus 2.2,4.0,4.5,4.0,
+Tralucent 1 Plus 2.3,3.0,3.0,4.0,
+Tralucent 1 Plus 5.2,3.5,3.5,4.5,
+Tralucent 1+Xplus,4.0,4.0,4.5,
+Tri I4,2.5,3.0,3.5,3.0
+Tripowin Lea,3.725,4.75,3.418,3.25
+Tripowin TC-01,3.5,3.5,3.5,
+Tripowin TC01,3.0,3.5,3.25,3.25
+Tripowin TP10,2.167,2.5,3.167,2.0
+Tripowin x HBB Mele,4.0,4.777,3.89,4.0
+Tripowin x HBB Olina,4.4,4.89,4.333,5.0
+Tripowin x HBB Olina SE,4.667,5.5,4.0,5.0
+TruthEar x Crinacle Zero,4.0,5.0,4.5,4.5
+Truthear Hexa,5.5,7.0,5.0,
+Truthear Hola,5.0,7.0,4.0,
+Truthear x Crinacle Zero,4.6,5.0,4.33,4.5
+Truthears Hexa,5.4,5.67,5.33,5.0
+Truthears Hola,4.65,5.0,4.0,4.25
+Truthears Zero:Red,6.0,,,6.5
+Truthears x Crinacle Zero,5.5,,,5.0
+UFOEar UFO-111,3.0,2.0,4.5,
+UFOEar UFO-112,4.0,4.0,4.0,
+Ultimate Ears Live,3.0,3.0,3.0,
+Ultimate Ears Reference Monitor (UERM),6.0,7.0,6.0,
+Ultimate Ears Reference Remastered (UERR),5.5,5.5,6.0,
+Ultimate Ears Super.Fi 5 Extra Bass (SF5EB),2.0,2.0,2.5,
+"Ultimate Ears Triple Fi 10 ""TF10""",3.5,3.5,3.5,
+Ultimate Ears UE11 Pro,4.0,4.0,4.0,
+Ultimate Ears UE18+ Pro Gen 2,5.0,5.0,5.0,
+Ultimate Ears UE18+ Pro Gen 3,4.0,3.0,5.5,
+Ultimate Ears UE4 Pro,5.0,5.0,5.5,
+Ultimate Ears UE5 Pro,3.0,4.0,3.0,
+Ultimate Ears UE6 Pro,4.5,4.5,4.5,
+Ultimate Ears UE7 Pro,4.0,4.5,4.0,
+Ultimate Ears UE900S,2.5,2.5,3.5,
+Unique Meldody 3DT,4.3,4.0,5.0,4.0
+Unique Melody 2HT “Terminator”,5.5,5.5,5.5,
+Unique Melody 3D Terminator,4.0,3.5,5.0,
+Unique Melody 3DD-Ti,0.5,0.5,4.0,
+Unique Melody ME1,1.5,1.067,2.833,2.0
+Unique Melody MEST,6.175,6.25,6.668,7.0
+Unique Melody MEST CIEM,6.5,6.5,7.9,7.0
+Unique Melody MEST MK1,6.5,,,7.0
+Unique Melody MEST MK2,6.7,7.0,7.165,6.833
+Unique Melody MEST MK3,7.0,7.0,7.9,7.9
+Unique Melody MEST Mini,4.2,4.0,4.67,4.0
+Unique Melody MEST Mk2,5.5,5.5,6.0,
+Unique Melody MEXT,5.0,4.875,5.875,4.75
+Unique Melody MacBeth,4.5,4.5,5.5,
+Unique Melody Macbeth Ti,4.5,5.5,4.0,
+Unique Melody Maestro V2,5.0,4.5,6.5,
+Unique Melody Martian,5.0,6.0,5.0,
+Unique Melody Mason V3+,5.5,5.5,6.5,
+Unique Melody Maven,4.5,4.0,5.5,
+Unique Melody Maverick II,4.0,5.0,4.0,
+Unique Melody Merlin V2,5.0,6.0,4.5,
+Unique Melody Mest (Japan),6.5,,,7.0
+Unique Melody Mini MEST,4.0,4.167,4.667,4.5
+Unique Melody Miracle V2,4.5,4.5,5.0,
+Unique Melody Mirage,5.0,5.0,5.0,
+Unique Melody U-FREE,1.0,3.5,2.0,1.5
+Unknown Custom Juno,2.5,2.5,2.5,
+Unknown Custom Quad 2.0,2.5,2.5,2.5,
+Unknown Custom UCD-2,3.5,3.5,3.5,
+Unknown Custom UCD-3,2.5,2.5,2.5,
+Urbanfun YBF-ISS014,4.0,4.0,4.0,
+VE Monk IE Biggie,0.0,0.0,0.5,
+VE Monk IE Smalls,0.5,0.5,0.5,
+VSonic Ares,3.5,4.0,3.5,
+VSonic GR01,3.5,4.5,3.0,
+VSonic GR07,2.0,2.0,2.0,2.0
+VSonic GR07 Bass Edition,4.0,4.5,4.0,
+VSonic GR07 Classic,4.0,4.5,4.0,
+VSonic GR07X,4.0,4.0,4.0,
+VSonic VC02,3.0,3.0,4.0,
+VSonic VS7,3.5,4.0,3.5,
+VSonic VSD1S,3.0,3.5,3.0,
+VSonic VSD2S,3.0,3.0,3.5,
+VSonic VSD3S,3.0,3.0,3.5,
+Veedix Diamond String,4.5,5.0,4.5,
+"Venture Electronics Bonus In-Ears ""BIE""",3.5,4.0,3.5,
+Venture Electronics Duke,2.5,2.5,3.0,
+Vision Ears EVE 20,4.5,4.0,6.0,
+Vision Ears EVE20,3.75,4.0,4.75,4.0
+Vision Ears EXT,5.833,5.833,6.333,5.5
+Vision Ears Elysium,5.725,5.708,6.582,5.75
+Vision Ears Erlkonig,6.45,6.168,7.308,6.5
+Vision Ears PHoNIX,6.5,6.5,7.9,7.0
+Vision Ears VE2,4.0,5.0,3.5,
+Vision Ears VE3.2,4.5,5.0,4.5,
+Vision Ears VE4.2,4.0,4.0,4.5,
+Vision Ears VE5,4.0,4.0,5.0,
+Vision Ears VE6,4.0,3.5,5.0,
+Vision Ears VE7,5.967,6.11,6.11,7.0
+Vision Ears VE8,6.125,6.042,6.558,6.5
+Vive XE800,4.0,4.5,4.0,
+W+G T2,3.0,3.0,3.5,
+WG T-One,2.833,3.0,3.0,3.0
+Warbler Prelude,2.5,2.5,3.5,
+Westone 4R,2.5,2.5,3.0,
+Westone ES60,4.5,5.0,4.5,
+Westone Mach 80,4.0,4.0,5.0,
+Westone Pro X50,2.0,2.0,2.0,
+Westone UM Pro 10,1.5,1.5,1.5,
+Westone UM Pro 20,1.5,1.5,2.0,
+Westone UM Pro 30,1.5,1.5,2.0,
+Westone UM Pro 50,1.5,1.5,2.5,
+Westone W10,1.5,1.5,1.5,
+Westone W20,3.0,3.0,3.0,
+Westone W30,2.7,2.89,3.443,2.5
+Westone W40,2.633,2.557,3.443,2.0
+Westone W50,2.0,2.0,2.5,
+Westone W60,2.5,2.5,2.5,
+Westone W80,3.0,2.0,5.5,
+"Whizzer A-HE03 ""Kylin""",3.0,3.0,3.0,
+Whizzer A15,3.5,3.5,3.5,
+Whizzer A15 Pro,4.0,5.0,4.0,
+Whizzer HE01,3.5,4.0,3.5,
+Whizzer Kylin,2.5,3.5,3.0,3.0
+XENN Mangird Tea 2,5.5,,,4.0
+XENNS Mangird Tea 2,4.667,5.0,4.667,5.5
+XENNS UP,5.0,5.5,5.0,
+Xenns Mangird Tea 2,5.55,6.33,5.5,5.0
+Xenns Mangird Top,6.0,7.9,6.0,6.5
+Xenns Mangird Up,5.0,,,3.0
+Yamaha EPH100,3.0,3.0,3.5,
+YanYin Aladdin,4.3,4.67,3.67,4.5
+Yanyin Aladdin,4.0,4.0,4.5,
+Yanyin Canon,4.0,4.0,4.0,
+Yanyin Moonlight,5.333,5.0,5.0,6.0
+Yanyin x HBB Mahina,5.333,5.0,5.0,6.5
+Yinyoo Ash,2.5,2.5,3.5,
+Yu9 U556,4.7,5.0,4.0,5.0
+Zero Audio Carbo Basso ZH-DX210-CB,3.5,3.5,3.5,
+Zero Audio Carbo Doppio ZH-BX700,3.0,3.5,3.0,
+Zero Audio Carbo Singolo ZH-BS150-CS,3.0,3.0,3.0,
+Zero Audio Carbo Tenore ZH-DX200-CT,4.0,4.0,4.0,
+Zero Audio Duoza ZH-DWX10,3.5,3.5,3.5,
+ddHiFi Janus,1.5,1.5,2.5,
+fineEars TSH-HR1000K,3.0,4.0,2.5,
+iBasso AM05,5.5,5.5,5.5,
+iBasso IT00,3.5,3.5,3.5,
+iBasso IT01,3.5,3.5,3.5,
+iBasso IT01S,4.0,4.0,4.5,
+iBasso IT01X,3.433,3.667,3.333,3.0
+iBasso IT01s,3.0,3.5,3.5,3.5
+iBasso IT03,4.0,4.0,4.0,
+iBasso IT03w,3.5,4.0,3.5,
+iBasso IT04,4.833,5.0,5.0,4.0
+iBasso IT07,5.0,5.0,5.0,
+iSine 20 (w/ Cipher cable),6.1,6.33,7.33,5.0
+ikko OH1,4.5,4.5,4.5,
+ikko OH10,4.0,4.0,4.5,
+ikko OH1S,4.0,4.0,4.5,
+ikko OH2,3.5,3.5,3.5,
+ikko OH7,4.0,4.5,4.0,
+oBravo Cupid,1.733,1.443,2.443,1.0
+oBravo Ra 21 C,1.5,1.5,2.5,
+oBravo Ra C-Cu,0.5,0.5,2.0,
+qdc 3SH,3.5,3.5,4.0,
+qdc 4SS,5.5,5.5,6.5,
+qdc 5SH,5.0,5.0,5.0,
+qdc 8SH,5.5,5.5,6.5,
+qdc 8SL/Gemini/Anole VX,7.167,6.5,8.7,11.0
+qdc 8SS,6.0,6.0,6.5,
+qdc Anole V14,6.5,6.443,6.777,6.0
+qdc Anole V3,4.0,4.0,5.0,
+qdc Anole V6,5.0,5.0,5.5,
+qdc Anole VX,6.95,6.585,7.85,7.45
+qdc Dmagic,4.5,5.0,4.5,
+qdc Fusion,4.0,4.0,4.5,
+qdc Neptune,4.5,5.0,4.5,
+qdc Tiger,5.5,5.5,6.5,
+qdc Uranus,3.375,3.5,3.875,3.0
+qkz VK4,2.5,4.5,1.5,3.0
