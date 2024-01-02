@@ -33,7 +33,7 @@ def close_db(exception):
     if db is not None:
         db.close()
 
-@app.route('/')
+@app.route('/data/all')
 def all():
     db = get_db()
     cursor = db.cursor()
