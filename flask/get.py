@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import rapidfuzz
 import sqlite3
+import os
 
 r = requests.get('https://crinacle.com/rankings/iems/')
 soup = BeautifulSoup(r.text, 'html.parser')
@@ -335,6 +336,9 @@ combined = combined.rename(columns={'Model':'model', 'Normalized Float':'normali
     'Max Comments':'maxComments', 'maxlist':'maxList', 'Min Comments':'minComments', 'minlist':'minList'})
 
 # export the combined dataframe to a db file
-conn = sqlite3.connect('combined.db')
+db_folder = 'db'
+if not os.path.exists(db_folder):
+    os.makedirs(db_folder)
+conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
 combined.to_sql('combined', conn, if_exists='replace', index=False)
 conn.close()
