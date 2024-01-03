@@ -1,5 +1,5 @@
 # Flask virtual environment
-flask\venv
+flask/venv/
 
 # Flask database
-flask\combined.db
+flask/combined.db
