@@ -2,12 +2,16 @@ import sqlite3
 import subprocess
 from flask import Flask, g, jsonify
 from flask_apscheduler import APScheduler
+from flask_cors import CORS
 
 class Config:
     SCHEDULER_API_ENABLED = True
 
 app = Flask(__name__)
 DATABASE = 'combined.db'
+
+CORS(app)
+# CORS(app, resources={r"/api/*": {"origins": "domain.com"}}) # For deployment, change domain.com to the domain of the frontend
 
 scheduler = APScheduler()
 scheduler.init_app(app)

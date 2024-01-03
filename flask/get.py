@@ -99,7 +99,14 @@ antdf['List'] = 'ant'
 cogdf = pd.read_csv('https://docs.google.com/spreadsheets/d/1pUCELfWO-G33u82H42J8G_WX1odnOYBJsBNbVskQVt8/export?format=csv')
 
 # Make the "Final Score" column float type
+# First remove any rows with a non-float value in the Final Score column
+# If they contain a letter:
+cogdf = cogdf[~cogdf['Final Score'].str.contains('[a-zA-Z]', na=False)]
+# If they are empty:
+cogdf = cogdf[cogdf['Final Score'].notna()]
+
 cogdf['Final Score'] = cogdf['Final Score'].astype(float)
+
 cogdf['Tonality'] = cogdf['Tonality'].astype(float)
 cogdf['Tech'] = cogdf['Tech'].astype(float)
 cogdf['Bias '] = cogdf['Bias '].astype(float)
@@ -258,17 +265,23 @@ cogmask=frames['List']=='cog'
 antmask=frames['List']=='ant'
 gizmask=frames['List']=='giz'
 
-ieftrimmed=frames[~iefmask]
-cogtrimmed=frames[~cogmask]
-anttrimmed=frames[~antmask]
-giztrimmed=frames[~gizmask]
-trimmedframes=ieftrimmed
+unique_ief = set(frames[iefmask]['Model']) - set(frames[~iefmask]['Model'])
+unique_cog = set(frames[cogmask]['Model']) - set(frames[~cogmask]['Model'])
+unique_ant = set(frames[antmask]['Model']) - set(frames[~antmask]['Model'])
+unique_giz = set(frames[gizmask]['Model']) - set(frames[~gizmask]['Model'])
+
+# Add lists together to get all unique models
+all_unique_models = unique_ief.union(unique_cog).union(unique_ant).union(unique_giz)
+
+trimmedframes = frames[~frames['Model'].isin(all_unique_models)]
+
+
 
 # Create dataframe 'combined', which has the average 'Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float' for each 'Model', as well as the comments from each list.
-# Remove all uneeded columns
-
-combined = trimmedframes.groupby('Model').mean()
+combined = trimmedframes.groupby('Model')[['Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float']].mean()
 combined.reset_index(inplace=True)
+
+# Remove all uneeded columns
 combined = combined.filter(['Model', 'Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float', 'Comments', 'List'])
 combined['Normalized Float'] = combined['Normalized Float'].round(2)
 combined['Tone Float'] = combined['Tone Float'].round(2)
@@ -289,8 +302,21 @@ combined['maxlist'] = combined['Model'].map(maxframe.set_index('Model')['List'])
 combined['Min Comments'] = combined['Model'].map(minframe.set_index('Model')['Comments'])
 combined['minlist'] = combined['Model'].map(minframe.set_index('Model')['List'])
 
-# if 'Min Comments' is the same as 'Max Comments', then set 'Min Comments' to nan
-combined.loc[combined['Min Comments']==combined['Max Comments'], 'Min Comments'] = "nan"
+# If 'Min Comments' is the same as 'Max Comments', then set them to N/A
+combined.loc[combined['Min Comments']==combined['Max Comments'], 'Min Comments'] = "N/A"
+combined.loc[combined['Max Comments']==combined['Min Comments'], 'Max Comments'] = "N/A"
+
+# If '' or 'nan', then set 'Min Comments' to "N/A"
+combined.loc[combined['Min Comments']=='nan', 'Min Comments'] = "N/A"
+combined.loc[combined['Max Comments']=='nan', 'Max Comments'] = "N/A"
+combined.loc[combined['Min Comments']=='', 'Min Comments'] = "N/A"
+combined.loc[combined['Max Comments']=='', 'Max Comments'] = "N/A"
+
+
+# If 'minlist' is the same as 'maxlist', then set minlist and maxlist to N/A
+combined.loc[combined['minlist']==combined['maxlist'], 'minlist'] = "N/A"
+combined.loc[combined['maxlist']==combined['minlist'], 'maxlist'] = "N/A"
+
 
 # Make sure all columns are correct type.
 combined['Model'] = combined['Model'].astype(str)
@@ -302,6 +328,11 @@ combined['Max Comments'] = combined['Max Comments'].astype(str)
 combined['maxlist'] = combined['maxlist'].astype(str)
 combined['Min Comments'] = combined['Min Comments'].astype(str)
 combined['minlist'] = combined['minlist'].astype(str)
+
+# Rename columns to use camelcase because I have no foresight and I'm too lazy to change this earlier.
+combined = combined.rename(columns={'Model':'model', 'Normalized Float':'normalizedFloat',
+    'Tone Float':'toneFloat', 'Tech Float':'techFloat', 'Preference Float':'preferenceFloat',
+    'Max Comments':'maxComments', 'maxlist':'maxList', 'Min Comments':'minComments', 'minlist':'minList'})
 
 # export the combined dataframe to a db file
 conn = sqlite3.connect('combined.db')
