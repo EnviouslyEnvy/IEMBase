@@ -12,6 +12,7 @@ const Home = () => {
     fetch('https://iembase-backend.onrender.com/data/all')
       .then((response) => response.json())
       .then((data) => {
+        console.log('Success fetching data: ', data);
         setIems(data);
       })
       .catch((error) => {

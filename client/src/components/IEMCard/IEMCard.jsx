@@ -13,17 +13,6 @@ const IEMCard = ({
   maxlist = 'nan',
   minlist = 'nan',
 }) => {
-  console.log({
-    model,
-    normalized,
-    tone,
-    tech,
-    preference,
-    maxcomment,
-    mincomment,
-    maxlist,
-    minlist,
-  });
   return (
     <article className={styles.IEMCard}>
       <h1>{model}</h1>
