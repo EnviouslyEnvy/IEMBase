@@ -1,0 +1,5 @@
+# Flask virtual environment
+flask\venv
+
+# Flask database
+flask\combined.db
