@@ -1,5 +1,6 @@
 import sqlite3
 import subprocess
+import os
 from flask import Flask, g, jsonify
 from flask_apscheduler import APScheduler
 from flask_cors import CORS
@@ -26,7 +27,7 @@ generate_db()
 # Schedule 'generate_db' to run every week
 scheduler.add_job(id='Refresh Database', func=generate_db, trigger='interval', hours=168)
 
-DATABASE = 'combined.db'
+DATABASE = os.path.join('db', 'combined.db')
 
 def get_db():
     if 'db' not in g:
