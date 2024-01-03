@@ -9,7 +9,7 @@ const Home = () => {
   const [iems, setIems] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/data/all')
+    fetch('https://iembase-backend.onrender.com/data/all')
       .then((response) => response.json())
       .then((data) => {
         setIems(data);

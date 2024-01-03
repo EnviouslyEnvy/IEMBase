@@ -8,7 +8,7 @@ class Config:
     SCHEDULER_API_ENABLED = True
 
 app = Flask(__name__)
-DATABASE = 'combined.db'
+
 
 CORS(app)
 # CORS(app, resources={r"/api/*": {"origins": "domain.com"}}) # For deployment, change domain.com to the domain of the frontend
@@ -22,8 +22,13 @@ def generate_db():
     subprocess.run(["python", "get.py"], check=True)
     # For now, this is inefficient, but am planning a use for the unused and more comprehensive data later.
 
-# Schedule 'generate_db' to run every 2 hours
-scheduler.add_job(id='Refresh Database', func=generate_db, trigger='interval', hours=2)
+# Run 'generate_db' on startup
+generate_db()
+
+# Schedule 'generate_db' to run every week
+scheduler.add_job(id='Refresh Database', func=generate_db, trigger='interval', hours=168)
+
+DATABASE = 'combined.db'
 
 def get_db():
     if 'db' not in g:
