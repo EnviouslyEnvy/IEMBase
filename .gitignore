@@ -3,3 +3,6 @@ flask/venv/
 
 # Flask database
 flask/combined.db
+
+# React .env
+react/.env
