@@ -1,50 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 // CSS
 import styles from './css/Home.module.css';
 import IEMCard from '../components/IEMCard/IEMCard';
 
-// set up test vars
-const firstIEM = {
-  model: 'First IEM',
-  normalized: 1,
-};
-
-const secondIEM = {
-  model: 'mewndwop b2',
-  normalized: 7.27,
-  comments: 'when you',
-  maxlist: 'see',
-  minlist: 'it',
-};
-
-const thirdIEM = {
-  model: 'oppoty L03',
-  normalized: 4,
-};
-
 const Home = () => {
+  const [iems, setIems] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/data/all')
+      .then((response) => response.json())
+      .then((data) => {
+        setIems(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data: ', error);
+      });
+  }, []);
+
   return (
-    <>
-      <Container className={styles.containerFluid} fluid>
+    <Container className={styles.containerFluid} fluid>
+      {iems.map((iem, index) => (
         <IEMCard
-          model={firstIEM.model}
-          normalized={firstIEM.normalized}
-        ></IEMCard>
-        <IEMCard
-          model={secondIEM.model}
-          normalized={secondIEM.normalized}
-          comments={secondIEM.comments}
-          maxlist={secondIEM.maxlist}
-          minlist={secondIEM.minlist}
-        ></IEMCard>
-        <IEMCard
-          model={thirdIEM.model}
-          normalized={thirdIEM.normalized}
-        ></IEMCard>
-      </Container>
-    </>
+          key={index}
+          model={iem.model}
+          normalized={iem.normalizedFloat}
+          maxcomment={iem.maxComments}
+          mincomment={iem.minComments}
+          maxlist={iem.maxList}
+          minlist={iem.minList}
+        />
+      ))}
+    </Container>
   );
 };
 

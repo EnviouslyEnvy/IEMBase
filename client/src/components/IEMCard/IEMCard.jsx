@@ -8,7 +8,8 @@ const IEMCard = ({
   tone = 0,
   tech = 0,
   preference = 0,
-  comments = 'No Comments (Default)',
+  maxcomment = 'No maxcomment (Default)',
+  mincomment = 'No mincomment (Default)',
   maxlist = 'nan',
   minlist = 'nan',
 }) => {
@@ -18,7 +19,8 @@ const IEMCard = ({
     tone,
     tech,
     preference,
-    comments,
+    maxcomment,
+    mincomment,
     maxlist,
     minlist,
   });
@@ -30,7 +32,9 @@ const IEMCard = ({
       <h4>Tech: {tech}</h4>
       <h4>Pref.:{preference}</h4>
       <p>
-        {comments} - {maxlist} & {minlist}
+        {maxcomment} - {maxlist}
+        {'\n'}
+        {mincomment} - {minlist}
       </p>
     </article>
   );
