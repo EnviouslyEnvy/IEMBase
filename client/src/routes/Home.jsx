@@ -12,7 +12,6 @@ const Home = () => {
     fetch('https://iembase-backend.onrender.com/data/all')
       .then((response) => response.json())
       .then((data) => {
-        console.log('Success fetching data: ', data);
         setIems(data);
       })
       .catch((error) => {
@@ -27,6 +26,9 @@ const Home = () => {
           key={index}
           model={iem.model}
           normalized={iem.normalizedFloat}
+          tone={iem.toneFloat}
+          tech={iem.techFloat}
+          preference={iem.preferenceFloat}
           maxcomment={iem.maxComments}
           mincomment={iem.minComments}
           maxlist={iem.maxList}
