@@ -9,7 +9,6 @@ const Footer = () => {
           This is an averaged list of IEM models that have received multiple
           review from select reviewers with curated comments.
           <br />
-          <br />
           The sources of reviews, scores, and authors of comments are listed
           here!
           <br />
@@ -28,7 +27,6 @@ const Footer = () => {
             https://www.audiodiscourse.com/p/antdroid-iem-ranking-list.html
           </a>
           <br />
-          <br />
           <a
             href='https://crinacle.com/rankings/iems/'
             target='_blank'
@@ -36,7 +34,6 @@ const Footer = () => {
           >
             ief - Crinacle - https://crinacle.com/rankings/iems/
           </a>
-          <br />
           <br />
           <a
             href='https://docs.google.com/spreadsheets/d/1HFCuUzWdheP5qbxIJhyezJ53hvwM0wMrptVxKo49AFI/edit'
@@ -46,7 +43,6 @@ const Footer = () => {
             giz - GizAudio -
             https://docs.google.com/spreadsheets/d/1HFCuUzWdheP5qbxIJhyezJ53hvwM0wMrptVxKo49AFI/edit
           </a>
-          <br />
           <br />
           <a
             href='https://docs.google.com/spreadsheets/d/1pUCELfWO-G33u82H42J8G_WX1odnOYBJsBNbVskQVt8/edit'
