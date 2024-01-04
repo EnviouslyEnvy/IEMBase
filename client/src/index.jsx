@@ -4,8 +4,7 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Page from './components/Page';
 
 import Home from './routes/Home';
-
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
