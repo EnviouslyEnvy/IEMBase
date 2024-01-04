@@ -5,6 +5,8 @@ import Page from './components/Page';
 
 import Home from './routes/Home';
 
+import Footer from './components/Footer';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename={'/iembase'}>
@@ -19,6 +21,7 @@ ReactDOM.render(
           }
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
