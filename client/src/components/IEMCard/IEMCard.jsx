@@ -16,7 +16,10 @@ const IEMCard = ({
   minlist = 'nan',
 }) => {
   return (
-    <article className='IEMCard'>
+    <article
+      className='IEMCard'
+      style={{ marginTop: '1rem', marginBottom: '1rem' }}
+    >
       <h1>{model}</h1>
       <h4>Normalized: {normalized}</h4>
       <h4>Tone: {tone}</h4>
