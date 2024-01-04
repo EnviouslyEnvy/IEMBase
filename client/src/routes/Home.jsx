@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 // CSS
 import styles from './css/Home.module.css';
@@ -20,20 +20,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Container
-      style={{
-        display: 'flex',
-        clear: 'both',
-        flexWrap: 'wrap',
-        paddingLeft: '3rem',
-        paddingRight: '3rem',
-        paddingTop: '1.5rem',
-        paddingBottom: '1.5rem',
-        margin: 0,
-        justifyContent: 'space-between',
-      }}
-      fluid
-    >
+    <Container className={styles.containerFluid} fluid>
       {iems.map((iem, index) => (
         <IEMCard
           key={index}

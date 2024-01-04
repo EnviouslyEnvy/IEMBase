@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './IEMCard.module.css';
 
+import './IEMCard.css'; // This is the updated import
+
 const IEMCard = ({
   model = 'No Model',
   normalized = 0,
@@ -14,7 +16,7 @@ const IEMCard = ({
   minlist = 'nan',
 }) => {
   return (
-    <article className={styles.IEMCard}>
+    <article className='IEMCard'>
       <h1>{model}</h1>
       <h4>Normalized: {normalized}</h4>
       <h4>Tone: {tone}</h4>

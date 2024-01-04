@@ -1,0 +1,32 @@
+.IEMCard {
+  background: #3c4251;
+  width: 25rem;
+  height: 15rem;
+  text-align: left;
+  padding-left: 0rem;
+  padding-right: 2rem;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: min(0.5rem, auto);
+  margin-right: auto;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  overflow-y: auto; /* Make content scrollable */
+}
+
+.IEMCard h1 {
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+.IEMCard h4 {
+  color: #87a0be;
+  letter-spacing: 5px;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.IEMCard p {
+  color: #d9dee8;
+  margin-top: 0.5rem;
+}
