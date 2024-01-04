@@ -22,7 +22,7 @@ const IEMCard = ({
       <h4>Pref.:{preference}</h4>
       <p>
         {maxcomment} - {maxlist}
-        {'\n'}
+        <br />
         {mincomment} - {minlist}
       </p>
     </article>

@@ -20,7 +20,20 @@ const Home = () => {
   }, []);
 
   return (
-    <Container className={styles.containerFluid} fluid>
+    <Container
+      style={{
+        display: 'flex',
+        clear: 'both',
+        flexWrap: 'wrap',
+        paddingLeft: '3rem',
+        paddingRight: '3rem',
+        paddingTop: '1.5rem',
+        paddingBottom: '1.5rem',
+        margin: 0,
+        justifyContent: 'space-between',
+      }}
+      fluid
+    >
       {iems.map((iem, index) => (
         <IEMCard
           key={index}
