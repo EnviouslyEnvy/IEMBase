@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './IEMCard.module.css';
+// import styles from './IEMCard.module.css';
 
 import './IEMCard.css'; // This is the updated import
 
@@ -18,7 +18,12 @@ const IEMCard = ({
   return (
     <article
       className='IEMCard'
-      style={{ marginTop: '1rem', marginBottom: '1rem' }}
+      style={{
+        marginTop: '1rem',
+        marginBottom: '1rem',
+        marginLeft: '1rem',
+        marginRight: '1rem',
+      }}
     >
       <h1>{model}</h1>
       <h4>Normalized: {normalized}</h4>
