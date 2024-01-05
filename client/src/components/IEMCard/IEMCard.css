@@ -5,10 +5,10 @@
   text-align: left;
   padding-left: 0rem;
   padding-right: 2rem;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  margin-left: min(0.5rem, auto);
-  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: max(0.5rem, auto);
+  margin-right: max(0.5rem, auto);
   border-radius: 1rem;
   padding: 1rem 1rem;
   overflow-y: auto; /* Make content scrollable */
