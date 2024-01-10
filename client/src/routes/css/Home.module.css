@@ -10,6 +10,29 @@ body {
   background-color: #2f343f;
 }
 
+/* For most Chromium */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3c4251;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9dee8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d9dee8;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #d9dee8 #3c4251;
+}
+
 .containerFluid {
   display: flex;
   clear: both;
