@@ -20,11 +20,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d9dee8;
+  background: #737883;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d9dee8;
+  background: #737883;
 }
 
 /* For Firefox */
