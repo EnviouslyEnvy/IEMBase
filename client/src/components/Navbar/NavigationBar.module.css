@@ -1,0 +1,21 @@
+.NavigationBar {
+  background: #2f343f;
+}
+.Navigation {
+  width: 100%;
+  display: flex;
+}
+
+.NavigationBarContainer {
+  margin: 0 auto;
+}
+
+.NavigationBarLink {
+  color: #d9dee8;
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
