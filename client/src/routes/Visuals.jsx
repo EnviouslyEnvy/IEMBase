@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NormalizedScoresChart from './NormalizedScoresChart'; // Assuming you have this component
+import NormalizedScoresChart from '../components/NormalizedScoresChart/NormalizedScoresChart'; // Assuming you have this component
 
 const Visuals = () => {
   const [iems, setIems] = useState([]);
