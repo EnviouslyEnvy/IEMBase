@@ -26,6 +26,27 @@ const NormalizedScoresChart = ({ iems }) => {
           scales: {
             y: {
               beginAtZero: true,
+              ticks: {
+                color: 'rgba(217, 222, 232, 1)',
+              },
+              grid: {
+                color: 'rgba(60, 66, 81, 1)',
+              },
+            },
+            x: {
+              ticks: {
+                color: 'rgba(217, 222, 232, 1)',
+              },
+              grid: {
+                color: 'rgba(60, 66, 81, 1)',
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: 'rgba(217, 222, 232, 1)',
+              },
             },
           },
         },
