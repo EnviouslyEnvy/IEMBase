@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import NormalizedScoresChart from '../components/NormalizedScoresChart/NormalizedScoresChart'; // Assuming you have this component
+import styles from './css/Home.module.css';
+import Content from '../components/Content/Content';
 
 const Visuals = () => {
   const [iems, setIems] = useState([]);
@@ -20,10 +23,10 @@ const Visuals = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Top 15 IEMs</h1>
+    <Container className={styles.containerFluid} fluid>
+      <Content title='Top 15 IEMs by Normalized Score' hr={true}></Content>
       <NormalizedScoresChart iems={iems} />
-    </div>
+    </Container>
   );
 };
 

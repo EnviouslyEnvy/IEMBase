@@ -13,11 +13,12 @@ const NormalizedScoresChart = ({ iems }) => {
           labels: iems.map((iem) => iem.model),
           datasets: [
             {
-              label: 'Normalized Scores',
+              label: 'Normalized Score',
               data: iems.map((iem) => iem.normalizedFloat),
-              backgroundColor: 'rgba(47, 52, 63, 1)',
-              borderColor: 'rgba(60, 66, 81, 1)',
-              borderWidth: 1,
+              backgroundColor: 'rgba(60, 66, 81, 1)',
+              borderColor: 'rgba(217, 222, 232, 1)',
+              hoverBorderColor: 'rgba(148, 190, 206, 1)',
+              borderWidth: 2,
             },
           ],
         },

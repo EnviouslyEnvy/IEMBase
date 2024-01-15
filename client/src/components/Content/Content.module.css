@@ -1,0 +1,23 @@
+.Content {
+  background-color: #2f343f;
+  color: #d9dee8;
+}
+
+.ContentTitle {
+  color: #d9dee8;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.ContentTitleHr {
+  margin: 0.5rem 0;
+  color: #d9dee8;
+}
+
+.ContentText {
+  text-align: left;
+  color: #d9dee8;
+  margin-top: 0.5rem;
+}
