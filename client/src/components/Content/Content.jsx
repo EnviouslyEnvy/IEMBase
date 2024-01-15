@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './css/Content.module.css';
+import styles from './Content.module.css';
 
 const Content = ({ title, hr = false, children }) => {
   return (
