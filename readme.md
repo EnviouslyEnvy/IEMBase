@@ -3,6 +3,8 @@
 A web app made to congregate a collective score on IEMs (In-Ear Monitors) based on individual reviewer scores, as well as display curated comments of the most complimentary and critical scorers.
 This web app is not meant to replace visiting reviewers' databases, and only contains data on IEMs that have been given grades or scores by multiple reviewers, encouraging users to explore the reviewers' original lists and reviewers for further details, opinions, and to support them.
 
+Currently deployed. Check it out [here](https://iem-base.vercel.app/iembase/)!
+
 ### Inspiration
 
 Making purchase decision is a tough call to make in the hobby of IEMs, especially given the subjectivity of audio preferences, the potentially sky-high costs of the hobby, and the sheer volume of IEM releases at present. My goal was to make this arduous process of researching information on IEMs less difficult by giving a general idea of what to consider about each IEM model. To go about this, I chose to develop my frontend with ReactJS from scratch for the first time, while honing my skills in using Python's data libraries with a Flask backend that congregates and combine several reviewer opinions into one.
