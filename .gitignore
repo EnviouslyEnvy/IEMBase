@@ -6,3 +6,4 @@ flask/combined.db
 
 # React .env
 react/.env
+flask/combined.csv

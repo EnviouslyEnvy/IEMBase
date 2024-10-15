@@ -24,7 +24,7 @@ const Visuals = () => {
 
   return (
     <Container className={styles.containerFluid} fluid>
-      <Content title='Top 15 IEMs by Normalized Score' hr={true}></Content>
+      <Content title='Top 15 IEMs by Normalized Score'></Content>
       <NormalizedScoresChart iems={iems} />
     </Container>
   );

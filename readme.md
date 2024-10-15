@@ -18,9 +18,11 @@ In the end, the aim of the app is to be give users a general but informative per
 
 ### What's next for IEMBase?
 
-- Adding visuals to the IEMs using something like D3.js or Chart.js, or perhaps have them be generated with Python's Matplotlib library.
+- Adding visuals to the IEMs using something like D3.js for even better interactivity and customization
+- A visual on disparity between the highest score and lowest score.
 - Adding sorting methods for the IEMs.
 - Adding price data.
 - Tracking the ratings of IEMs from brands over time, and predicting the ratings of future IEMs based on the brand's past releases using forecasting models or ML.
 - Adding additional reviewer data.
-- Smarter reviewer accreditation.
+- Adding a way to be sent to a squig.link.
+- Smarter reviewer accreditation, add more hyperlinks.
