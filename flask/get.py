@@ -64,23 +64,23 @@ table = tables[0]
 antdf = pd.read_html(str(table), header=0)[0]
 
 ### Formatting begins here ###
-antdf = antdf.drop(columns=['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 10', 'Unnamed: 11'])
+antdf = antdf.drop(columns=['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 4', 'Unnamed: 11'])
 # Make second row header, then drop first two rows
 antdf.columns = antdf.iloc[1]
 antdf=antdf.iloc[2:]
 
 # Create col. called Normalized Grade Float taking value in the Normalized Grade col and turning it into a float.
-# Where S+=9, S=8.7, S-=7.9, A+=7, A=6.5, A-=6, B+=5.5, B=5, B-=4.5, C+=4, C=3.5, C-=3, D+=2.5, D=2, D-=1.5, E+=1, E=0.5, E-=0.2, F+=0.1, F=0, F-=0.
-# I didn't put too much thought into the values. I should look into it more.
-antdf['Normalized Float'] = antdf['Normalized Grade'].replace({'S+':9.0, 'S':8.7, 'S-':7.9, 'A+':7, 'A':6.5, 'A-':6, 'B+':5.5, 'B':5, 'B-':4.5, 'C+':4, 'C':3.5, 'C-':3, 'D+':2.5, 'D':2, 'D-':1.5, 'E+':1, 'E':0.5, 'E-':0.2, 'F+':0.1, 'F':0, 'F-':0})
+# Make S+ 10.0, S 9.5, S-, 9... all the way down to F- being 0. That's how their rating system works.
+# antdf['Normalized Float'] = antdf['Normalized Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
+antdf['Normalized Float'] = antdf['Score'].astype(float)/2
 
 # Rename technical score to tech grade and Tonality Score to Tone Grade
 antdf = antdf.rename(columns={'Technical Score':'Tech Grade', 'Tonality Score':'Tone Grade', 'Preference Score':'Preference Grade', 'IEM':'Model', 'Price (USD)':'iefdf'})
 
 # Also assign a float value to the Tone Grade and Tech Grade
-antdf['Tone Float'] = antdf['Tone Grade'].replace({'S+':9.0, 'S':8.7, 'S-':7.9, 'A+':7, 'A':6.5, 'A-':6, 'B+':5.5, 'B':5, 'B-':4.5, 'C+':4, 'C':3.5, 'C-':3, 'D+':2.5, 'D':2, 'D-':1.5, 'E+':1, 'E':0.5, 'E-':0.2, 'F+':0.1, 'F':0, 'F-':0})
-antdf['Tech Float'] = antdf['Tech Grade'].replace({'S+':9.0, 'S':8.7, 'S-':7.9, 'A+':7, 'A':6.5, 'A-':6, 'B+':5.5, 'B':5, 'B-':4.5, 'C+':4, 'C':3.5, 'C-':3, 'D+':2.5, 'D':2, 'D-':1.5, 'E+':1, 'E':0.5, 'E-':0.2, 'F+':0.1, 'F':0, 'F-':0})
-antdf['Preference Float'] = antdf['Preference Grade'].replace({'S+':9.0, 'S':8.7, 'S-':7.9, 'A+':7, 'A':6.5, 'A-':6, 'B+':5.5, 'B':5, 'B-':4.5, 'C+':4, 'C':3.5, 'C-':3, 'D+':2.5, 'D':2, 'D-':1.5, 'E+':1, 'E':0.5, 'E-':0.2, 'F+':0.1, 'F':0, 'F-':0})
+antdf['Tone Float'] = antdf['Tone Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
+antdf['Tech Float'] = antdf['Tech Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
+antdf['Preference Float'] = antdf['Preference Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
 
 ### FLOAT AND GRADE STUFF.
 # Create a column that combines combines the Normalized Grade combines the normalized grade and the normalized grade float, putting the float in brackets.
@@ -236,7 +236,19 @@ name_variations={
     "SeeAudio x Crinacle Yume: Midnight":"SeeAudio Yume Midnight",
     "SeeAudio x Crinacle Yume Midnight":"SeeAudio Yume Midnight",
     "Fiio x Crinacle FHE: Eclipse":"Fiio FHE Eclipse",
-    "Fiio x Crinacle FHE Eclipse":"Fiio FHE Eclipse"
+    "Fiio x Crinacle FHE Eclipse":"Fiio FHE Eclipse",
+    "Blessing 3 Dusk":"Moondrop Blessing 3 Dusk",
+    "Moondrop Dusk 2":"Moondrop Blessing 3 Dusk",
+    "Truthear Zero Red":"Truthear Zero: Red",
+    "Truthear Zero Blue":"Truthear Zero",
+    "Truthear Red":"Truthear Zero: Red",
+    "Truthear Blue":"Truthear Zero",
+    "Truthears Hexa":"Truthear Hexa",
+    "Truthear x Crinacle Zero":"Truthear Zero",
+    "Truthear x Crinacle Zero Red":"Truthear Zero: Red",
+    "Truthear x Crinacle Zero Blue":"Truthear Zero",
+    "Truthears Zero:Red":"Truthear Zero: Red",
+    "Truthears Hola":"Truthear Hola"
     }
 frames['Model'] = frames['Model'].replace(name_variations)
 
@@ -247,7 +259,7 @@ frames['Model'] = frames['Model'].apply(lambda x: "Hidition Viento-B" if x and (
 frames['Model No Brand'] = frames['Model'].str.split(' ').str[1:].str.join(' ')
 def fuzz_match(row):
     model = row['Model No Brand']
-    match = rapidfuzz.process.extractOne(model, frames['Model No Brand'], score_cutoff=90)
+    match = rapidfuzz.process.extractOne(model, frames['Model No Brand'], score_cutoff=80)
     if match is not None:
         return match[0]
     else:
@@ -335,10 +347,13 @@ combined = combined.rename(columns={'Model':'model', 'Normalized Float':'normali
     'Tone Float':'toneFloat', 'Tech Float':'techFloat', 'Preference Float':'preferenceFloat',
     'Max Comments':'maxComments', 'maxlist':'maxList', 'Min Comments':'minComments', 'minlist':'minList'})
 
+# For testing, export the combined dataframe to a csv file
+combined.to_csv('combined.csv', index=False)
+
 # export the combined dataframe to a db file
-db_folder = 'db'
-if not os.path.exists(db_folder):
-    os.makedirs(db_folder)
-conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
-combined.to_sql('combined', conn, if_exists='replace', index=False)
-conn.close()
+# db_folder = 'db'
+# if not os.path.exists(db_folder):
+#     os.makedirs(db_folder)
+# conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
+# combined.to_sql('combined', conn, if_exists='replace', index=False)
+# conn.close()

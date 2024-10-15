@@ -19,8 +19,10 @@ scheduler.start()
 
 def generate_db():
     # Run get.py to generate or update the database
-    subprocess.run(["python", "get.py"], check=True)
-    # For now, this is inefficient, but am planning a use for the unused and more comprehensive data later.
+    subprocess.run([".\.venv\Scripts\python.exe", ".\get.py"], check=True)
+    # For now, this is inefficient.
+    # Get .py fetches and serves too much data,
+    # But am planning a use for the unused and more comprehensive data later.
 
 # Run 'generate_db' on startup
 generate_db()
