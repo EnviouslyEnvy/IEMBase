@@ -9,28 +9,12 @@ class Config:
     SCHEDULER_API_ENABLED = True
 
 app = Flask(__name__)
-
-# CORS(app) # For development
-CORS(app, resources={r"/data/*": {"origins": "https://iem-base.vercel.app"}}) # For deployment, change domain.com to the domain of the frontend
-
+CORS(app, resources={r"/data/*": {"origins": "https://iem-base.vercel.app"}})
 scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
 
-def generate_db():
-    # Run get.py to generate or update the database
-    subprocess.run(["python", "get.py"], check=True)
-    # For now, this is inefficient.
-    # Get .py fetches and serves too much data,
-    # But am planning a use for the unused and more comprehensive data later.
-
-# Run 'generate_db' on startup
-generate_db()
-
-# Schedule 'generate_db' to run every week
-scheduler.add_job(id='Refresh Database', func=generate_db, trigger='interval', hours=168)
-
-DATABASE = os.path.join('db', 'combined.db')
+DATABASE = '/tmp/combined.db'
 
 def get_db():
     if 'db' not in g:
@@ -44,19 +28,59 @@ def close_db(exception):
     if db is not None:
         db.close()
 
+def init_db():
+    with app.app_context():
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS combined (
+                model TEXT,
+                normalizedFloat REAL,
+                toneFloat REAL,
+                techFloat REAL,
+                preferenceFloat REAL,
+                maxComments TEXT,
+                maxList TEXT,
+                minComments TEXT,
+                minList TEXT
+            )
+        ''')
+        db.commit()
+
+def generate_db():
+    subprocess.run(["python", "get.py"], check=True)
+    init_db()  # Initialize the database after running get.py
+
+# Run 'generate_db' on startup
+generate_db()
+
+# Schedule 'generate_db' to run every week
+scheduler.add_job(id='Refresh Database', func=generate_db, trigger='interval', hours=168)
+
+@app.route('/')
+def home():
+    return "Welcome to the IEM Base API"
+
 @app.route('/data/all')
 def all():
-    db = get_db()
-    cursor = db.cursor()
     try:
+        db = get_db()
+        cursor = db.cursor()
         cursor.execute("SELECT * FROM combined")
         results = cursor.fetchall()
         return jsonify([dict(row) for row in results])
     except sqlite3.Error as e:
-        print('Error:', e.args[0])
-        return jsonify({'error': e.args[0]})
+        print('Database error:', str(e))
+        return jsonify({'error': 'Database error occurred'}), 500
+    except Exception as e:
+        print('Unexpected error:', str(e))
+        return jsonify({'error': 'An unexpected error occurred'}), 500
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
 
 if __name__ == '__main__':
+    with app.app_context():
+        init_db()
+    generate_db()
     app.run(debug=True)
