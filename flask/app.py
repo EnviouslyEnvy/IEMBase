@@ -30,6 +30,9 @@ generate_db()
 # Schedule 'generate_db' to run every week
 scheduler.add_job(id='Refresh Database', func=generate_db, trigger='interval', hours=168)
 
+# May want to make sure application works any deployment environment, make basedir for absolute pathing
+# basedir = os.path.abspath(os.path.dirname(__file__))
+# DATABASE = os.path.join(basedir, 'db', 'combined.db')
 DATABASE = os.path.join('db', 'combined.db')
 
 def get_db():
