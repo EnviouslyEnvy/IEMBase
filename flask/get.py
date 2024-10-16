@@ -348,12 +348,12 @@ combined = combined.rename(columns={'Model':'model', 'Normalized Float':'normali
     'Max Comments':'maxComments', 'maxlist':'maxList', 'Min Comments':'minComments', 'minlist':'minList'})
 
 # For testing, export the combined dataframe to a csv file
-combined.to_csv('combined.csv', index=False)
+# combined.to_csv('combined.csv', index=False)
 
 # export the combined dataframe to a db file
-# db_folder = 'db'
-# if not os.path.exists(db_folder):
-#     os.makedirs(db_folder)
-# conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
-# combined.to_sql('combined', conn, if_exists='replace', index=False)
-# conn.close()
+db_folder = 'db'
+if not os.path.exists(db_folder):
+    os.makedirs(db_folder)
+conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
+combined.to_sql('combined', conn, if_exists='replace', index=False)
+conn.close()
