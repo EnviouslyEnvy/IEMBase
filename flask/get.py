@@ -196,6 +196,27 @@ gizdf = gizdf[~gizdf['Model'].str.contains('Joyodio')]
 # Add list column for gizdf
 gizdf['List'] = 'giz'
 
+jaytdf = pd.read_csv('https://docs.google.com/spreadsheets/d/1aBAj-f2iaNSzTCcN4yoPQyBhFiEFooM-7WM9CHUS-Cs/export?format=csv')
+jaytdf = jaytdf.drop(jaytdf.index[:4])
+# Reset indexing after dropping rows
+jaytdf = jaytdf.reset_index(drop=True)
+
+jaytdf = jaytdf.rename(columns={'Unnamed: 0': 'Model', 'Unnamed: 1': 'Normalized Float', 'Unnamed: 2': 'Normalized Grade', 'Unnamed: 3': 'Stars', 'Unnamed: 4': 'Price', 'Unnamed: 5': 'Tone Float', 'Unnamed: 9': 'Tech Float', 'Unnamed: 14': 'Comments','Unnamed: 24': 'Preference Float', 'Unnamed: 26': 'Driver Config', 'Unnamed: 27': 'Source'})
+# Remove all rows below the first row with an empty Model column
+jaytdf = jaytdf.iloc[:jaytdf[jaytdf['Model'].isnull()].index[0]]
+# Clean price column and convert to float
+jaytdf['Price'] = jaytdf['Price'].str.replace('$', '')
+jaytdf['Price'] = jaytdf['Price'].str.replace(',', '')
+# Remove all rows where price is not a number
+jaytdf = jaytdf[jaytdf['Price'].str.isnumeric()]
+# Convert price to float
+jaytdf['Price'] = jaytdf['Price'].astype(float)
+jaytdf['Normalized Float'] = jaytdf['Normalized Float'].astype(float)
+jaytdf['Tone Float'] = jaytdf['Tone Float'].astype(float)
+jaytdf['Tech Float'] = jaytdf['Tech Float'].astype(float)
+jaytdf['Preference Float'] = jaytdf['Preference Float'].astype(float)
+jaytdf['List']='jayt'
+
 # Congregate all the dataframes into one dataframe
 frames = pd.concat([iefdf, antdf, cogdf, gizdf],axis=0)
 # Convert 'Model' column to string
@@ -277,11 +298,13 @@ iefmask=frames['List']=='ief'
 cogmask=frames['List']=='cog'
 antmask=frames['List']=='ant'
 gizmask=frames['List']=='giz'
+jaytmask=frames['List']=='jayt'
 
 unique_ief = set(frames[iefmask]['Model']) - set(frames[~iefmask]['Model'])
 unique_cog = set(frames[cogmask]['Model']) - set(frames[~cogmask]['Model'])
 unique_ant = set(frames[antmask]['Model']) - set(frames[~antmask]['Model'])
 unique_giz = set(frames[gizmask]['Model']) - set(frames[~gizmask]['Model'])
+unique_jayt = set(frames[jaytmask]['Model']) - set(frames[~jaytmask]['Model'])
 
 # Add lists together to get all unique models
 all_unique_models = unique_ief.union(unique_cog).union(unique_ant).union(unique_giz)
