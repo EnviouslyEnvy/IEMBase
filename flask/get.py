@@ -4,6 +4,7 @@ import requests
 import rapidfuzz
 import sqlite3
 import os
+from io import StringIO
 
 r = requests.get('https://crinacle.com/rankings/iems/')
 soup = BeautifulSoup(r.text, 'html.parser')
@@ -61,13 +62,16 @@ r_text = r.text
 soup = BeautifulSoup(r_text, 'html.parser')
 tables = soup.find_all('table')
 table = tables[0]
-antdf = pd.read_html(str(table), header=0)[0]
+antdf = pd.read_html(StringIO(str(table)), header=0)[0]
 
 ### Formatting begins here ###
 antdf = antdf.drop(columns=['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 4', 'Unnamed: 11'])
 # Make second row header, then drop first two rows
 antdf.columns = antdf.iloc[1]
 antdf=antdf.iloc[2:]
+
+# Ensure Model column is string type
+antdf['Model'] = antdf['Model'].astype(str)
 
 # Create col. called Normalized Grade Float taking value in the Normalized Grade col and turning it into a float.
 # Make S+ 10.0, S 9.5, S-, 9... all the way down to F- being 0. That's how their rating system works.
@@ -89,9 +93,9 @@ antdf['Tone Float and Grade'] = antdf['Tone Float'].astype(str) + ' (' + antdf['
 antdf['Tech Float and Grade'] = antdf['Tech Float'].astype(str) + ' (' + antdf['Tech Grade'].astype(str) + ')'
 antdf['Preference Float and Grade'] = antdf['Preference Float'].astype(str) + ' (' + antdf['Preference Grade'].astype(str) + ')'
 
-antdf = antdf[~antdf['Model'].str.contains('KZ')]
-antdf = antdf[~antdf['Model'].str.contains('CCA')]
-antdf = antdf[~antdf['Model'].str.contains('Joyodio')]
+antdf = antdf[~antdf['Model'].str.contains('KZ', na=False)]
+antdf = antdf[~antdf['Model'].str.contains('CCA', na=False)]
+antdf = antdf[~antdf['Model'].str.contains('Joyodio', na=False)]
 
 # Add list column for antdf
 antdf['List'] = 'ant'
