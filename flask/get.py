@@ -70,16 +70,17 @@ antdf = antdf.drop(columns=['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 4', 'Unnamed: 
 antdf.columns = antdf.iloc[1]
 antdf=antdf.iloc[2:]
 
-# Ensure Model column is string type
-antdf['Model'] = antdf['Model'].astype(str)
+# Rename technical score to tech grade and Tonality Score to Tone Grade
+antdf = antdf.rename(columns={'Technical Score':'Tech Grade', 'Tonality Score':'Tone Grade', 'Preference Score':'Preference Grade', 'IEM':'Model', 'Price (USD)':'iefdf'})
+
+# Now ensure Model column is string type
+antdf['Model'] = antdf['Model'].fillna('').astype(str)
+antdf = antdf[~antdf['Model'].str.contains('KZ', na=False)]
 
 # Create col. called Normalized Grade Float taking value in the Normalized Grade col and turning it into a float.
 # Make S+ 10.0, S 9.5, S-, 9... all the way down to F- being 0. That's how their rating system works.
 # antdf['Normalized Float'] = antdf['Normalized Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
 antdf['Normalized Float'] = antdf['Score'].astype(float)/2
-
-# Rename technical score to tech grade and Tonality Score to Tone Grade
-antdf = antdf.rename(columns={'Technical Score':'Tech Grade', 'Tonality Score':'Tone Grade', 'Preference Score':'Preference Grade', 'IEM':'Model', 'Price (USD)':'iefdf'})
 
 # Also assign a float value to the Tone Grade and Tech Grade
 antdf['Tone Float'] = antdf['Tone Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
@@ -93,6 +94,9 @@ antdf['Tone Float and Grade'] = antdf['Tone Float'].astype(str) + ' (' + antdf['
 antdf['Tech Float and Grade'] = antdf['Tech Float'].astype(str) + ' (' + antdf['Tech Grade'].astype(str) + ')'
 antdf['Preference Float and Grade'] = antdf['Preference Float'].astype(str) + ' (' + antdf['Preference Grade'].astype(str) + ')'
 
+# Convert to string and handle NaN values
+antdf['Model'] = antdf['Model'].fillna('').astype(str)
+# Use na=False in str.contains
 antdf = antdf[~antdf['Model'].str.contains('KZ', na=False)]
 antdf = antdf[~antdf['Model'].str.contains('CCA', na=False)]
 antdf = antdf[~antdf['Model'].str.contains('Joyodio', na=False)]
@@ -106,7 +110,7 @@ cogdf = pd.read_csv('https://docs.google.com/spreadsheets/d/1pUCELfWO-G33u82H42J
 # Make the "Final Score" column float type
 # First remove any rows with a non-float value in the Final Score column
 # If they contain a letter:
-cogdf = cogdf[~cogdf['Final Score'].str.contains('[a-zA-Z]', na=False)]
+cogdf = cogdf[~cogdf['Final Score'].astype(str).str.contains('[a-zA-Z]', na=False)]
 # If they are empty:
 cogdf = cogdf[cogdf['Final Score'].notna()]
 
@@ -218,7 +222,11 @@ jaytdf['Price'] = jaytdf['Price'].astype(float)
 jaytdf['Normalized Float'] = jaytdf['Normalized Float'].astype(float)
 jaytdf['Tone Float'] = jaytdf['Tone Float'].astype(float)
 jaytdf['Tech Float'] = jaytdf['Tech Float'].astype(float)
-jaytdf['Preference Float'] = jaytdf['Preference Float'].astype(float)
+
+# Preference Float column was removed from source data
+# Adding a default value since this column is used in later processing
+jaytdf['Preference Float'] = 5.0  # Default mid-range value
+
 jaytdf['List']='jayt'
 
 # Congregate all the dataframes into one dataframe
