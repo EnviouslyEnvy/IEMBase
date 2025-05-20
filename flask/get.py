@@ -145,6 +145,8 @@ cogdf = cogdf[~cogdf['Model'].str.contains('Joyodio')]
 # Add list column for cogdf
 cogdf['List'] = 'cog'
 
+# Old gizdf logic (deprecated) - kept for reference
+'''
 # Read the Gizaudio spreadsheet
 gizdf=pd.read_csv("https://docs.google.com/spreadsheets/d/1HFCuUzWdheP5qbxIJhyezJ53hvwM0wMrptVxKo49AFI/export?format=csv")
 
@@ -153,86 +155,144 @@ gizdf.columns = gizdf.iloc[0]
 gizdf = gizdf.iloc[1:]
 gizdf = gizdf[gizdf['NAME'].notna()]
 gizdf = gizdf.reset_index(drop=True)
-
 # For now, I'll only look at the first 6 columns because formatting the rest isn't up my alley right now.
 gizdf = gizdf.drop(gizdf.columns[6:], axis=1)
 gizdf = gizdf.rename(columns={'NAME':'Model', 'RANKING':'Normalized Grade', 'PRICE (USD)':'Price', "Doesn't effect rank (max 10)":'Preference Float'})
 
-gizdf['Normalized Float'] = gizdf['Normalized Grade'].replace({'S+':9.0, 'S':8.5, 'S-':8.0, 'A+':7.5, 'A':7.0, 'A-':6.5, 'B+':6.0, 'B':5.5, 'B-':5.0, 'C+':4.5, 'C':4.0, 'C-':3.5, 'D+':3.0, 'D':2.5, 'D-':2.0, 'E+':1.5, 'E':1.0, 'E-':0.5, 'F':0})
+import re
+emoji_pattern = re.compile("["
+                       u"\U0001F600-\U0001F64F"  # emoticons
+                       u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+                       u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                       u"\U0001F700-\U0001F77F"  # alchemical symbols
+                       u"\U0001F780-\U0001F7FF"  # Geometric Shapes
+                       u"\U0001F800-\U0001F8FF"  # Supplemental Arrows-C
+                       u"\U0001F900-\U0001F9FF"  # Supplemental Symbols and Pictographs
+                       u"\U0001FA00-\U0001FA6F"  # Chess Symbols
+                       u"\U0001FA70-\U0001FAFF"  # Symbols and Pictographs Extended-A
+                       u"\U00002702-\U000027B0"  # Dingbats
+                       u"\U000024C2-\U0001F251" 
+                       "]+", flags=re.UNICODE)
 
-gizdf['Normalized Float and Grade'] = gizdf['Normalized Float'].astype(str) + ' (' + gizdf['Normalized Grade'].astype(str) + ')'
-emoji_pattern = r'([\U00002600-\U000027BF]|\U0001f300-\U0001f64F|\U0001f680-\U0001f6FF|\U0001F700-\U0001F77F|\U0001F780-\U0001F7FF|\U0001F800-\U0001F8FF|\U0001F900-\U0001F9FF|\U0001FA00-\U0001FA6F|\U0001FA70-\U0001FAFF|\U00002B50)'
-
-gizdf['Price'] = gizdf['Price'].str.replace(emoji_pattern, '', regex=True)
+# Remove emojis from the Preference Float column
 gizdf['Preference Float']=gizdf['Preference Float'].str.replace(emoji_pattern, '', regex=True)
 gizdf['Preference Float'] = gizdf['Preference Float'].astype(float)
 gizdf['Preference Grade'] = gizdf['Preference Float'].apply(lambda x: 'S+' if x>=9.0 else 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
 
-# Combine pros and cons into comments col.
-def combine_pros_and_cons(row):
-    if pd.isna(row['PROS']) and pd.isna(row['CONS']):
-        return 'No comments'
-    # If there are only pros or cons, return what is available.
-    elif pd.isna(row['PROS']):
-        return row['CONS']
-    elif pd.isna(row['CONS']):
-        return row['PROS']
-    # If there are both pros and cons return both.
-    else:
-        return 'PROS: ' + row['PROS'] + ' CONS: ' + row['CONS']
-gizdf['Comments'] = gizdf.apply(combine_pros_and_cons, axis=1)
+gizdf['Normalized Float'] = gizdf['Normalized Grade'].replace({'S+':9.0, 'S':8.7, 'S-':7.9, 'A+':7, 'A':6.5, 'A-':6, 'B+':5.5, 'B':5, 'B-':4.5, 'C+':4, 'C':3.5, 'C-':3, 'D+':2.5, 'D':2, 'D-':1.5, 'E+':1, 'E':0.5, 'E-':0, 'F':0})
 
-# remove the first row
-gizdf=gizdf.iloc[1:]
-
-gizdf=gizdf.reset_index(drop=True)
-gizdf=gizdf.astype(str).apply(lambda x: x.str.encode('ascii', 'ignore').str.decode('ascii'))
-
-# remove any rows where any column contains string "Re-Rank"
-gizdf = gizdf[~gizdf['Normalized Grade'].str.contains('Re-Rank')]
-gizdf = gizdf[~gizdf['Normalized Grade'].str.contains('Total IEMs Ranked')]
-
-# remove any rows where the model name is "nan" or empty, or grade is ''.
-gizdf = gizdf[gizdf['Model'] != 'nan']
-gizdf = gizdf[gizdf['Model'] != '']
-gizdf = gizdf[gizdf['Normalized Grade'] != '']
-
+# Remove rows that contain 'KZ' or 'CCA' in the Model column
 gizdf = gizdf[~gizdf['Model'].str.contains('KZ')]
 gizdf = gizdf[~gizdf['Model'].str.contains('CCA')]
-gizdf = gizdf[~gizdf['Model'].str.contains('Joyodio')]
 
-# Add list column for gizdf
+# Add list column
 gizdf['List'] = 'giz'
+'''
 
-jaytdf = pd.read_csv('https://docs.google.com/spreadsheets/d/1aBAj-f2iaNSzTCcN4yoPQyBhFiEFooM-7WM9CHUS-Cs/export?format=csv')
-jaytdf = jaytdf.drop(jaytdf.index[:4])
-# Reset indexing after dropping rows
-jaytdf = jaytdf.reset_index(drop=True)
+# Read Tim Tuned Ranking List (replacing deprecated gizdf)
+timdf = pd.read_csv("https://docs.google.com/spreadsheets/d/1lvI0ucbqjPXZLQKzqdycBD9ZKBuMSdd0e_bPzhJpJKo/export?format=csv")
 
-jaytdf = jaytdf.rename(columns={'Unnamed: 0': 'Model', 'Unnamed: 1': 'Normalized Float', 'Unnamed: 2': 'Normalized Grade', 'Unnamed: 3': 'Stars', 'Unnamed: 4': 'Price', 'Unnamed: 5': 'Tone Float', 'Unnamed: 9': 'Tech Float', 'Unnamed: 14': 'Comments', 'Unnamed: 26': 'Driver Config', 'Unnamed: 27': 'Source'})
-# Remove all rows below the first row with an empty Model column
-jaytdf = jaytdf.iloc[:jaytdf[jaytdf['Model'].isnull()].index[0]]
-# Clean price column and convert to float
-jaytdf['Price'] = jaytdf['Price'].str.replace('$', '')
-jaytdf['Price'] = jaytdf['Price'].str.replace(',', '')
-# Remove all rows where price is not a number
-jaytdf = jaytdf[jaytdf['Price'].str.isnumeric()]
-# Convert price to float
-jaytdf['Price'] = jaytdf['Price'].astype(float)
-jaytdf['Normalized Float'] = jaytdf['Normalized Float'].astype(float)
-jaytdf['Tone Float'] = jaytdf['Tone Float'].astype(float)
-jaytdf['Tech Float'] = jaytdf['Tech Float'].astype(float)s
+### Formatting begins here ###
+# The CSV has metadata rows at the top - actual data starts on row 7+
+# First, filter out rows that don't contain actual IEM data
+# Find rows where RANKING column contains a valid rank (S, S-, A+, etc.)
+valid_ranks = ['S+', 'S', 'S-', 'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'E+', 'E', 'E-', 'F']
+# First get column name for RANKING by index position (it's the first column)
+ranking_col = timdf.columns[0]
+# Filter rows with valid ranks in the first column
+timdf = timdf[timdf[ranking_col].isin(valid_ranks)]
+timdf = timdf.reset_index(drop=True)
 
-# Note: Preference Float column was removed from source data
-# Not setting default value
+# Now rename the columns - the NAME column (second column) contains the model names
+timdf = timdf.rename(columns={
+    timdf.columns[0]: 'Normalized Grade',  # RANKING
+    timdf.columns[1]: 'Model',             # NAME
+    timdf.columns[2]: 'Pros',              # PROS
+    timdf.columns[3]: 'Cons',              # CONS
+    timdf.columns[4]: 'Price'              # PRICE (USD)
+})
 
-jaytdf['List']='jayt'
+# Remove rows with empty Model names (now that we've renamed)
+timdf = timdf[timdf['Model'].notna()]
+timdf = timdf.reset_index(drop=True)
+
+# Clean price column
+timdf['Price'] = timdf['Price'].astype(str).str.replace('$', '', regex=False).str.replace(',', '', regex=False)
+timdf['Price'] = pd.to_numeric(timdf['Price'], errors='coerce')
+
+# Create Normalized Float from the Normalized Grade
+timdf['Normalized Float'] = timdf['Normalized Grade'].replace({
+    'S+': 13, 'S': 12, 'S-': 11, 
+    'A+': 10, 'A': 9, 'A-': 8, 
+    'B+': 7, 'B': 6, 'B-': 5, 
+    'C+': 4, 'C': 3, 'C-': 2, 
+    'D+': 1, 'D': 0.5, 'D-': 0
+})
+
+# Extract BASS, MID, TREBLE, TECHNICAL columns if they exist
+# These are likely in columns 6-9
+if len(timdf.columns) > 9:
+    timdf = timdf.rename(columns={
+        timdf.columns[6]: 'Bass',     # BASS
+        timdf.columns[7]: 'Mid',      # MID
+        timdf.columns[8]: 'Treble',   # TREBLE
+        timdf.columns[9]: 'Technical' # TECHNICAL
+    })
+    
+    # Convert to float
+    timdf['Tone Float'] = pd.to_numeric(timdf['Mid'], errors='coerce')
+    timdf['Tech Float'] = pd.to_numeric(timdf['Technical'], errors='coerce')
+else:
+    # Create default values if columns don't exist
+    timdf['Tone Float'] = 0
+    timdf['Tech Float'] = 0
+
+# Combine pros/cons for Comments
+timdf['Comments'] = timdf['Pros'].astype(str) + ' | ' + timdf['Cons'].astype(str)
+timdf['Comments'] = timdf['Comments'].str.replace('nan | nan', '', regex=False)
+timdf['Comments'] = timdf['Comments'].str.replace('nan |', '', regex=False)
+timdf['Comments'] = timdf['Comments'].str.replace('| nan', '', regex=False)
+
+# Set the list identifier
+timdf['List'] = 'tim'
 
 # Congregate all the dataframes into one dataframe
-frames = pd.concat([iefdf, antdf, cogdf, gizdf],axis=0)
+# Ensure each DataFrame has required columns before concatenation
+required_columns = ['Model', 'Price', 'List']
+frames_list = []
+
+# Add each DataFrame to the frames list if it has the required columns
+if all(col in iefdf.columns for col in required_columns):
+    frames_list.append(iefdf)
+if all(col in antdf.columns for col in required_columns):
+    frames_list.append(antdf)
+if all(col in cogdf.columns for col in required_columns):
+    frames_list.append(cogdf)
+if all(col in timdf.columns for col in required_columns):
+    frames_list.append(timdf)
+
+frames = pd.concat(frames_list, axis=0)
 
 # Convert 'Model' column to string
 frames['Model'] = frames['Model'].astype(str)
+
+# Remove rows that contain '[B-STOCK]' in the Model name
+frames = frames[~frames['Model'].str.contains('[B-STOCK]', na=False)]
+
+# If 'Preference Float' column doesn't exist in some data sources, we need to handle it gracefully
+# when creating compound columns or performing operations that depend on it
+if 'Preference Float' in frames.columns:
+    # Create a new column that is the average of the 3 scores
+    frames['All Three Score'] = (frames['Normalized Float'] + frames['Tech Float'] + frames['Preference Float']) / 3
+    # Create a combined score column for Tone and Preference
+    frames['Tone and Preference'] = (frames['Tone Float'] + frames['Preference Float']) / 2
+else:
+    # If Preference Float is not available, use only the available scores
+    if 'Tech Float' in frames.columns and 'Normalized Float' in frames.columns:
+        frames['All Three Score'] = (frames['Normalized Float'] + frames['Tech Float']) / 2
+    
+    # Skip creating 'Tone and Preference' column as it requires Preference Float
+    
 # Remove any rows where the 'Model' column is empty
 frames = frames[frames['Model'] != 'nan']
 frames['Comments'] = frames['Comments'].astype(str)
@@ -240,7 +300,8 @@ frames['Comments'] = frames['Comments'].astype(str)
 frames['Normalized Float'] = frames['Normalized Float'].astype(float)
 frames['Tone Float'] = frames['Tone Float'].astype(float)
 frames['Tech Float'] = frames['Tech Float'].astype(float)
-frames['Preference Float'] = frames['Preference Float'].astype(float)
+if 'Preference Float' in frames.columns:
+    frames['Preference Float'] = frames['Preference Float'].astype(float)
 
 name_variations={
     "Moondrop B2: Dusk":"Moondrop Blessing 2: Dusk",
@@ -309,32 +370,43 @@ unique=frames['Model'].unique()
 iefmask=frames['List']=='ief'
 cogmask=frames['List']=='cog'
 antmask=frames['List']=='ant'
-gizmask=frames['List']=='giz'
+timmask=frames['List']=='tim'
 jaytmask=frames['List']=='jayt'
 
 unique_ief = set(frames[iefmask]['Model']) - set(frames[~iefmask]['Model'])
 unique_cog = set(frames[cogmask]['Model']) - set(frames[~cogmask]['Model'])
 unique_ant = set(frames[antmask]['Model']) - set(frames[~antmask]['Model'])
-unique_giz = set(frames[gizmask]['Model']) - set(frames[~gizmask]['Model'])
+unique_tim = set(frames[timmask]['Model']) - set(frames[~timmask]['Model'])
 unique_jayt = set(frames[jaytmask]['Model']) - set(frames[~jaytmask]['Model'])
 
 # Add lists together to get all unique models
-all_unique_models = unique_ief.union(unique_cog).union(unique_ant).union(unique_giz)
+all_unique_models = unique_ief.union(unique_cog).union(unique_ant).union(unique_tim)
 
 trimmedframes = frames[~frames['Model'].isin(all_unique_models)]
 
-
-
 # Create dataframe 'combined', which has the average 'Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float' for each 'Model', as well as the comments from each list.
-combined = trimmedframes.groupby('Model')[['Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float']].mean()
-combined.reset_index(inplace=True)
+# Use only columns that exist in the DataFrame
+available_columns = ['Normalized Float', 'Tone Float', 'Tech Float']
+if 'Preference Float' in frames.columns:
+    available_columns.append('Preference Float')
 
-# Remove all uneeded columns
-combined = combined.filter(['Model', 'Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float', 'Comments', 'List'])
+combined = trimmedframes.groupby('Model')[available_columns].mean()
+combined['Comments'] = trimmedframes.groupby('Model')['Comments'].first()
+combined['List'] = trimmedframes.groupby('Model')['List'].first()
+combined = combined.reset_index()
+
+# Select only columns that exist
+combined_columns = ['Model', 'Normalized Float', 'Tone Float', 'Tech Float', 'Comments', 'List']
+if 'Preference Float' in combined.columns:
+    combined_columns.insert(4, 'Preference Float')
+combined = combined[combined_columns]
+
+# Round values to 2 decimal places
 combined['Normalized Float'] = combined['Normalized Float'].round(2)
 combined['Tone Float'] = combined['Tone Float'].round(2)
 combined['Tech Float'] = combined['Tech Float'].round(2)
-combined['Preference Float'] = combined['Preference Float'].round(2)
+if 'Preference Float' in combined.columns:
+    combined['Preference Float'] = combined['Preference Float'].round(2)
 
 maxidx = trimmedframes.groupby('Model')['Normalized Float'].idxmax()
 
@@ -360,27 +432,40 @@ combined.loc[combined['Max Comments']=='nan', 'Max Comments'] = "N/A"
 combined.loc[combined['Min Comments']=='', 'Min Comments'] = "N/A"
 combined.loc[combined['Max Comments']=='', 'Max Comments'] = "N/A"
 
-
 # If 'minlist' is the same as 'maxlist', then set minlist and maxlist to N/A
 combined.loc[combined['minlist']==combined['maxlist'], 'minlist'] = "N/A"
 combined.loc[combined['maxlist']==combined['minlist'], 'maxlist'] = "N/A"
-
 
 # Make sure all columns are correct type.
 combined['Model'] = combined['Model'].astype(str)
 combined['Normalized Float'] = combined['Normalized Float'].astype(float)
 combined['Tone Float'] = combined['Tone Float'].astype(float)
 combined['Tech Float'] = combined['Tech Float'].astype(float)
-combined['Preference Float'] = combined['Preference Float'].astype(float)
+if 'Preference Float' in combined.columns:
+    combined['Preference Float'] = combined['Preference Float'].astype(float)
 combined['Max Comments'] = combined['Max Comments'].astype(str)
 combined['maxlist'] = combined['maxlist'].astype(str)
 combined['Min Comments'] = combined['Min Comments'].astype(str)
 combined['minlist'] = combined['minlist'].astype(str)
 
 # Rename columns to use camelcase because I have no foresight and I'm too lazy to change this earlier.
-combined = combined.rename(columns={'Model':'model', 'Normalized Float':'normalizedFloat',
-    'Tone Float':'toneFloat', 'Tech Float':'techFloat', 'Preference Float':'preferenceFloat',
-    'Max Comments':'maxComments', 'maxlist':'maxList', 'Min Comments':'minComments', 'minlist':'minList'})
+column_renames = {
+    'Model':'model', 
+    'Normalized Float':'normalizedFloat',
+    'Tone Float':'toneFloat', 
+    'Tech Float':'techFloat', 
+    'Max Comments':'maxComments', 
+    'maxlist':'maxList', 
+    'Min Comments':'minComments', 
+    'minlist':'minList'
+}
+
+# Add Preference Float renaming only if the column exists
+if 'Preference Float' in combined.columns:
+    column_renames['Preference Float'] = 'preferenceFloat'
+
+# Apply all renamings at once
+combined = combined.rename(columns=column_renames)
 
 # For testing, export the combined dataframe to a csv file
 # combined.to_csv('combined.csv', index=False)
@@ -392,3 +477,6 @@ if not os.path.exists(db_folder):
 conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
 combined.to_sql('combined', conn, if_exists='replace', index=False)
 conn.close()
+
+# Convert data to list of dictionaries (records) format
+result = combined.to_dict('records')
