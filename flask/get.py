@@ -209,7 +209,7 @@ jaytdf = jaytdf.drop(jaytdf.index[:4])
 # Reset indexing after dropping rows
 jaytdf = jaytdf.reset_index(drop=True)
 
-jaytdf = jaytdf.rename(columns={'Unnamed: 0': 'Model', 'Unnamed: 1': 'Normalized Float', 'Unnamed: 2': 'Normalized Grade', 'Unnamed: 3': 'Stars', 'Unnamed: 4': 'Price', 'Unnamed: 5': 'Tone Float', 'Unnamed: 9': 'Tech Float', 'Unnamed: 14': 'Comments','Unnamed: 24': 'Preference Float', 'Unnamed: 26': 'Driver Config', 'Unnamed: 27': 'Source'})
+jaytdf = jaytdf.rename(columns={'Unnamed: 0': 'Model', 'Unnamed: 1': 'Normalized Float', 'Unnamed: 2': 'Normalized Grade', 'Unnamed: 3': 'Stars', 'Unnamed: 4': 'Price', 'Unnamed: 5': 'Tone Float', 'Unnamed: 9': 'Tech Float', 'Unnamed: 14': 'Comments', 'Unnamed: 26': 'Driver Config', 'Unnamed: 27': 'Source'})
 # Remove all rows below the first row with an empty Model column
 jaytdf = jaytdf.iloc[:jaytdf[jaytdf['Model'].isnull()].index[0]]
 # Clean price column and convert to float
@@ -221,16 +221,16 @@ jaytdf = jaytdf[jaytdf['Price'].str.isnumeric()]
 jaytdf['Price'] = jaytdf['Price'].astype(float)
 jaytdf['Normalized Float'] = jaytdf['Normalized Float'].astype(float)
 jaytdf['Tone Float'] = jaytdf['Tone Float'].astype(float)
-jaytdf['Tech Float'] = jaytdf['Tech Float'].astype(float)
+jaytdf['Tech Float'] = jaytdf['Tech Float'].astype(float)s
 
-# Preference Float column was removed from source data
-# Adding a default value since this column is used in later processing
-jaytdf['Preference Float'] = 5.0  # Default mid-range value
+# Note: Preference Float column was removed from source data
+# Not setting default value
 
 jaytdf['List']='jayt'
 
 # Congregate all the dataframes into one dataframe
 frames = pd.concat([iefdf, antdf, cogdf, gizdf],axis=0)
+
 # Convert 'Model' column to string
 frames['Model'] = frames['Model'].astype(str)
 # Remove any rows where the 'Model' column is empty
