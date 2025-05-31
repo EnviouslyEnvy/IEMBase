@@ -112,9 +112,9 @@
   background: transparent;
   border: none;
   padding: 1rem 0;
-  height: 50vh; /* Dynamic height based on viewport height */
-  min-height: 400px; /* Minimum height to ensure readability */
-  max-height: 600px; /* Maximum height to prevent oversizing on large screens */
+  height: 60vh; /* Increased from 50vh for more space */
+  min-height: 500px; /* Increased from 400px */
+  max-height: 700px; /* Increased from 600px */
   overflow: hidden;
 }
 
@@ -183,9 +183,9 @@
   }
   
   .chartContainer {
-    height: 40vh; /* Smaller dynamic height on mobile */
-    min-height: 300px; /* Smaller minimum height on mobile */
-    max-height: 450px; /* Smaller maximum height on mobile */
+    height: 50vh; /* Increased from 40vh for mobile */
+    min-height: 400px; /* Increased from 300px */
+    max-height: 550px; /* Increased from 450px */
   }
 }
 

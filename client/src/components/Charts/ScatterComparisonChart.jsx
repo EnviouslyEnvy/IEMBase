@@ -45,10 +45,18 @@ const ScatterComparisonChart = ({ iems }) => {
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          layout: {
+            padding: {
+              top: 20,
+              bottom: 20,
+              left: 20,
+              right: 20
+            }
+          },
           plugins: {
             legend: {
               labels: {
-                color: '#e5e9f0', // nord5 (light text)
+                color: '#e5e9f0', // nord5 (light text) - this ensures white text
                 font: { size: 12, weight: '600' },
                 generateLabels: () => [
                   { text: 'Excellent (8.0+)', fillStyle: '#a3be8c', strokeStyle: '#a3be8c' },
