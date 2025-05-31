@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import config from '../config';
 import NormalizedScoresChart from '../components/NormalizedScoresChart/NormalizedScoresChart'; // Assuming you have this component
 import styles from './css/Home.module.css';
 import Content from '../components/Content/Content';
@@ -8,7 +9,7 @@ const Visuals = () => {
   const [iems, setIems] = useState([]);
 
   useEffect(() => {
-    fetch('https://iembase-backend.onrender.com/data/all')
+    fetch(`${config.API_BASE_URL}/data/all`)
       .then((response) => response.json())
       .then((data) => {
         // Sort the data by normalizedFloat in descending order and take the top 15

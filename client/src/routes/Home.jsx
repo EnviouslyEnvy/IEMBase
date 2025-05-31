@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import config from '../config';
 
 // CSS
 import styles from './css/Home.module.css';
@@ -9,7 +10,7 @@ const Home = () => {
   const [iems, setIems] = useState([]);
 
   useEffect(() => {
-    fetch('https://iembase-backend.onrender.com/data/all')
+    fetch(`${config.API_BASE_URL}/data/all`)
       .then((response) => response.json())
       .then((data) => {
         setIems(data);

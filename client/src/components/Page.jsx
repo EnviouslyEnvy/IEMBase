@@ -6,7 +6,7 @@ const Page = ({ title, children }) => {
   return (
     <>
       <Helmet>
-        <title>{`IEMBase - ${title || ''}`}</title>
+        <title>{`IEMIndex - ${title || ''}`}</title>
       </Helmet>
       {children}
     </>

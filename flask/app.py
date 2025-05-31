@@ -11,7 +11,12 @@ class Config:
 app = Flask(__name__)
 
 # CORS(app) # For development
-CORS(app, resources={r"/data/*": {"origins": "https://iem-base.vercel.app"}}) # For deployment, change domain.com to the domain of the frontend
+CORS(app, resources={r"/data/*": {"origins": [
+    "https://iem-base.vercel.app", 
+    "https://iemindex.com", 
+    "https://www.iemindex.com",
+    "https://api.iemindex.com"
+]}}) # For deployment, updated to include new domain and API subdomain
 
 scheduler = APScheduler()
 scheduler.init_app(app)

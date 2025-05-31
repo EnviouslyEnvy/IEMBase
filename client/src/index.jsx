@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename={'/iembase'}>
+    <BrowserRouter>
       <NavigationBar />
       <Routes>
         <Route
