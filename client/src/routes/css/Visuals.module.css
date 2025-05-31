@@ -112,9 +112,9 @@
   background: transparent;
   border: none;
   padding: 1rem 0;
-  height: 60vh; /* Increased from 50vh for more space */
-  min-height: 500px; /* Increased from 400px */
-  max-height: 700px; /* Increased from 600px */
+  height: 70vh; /* Increased from 60vh for more label space */
+  min-height: 600px; /* Increased from 500px */
+  max-height: 800px; /* Increased from 700px */
   overflow: hidden;
 }
 
