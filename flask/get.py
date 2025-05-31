@@ -64,23 +64,49 @@ tables = soup.find_all('table')
 table = tables[0]
 antdf = pd.read_html(StringIO(str(table)), header=0)[0]
 
+# Debug: Print initial shape
+print(f"Initial Antdroid data shape: {antdf.shape}")
+
 ### Formatting begins here ###
-antdf = antdf.drop(columns=['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 4', 'Unnamed: 11'])
+# More defensive column dropping - only drop unnamed columns that actually exist
+columns_to_drop = [col for col in antdf.columns if col in ['Unnamed: 0', 'Unnamed: 1', 'Unnamed: 4', 'Unnamed: 11']]
+if columns_to_drop:
+    antdf = antdf.drop(columns=columns_to_drop)
+
 # Make second row header, then drop first two rows
 antdf.columns = antdf.iloc[1]
-antdf=antdf.iloc[2:]
+antdf = antdf.iloc[2:]
 
-# Rename technical score to tech grade and Tonality Score to Tone Grade
-antdf = antdf.rename(columns={'Technical Score':'Tech Grade', 'Tonality Score':'Tone Grade', 'Preference Score':'Preference Grade', 'IEM':'Model', 'Price (USD)':'iefdf'})
+# Fix the critical error: Price column was being renamed to 'iefdf' instead of 'Price'
+antdf = antdf.rename(columns={
+    'Technical Score': 'Tech Grade', 
+    'Tonality Score': 'Tone Grade', 
+    'Preference Score': 'Preference Grade', 
+    'IEM': 'Model', 
+    'Price (USD)': 'Price'  # Fixed: was incorrectly renamed to 'iefdf'
+})
 
 # Now ensure Model column is string type
 antdf['Model'] = antdf['Model'].fillna('').astype(str)
 antdf = antdf[~antdf['Model'].str.contains('KZ', na=False)]
 
+# Debug: Print shape after initial filtering
+print(f"Antdroid data shape after filtering: {antdf.shape}")
+
 # Create col. called Normalized Grade Float taking value in the Normalized Grade col and turning it into a float.
 # Make S+ 10.0, S 9.5, S-, 9... all the way down to F- being 0. That's how their rating system works.
-# antdf['Normalized Float'] = antdf['Normalized Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
-antdf['Normalized Float'] = antdf['Score'].astype(float)/2
+# Handle Score column more defensively - ensure it exists and can be converted
+if 'Score' in antdf.columns:
+    antdf['Normalized Float'] = pd.to_numeric(antdf['Score'], errors='coerce') / 2
+else:
+    # Fallback to grade-based conversion if Score column doesn't exist
+    print("Warning: Score column not found in Antdroid data, using grade conversion")
+    antdf['Normalized Float'] = antdf['Normalized Grade'].replace({
+        'S+': 10.0, 'S': 9.5, 'S-': 9.0, 'A+': 8.5, 'A': 8.0, 'A-': 7.5, 
+        'B+': 7.0, 'B': 6.5, 'B-': 6.0, 'C+': 5.5, 'C': 5.0, 'C-': 4.5, 
+        'D+': 4.0, 'D': 3.5, 'D-': 3.0, 'E+': 2.5, 'E': 2.0, 'E-': 1.5, 
+        'F+': 1.0, 'F': 0.5, 'F-': 0
+    })
 
 # Also assign a float value to the Tone Grade and Tech Grade
 antdf['Tone Float'] = antdf['Tone Grade'].replace({'S+':10.0, 'S':9.5, 'S-':9.0, 'A+':8.5, 'A':8.0, 'A-':7.5, 'B+':7.0, 'B':6.5, 'B-':6.0, 'C+':5.5, 'C':5.0, 'C-':4.5, 'D+':4.0, 'D':3.5, 'D-':3.0, 'E+':2.5, 'E':2.0, 'E-':1.5, 'F+':1.0, 'F':0.5, 'F-':0})
@@ -107,40 +133,108 @@ antdf['List'] = 'ant'
 # Read Precog's spreadsheet
 cogdf = pd.read_csv('https://docs.google.com/spreadsheets/d/1pUCELfWO-G33u82H42J8G_WX1odnOYBJsBNbVskQVt8/export?format=csv')
 
+# Debug: Print initial shape and column info
+print(f"Initial Precog data shape: {cogdf.shape}")
+print(f"Precog columns: {list(cogdf.columns)}")
+
+# The CSV has some empty rows and metadata - filter to actual data rows
+# Remove rows where IEM column is empty or contains non-IEM data
+cogdf = cogdf[cogdf['IEM'].notna()]
+cogdf = cogdf[cogdf['IEM'] != '']
+
+# Debug: Print shape after filtering empty IEM rows
+print(f"After filtering empty IEM rows: {cogdf.shape}")
+
+# Check if expected columns exist before processing
+required_cols = ['IEM', 'Final Score', 'Tonality', 'Tech', 'Bias ']
+missing_cols = [col for col in required_cols if col not in cogdf.columns]
+if missing_cols:
+    print(f"Warning: Missing expected columns in Precog data: {missing_cols}")
+    print(f"Available columns: {list(cogdf.columns)}")
+
 # Make the "Final Score" column float type
 # First remove any rows with a non-float value in the Final Score column
-# If they contain a letter:
-cogdf = cogdf[~cogdf['Final Score'].astype(str).str.contains('[a-zA-Z]', na=False)]
-# If they are empty:
-cogdf = cogdf[cogdf['Final Score'].notna()]
+if 'Final Score' in cogdf.columns:
+    # If they contain a letter:
+    cogdf = cogdf[~cogdf['Final Score'].astype(str).str.contains('[a-zA-Z]', na=False)]
+    # If they are empty:
+    cogdf = cogdf[cogdf['Final Score'].notna()]
+    
+    cogdf['Final Score'] = pd.to_numeric(cogdf['Final Score'], errors='coerce')
+    
+    # Remove rows where Final Score conversion failed
+    cogdf = cogdf[cogdf['Final Score'].notna()]
+else:
+    print("Warning: 'Final Score' column not found in Precog data")
 
-cogdf['Final Score'] = cogdf['Final Score'].astype(float)
+# Convert other score columns to float with error handling
+for col in ['Tonality', 'Tech', 'Bias ']:
+    if col in cogdf.columns:
+        cogdf[col] = pd.to_numeric(cogdf[col], errors='coerce')
+    else:
+        print(f"Warning: '{col}' column not found in Precog data")
 
-cogdf['Tonality'] = cogdf['Tonality'].astype(float)
-cogdf['Tech'] = cogdf['Tech'].astype(float)
-cogdf['Bias '] = cogdf['Bias '].astype(float)
+# Debug: Print shape after numeric conversions
+print(f"After numeric conversions: {cogdf.shape}")
 
 # Rename 'Final Score' to 'Normalized Float', Tonality to 'Tone Float', Tech to 'Tech Float', and 'Bias ' to 'Preference Float'
-cogdf=cogdf.rename(columns={'IEM':'Model', 'Final Score':'Normalized Float', 'Tonality':'Tone Float', 'Tech':'Tech Float', 'Bias ':'Preference Float'})
+# Only rename columns that actually exist
+rename_mapping = {}
+if 'IEM' in cogdf.columns:
+    rename_mapping['IEM'] = 'Model'
+if 'Final Score' in cogdf.columns:
+    rename_mapping['Final Score'] = 'Normalized Float'
+if 'Tonality' in cogdf.columns:
+    rename_mapping['Tonality'] = 'Tone Float'
+if 'Tech' in cogdf.columns:
+    rename_mapping['Tech'] = 'Tech Float'
+if 'Bias ' in cogdf.columns:
+    rename_mapping['Bias '] = 'Preference Float'
+
+cogdf = cogdf.rename(columns=rename_mapping)
 
 # Adding 'Grade' col that takes the float and assigns it to a grade depending
 # on whether it's greater or equal to a value for a grade.
-cogdf['Normalized Grade'] = cogdf['Normalized Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
-cogdf['Tone Grade'] = cogdf['Tone Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
-cogdf['Tech Grade'] = cogdf['Tech Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
-cogdf['Preference Grade'] = cogdf['Preference Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
-cogdf['Normalized Float and Grade'] = cogdf['Normalized Float'].astype(str) + ' (' + cogdf['Normalized Grade'].astype(str) + ')'
-cogdf['Tone Float and Grade'] = cogdf['Tone Float'].astype(str) + ' (' + cogdf['Tone Grade'].astype(str) + ')'
-cogdf['Tech Float and Grade'] = cogdf['Tech Float'].astype(str) + ' (' + cogdf['Tech Grade'].astype(str) + ')'
-cogdf['Preference Float and Grade'] = cogdf['Preference Float'].astype(str) + ' (' + cogdf['Preference Grade'].astype(str) + ')'
+# Only create grades for columns that exist
+if 'Normalized Float' in cogdf.columns:
+    cogdf['Normalized Grade'] = cogdf['Normalized Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
+
+if 'Tone Float' in cogdf.columns:
+    cogdf['Tone Grade'] = cogdf['Tone Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
+
+if 'Tech Float' in cogdf.columns:
+    cogdf['Tech Grade'] = cogdf['Tech Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
+
+if 'Preference Float' in cogdf.columns:
+    cogdf['Preference Grade'] = cogdf['Preference Float'].apply(lambda x: 'S' if x >= 8.7 else 'S-' if x >= 7.9 else 'A+' if x >= 7 else 'A' if x >= 6.5 else 'A-' if x >= 6 else 'B+' if x >= 5.5 else 'B' if x >= 5 else 'B-' if x >= 4.5 else 'C+' if x >= 4 else 'C' if x >= 3.5 else 'C-' if x >= 3 else 'D+' if x >= 2.5 else 'D' if x >= 2 else 'D-' if x >= 1.5 else 'E+' if x >= 1 else 'E' if x >= 0.5 else 'E-' if x >= 0.2 else 'F+' if x >= 0.1 else 'F')
+
+# Create combined float and grade columns only for columns that exist
+if 'Normalized Float' in cogdf.columns and 'Normalized Grade' in cogdf.columns:
+    cogdf['Normalized Float and Grade'] = cogdf['Normalized Float'].astype(str) + ' (' + cogdf['Normalized Grade'].astype(str) + ')'
+
+if 'Tone Float' in cogdf.columns and 'Tone Grade' in cogdf.columns:
+    cogdf['Tone Float and Grade'] = cogdf['Tone Float'].astype(str) + ' (' + cogdf['Tone Grade'].astype(str) + ')'
+
+if 'Tech Float' in cogdf.columns and 'Tech Grade' in cogdf.columns:
+    cogdf['Tech Float and Grade'] = cogdf['Tech Float'].astype(str) + ' (' + cogdf['Tech Grade'].astype(str) + ')'
+
+if 'Preference Float' in cogdf.columns and 'Preference Grade' in cogdf.columns:
+    cogdf['Preference Float and Grade'] = cogdf['Preference Float'].astype(str) + ' (' + cogdf['Preference Grade'].astype(str) + ')'
 
 # Remove " ⭑" at the end of any IEM names
-cogdf['Model']=cogdf['Model'].astype(str)
-cogdf['Model'] = cogdf['Model'].str.replace(' ⭑', '')
+if 'Model' in cogdf.columns:
+    cogdf['Model'] = cogdf['Model'].astype(str)
+    cogdf['Model'] = cogdf['Model'].str.replace(' ⭑', '', regex=False)
+    
+    # Only apply brand filtering if Model column exists and contains valid data
+    cogdf = cogdf[~cogdf['Model'].str.contains('KZ', na=False)]
+    cogdf = cogdf[~cogdf['Model'].str.contains('CCA', na=False)]
+    cogdf = cogdf[~cogdf['Model'].str.contains('Joyodio', na=False)]
+else:
+    print("Warning: Model column not found in cogdf, skipping brand filtering")
 
-cogdf = cogdf[~cogdf['Model'].str.contains('KZ')]
-cogdf = cogdf[~cogdf['Model'].str.contains('CCA')]
-cogdf = cogdf[~cogdf['Model'].str.contains('Joyodio')]
+# Debug: Print shape after brand filtering
+print(f"Precog data shape after brand filtering: {cogdf.shape}")
 
 # Add list column for cogdf
 cogdf['List'] = 'cog'
@@ -256,28 +350,151 @@ timdf['Comments'] = timdf['Comments'].str.replace('| nan', '', regex=False)
 # Set the list identifier
 timdf['List'] = 'tim'
 
+# Read Jaytiss Ranking List 
+jaytdf = pd.read_csv('https://docs.google.com/spreadsheets/d/1aBAj-f2iaNSzTCcN4yoPQyBhFiEFooM-7WM9CHUS-Cs/export?format=csv')
+
+### Formatting begins here ###
+print(f"\n=== JAYTDF DEBUG ===")
+print(f"Initial jaytdf shape: {jaytdf.shape}")
+print(f"Column names: {list(jaytdf.columns)}")
+print(f"First few rows of column 1: {list(jaytdf.iloc[:10, 1])}")
+
+# The CSV has header rows and metadata - find rows with actual ranking data
+# Jaytiss uses rankings like S+, S, S-, A+, A, A-, etc. in the second column
+valid_ranks = ['S+', 'S', 'S-', 'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'E+', 'E', 'E-', 'F']
+
+# Filter rows where the second column (index 1) contains valid ranks
+# First convert to string and handle NaN values
+jaytdf.iloc[:, 1] = jaytdf.iloc[:, 1].astype(str)
+valid_rank_mask = jaytdf.iloc[:, 1].isin(valid_ranks)
+
+print(f"Rows with valid ranks in column 1: {valid_rank_mask.sum()}")
+
+# If no valid ranks in column 1, try column 2 (index 2)
+if valid_rank_mask.sum() == 0:
+    print("No valid ranks in column 1, trying column 2...")
+    jaytdf.iloc[:, 2] = jaytdf.iloc[:, 2].astype(str)
+    valid_rank_mask = jaytdf.iloc[:, 2].isin(valid_ranks)
+    print(f"Rows with valid ranks in column 2: {valid_rank_mask.sum()}")
+    rank_column = 2
+else:
+    rank_column = 1
+
+jaytdf = jaytdf[valid_rank_mask]
+jaytdf = jaytdf.reset_index(drop=True)
+
+print(f"After filtering for valid ranks: {jaytdf.shape}")
+
+# Rename columns based on structure observed in CSV
+# Adjust column mapping based on which column has the ranks
+if rank_column == 1:
+    jaytdf = jaytdf.rename(columns={
+        jaytdf.columns[0]: 'Model',           # IEM model name
+        jaytdf.columns[1]: 'Normalized Grade', # Letter grade (S+, S, etc.)
+        jaytdf.columns[2]: 'Normalized Float', # Overall numeric score
+        jaytdf.columns[4]: 'Price',           # Price in USD
+        jaytdf.columns[5]: 'Tone Float',      # Average of Bass, Mids, Highs
+        jaytdf.columns[9]: 'Tech Float',      # Average of technical qualities
+        jaytdf.columns[13]: 'Comments'        # Hot take/comments
+    })
+else:
+    jaytdf = jaytdf.rename(columns={
+        jaytdf.columns[0]: 'Model',           # IEM model name
+        jaytdf.columns[1]: 'Normalized Float', # Overall numeric score
+        jaytdf.columns[2]: 'Normalized Grade', # Letter grade (S+, S, etc.)
+        jaytdf.columns[4]: 'Price',           # Price in USD
+        jaytdf.columns[5]: 'Tone Float',      # Average of Bass, Mids, Highs
+        jaytdf.columns[9]: 'Tech Float',      # Average of technical qualities
+        jaytdf.columns[13]: 'Comments'        # Hot take/comments
+    })
+
+# Clean up the data
+jaytdf = jaytdf[jaytdf['Model'].notna()]
+jaytdf = jaytdf[jaytdf['Model'] != '']
+jaytdf = jaytdf.reset_index(drop=True)
+
+# Clean model names - remove numbering prefixes like "#1) ", "#2) ", etc.
+jaytdf['Model'] = jaytdf['Model'].astype(str)
+jaytdf['Model'] = jaytdf['Model'].str.replace(r'^#?\d+\)\s*', '', regex=True)
+
+# Clean price column - remove $ and commas, convert to numeric
+if 'Price' in jaytdf.columns:
+    jaytdf['Price'] = jaytdf['Price'].astype(str).str.replace('$', '', regex=False).str.replace(',', '', regex=False)
+    jaytdf['Price'] = pd.to_numeric(jaytdf['Price'], errors='coerce')
+
+# Convert score columns to numeric with error handling
+jaytdf['Normalized Float'] = pd.to_numeric(jaytdf['Normalized Float'], errors='coerce')
+jaytdf['Tone Float'] = pd.to_numeric(jaytdf['Tone Float'], errors='coerce') 
+jaytdf['Tech Float'] = pd.to_numeric(jaytdf['Tech Float'], errors='coerce')
+
+# Clean comments
+if 'Comments' in jaytdf.columns:
+    jaytdf['Comments'] = jaytdf['Comments'].fillna('').astype(str)
+
+# Remove brand filtering (KZ, CCA, etc.) like other lists
+jaytdf = jaytdf[~jaytdf['Model'].str.contains('KZ', na=False)]
+jaytdf = jaytdf[~jaytdf['Model'].str.contains('CCA', na=False)]
+jaytdf = jaytdf[~jaytdf['Model'].str.contains('Joyodio', na=False)]
+
+# Debug: Print final jaytdf shape
+print(f"Final jaytdf shape after processing: {jaytdf.shape}")
+print(f"Sample jaytdf models: {list(jaytdf['Model'].head(10))}")
+
+# Set the list identifier
+jaytdf['List'] = 'jayt'
+
 # Congregate all the dataframes into one dataframe
 # Ensure each DataFrame has required columns before concatenation
-required_columns = ['Model', 'Price', 'List']
+# Note: Making Price optional since some lists might not have price data
+required_columns = ['Model', 'List']  # Removed 'Price' as it's not essential for scoring
 frames_list = []
 
 # Add each DataFrame to the frames list if it has the required columns
 if all(col in iefdf.columns for col in required_columns):
+    print(f"Adding iefdf with {iefdf.shape[0]} rows")
     frames_list.append(iefdf)
-if all(col in antdf.columns for col in required_columns):
-    frames_list.append(antdf)
-if all(col in cogdf.columns for col in required_columns):
-    frames_list.append(cogdf)
-if all(col in timdf.columns for col in required_columns):
-    frames_list.append(timdf)
+else:
+    print(f"Warning: iefdf missing required columns: {[col for col in required_columns if col not in iefdf.columns]}")
 
+if all(col in antdf.columns for col in required_columns):
+    print(f"Adding antdf with {antdf.shape[0]} rows")
+    frames_list.append(antdf)
+else:
+    print(f"Warning: antdf missing required columns: {[col for col in required_columns if col not in antdf.columns]}")
+
+if all(col in cogdf.columns for col in required_columns):
+    print(f"Adding cogdf with {cogdf.shape[0]} rows")
+    frames_list.append(cogdf)
+else:
+    print(f"Warning: cogdf missing required columns: {[col for col in required_columns if col not in cogdf.columns]}")
+
+if all(col in timdf.columns for col in required_columns):
+    print(f"Adding timdf with {timdf.shape[0]} rows")
+    frames_list.append(timdf)
+else:
+    print(f"Warning: timdf missing required columns: {[col for col in required_columns if col not in timdf.columns]}")
+
+if all(col in jaytdf.columns for col in required_columns):
+    print(f"Adding jaytdf with {jaytdf.shape[0]} rows")
+    frames_list.append(jaytdf)
+else:
+    print(f"Warning: jaytdf missing required columns: {[col for col in required_columns if col not in jaytdf.columns]}")
+
+if not frames_list:
+    print("ERROR: No dataframes meet the requirements for concatenation!")
+    
 frames = pd.concat(frames_list, axis=0)
+
+# Debug: Print concatenated frames info
+print(f"\n=== CONCATENATED FRAMES DEBUG ===")
+print(f"Total concatenated frames: {frames.shape}")
+print(f"Frames by list:")
+for list_name in frames['List'].unique():
+    count = len(frames[frames['List'] == list_name])
+    print(f"  {list_name}: {count} rows")
 
 # Convert 'Model' column to string
 frames['Model'] = frames['Model'].astype(str)
-
-# Remove rows that contain '[B-STOCK]' in the Model name
-frames = frames[~frames['Model'].str.contains('[B-STOCK]', na=False)]
 
 # If 'Preference Float' column doesn't exist in some data sources, we need to handle it gracefully
 # when creating compound columns or performing operations that depend on it
@@ -294,14 +511,46 @@ else:
     # Skip creating 'Tone and Preference' column as it requires Preference Float
     
 # Remove any rows where the 'Model' column is empty
+before_empty_filter = frames.shape[0]
 frames = frames[frames['Model'] != 'nan']
+frames = frames[frames['Model'].notna()]  # Also remove actual NaN values
+frames = frames[frames['Model'] != '']  # Remove empty strings
+after_empty_filter = frames.shape[0]
+
+# Debug: Print after empty model removal
+print(f"Removed {before_empty_filter - after_empty_filter} rows with empty models")
+print(f"After empty model removal: {frames.shape}")
+
 frames['Comments'] = frames['Comments'].astype(str)
-# Turn "Normalized/Tone/Tech/Preference Float" columns into float type
-frames['Normalized Float'] = frames['Normalized Float'].astype(float)
-frames['Tone Float'] = frames['Tone Float'].astype(float)
-frames['Tech Float'] = frames['Tech Float'].astype(float)
+
+# Turn "Normalized/Tone/Tech/Preference Float" columns into float type with error handling
+print(f"\n=== FLOAT CONVERSION DEBUG ===")
+print(f"Converting float columns - initial shape: {frames.shape}")
+
+# Convert with error handling to prevent data loss
+frames['Normalized Float'] = pd.to_numeric(frames['Normalized Float'], errors='coerce')
+frames['Tone Float'] = pd.to_numeric(frames['Tone Float'], errors='coerce')
+frames['Tech Float'] = pd.to_numeric(frames['Tech Float'], errors='coerce')
+
 if 'Preference Float' in frames.columns:
-    frames['Preference Float'] = frames['Preference Float'].astype(float)
+    frames['Preference Float'] = pd.to_numeric(frames['Preference Float'], errors='coerce')
+
+# Count rows with missing critical scoring data
+missing_normalized = frames['Normalized Float'].isna().sum()
+missing_tone = frames['Tone Float'].isna().sum()
+missing_tech = frames['Tech Float'].isna().sum()
+
+print(f"Rows with missing Normalized Float: {missing_normalized}")
+print(f"Rows with missing Tone Float: {missing_tone}")  
+print(f"Rows with missing Tech Float: {missing_tech}")
+
+# Only remove rows that are missing ALL scoring data (keep partial data)
+before_filter = frames.shape[0]
+frames = frames[frames['Normalized Float'].notna() | frames['Tone Float'].notna() | frames['Tech Float'].notna()]
+after_filter = frames.shape[0]
+
+print(f"Removed {before_filter - after_filter} rows with no scoring data")
+print(f"Remaining rows after float conversion: {after_filter}")
 
 name_variations={
     "Moondrop B2: Dusk":"Moondrop Blessing 2: Dusk",
@@ -346,32 +595,98 @@ name_variations={
     }
 frames['Model'] = frames['Model'].replace(name_variations)
 
+# Debug: Print after name variations replacement
+print(f"\n=== NAME PROCESSING DEBUG ===")
+print(f"After name variations replacement: {frames.shape}")
+
 # Viento jank
 frames['Model'] = frames['Model'].apply(lambda x: "Hidition Viento-B" if x and ("Viento" in x) and ("B" in x) else x)
 
 # Create a column containing the model names without the first word, as it is often the brand name.
 frames['Model No Brand'] = frames['Model'].str.split(' ').str[1:].str.join(' ')
-def fuzz_match(row):
-    model = row['Model No Brand']
-    match = rapidfuzz.process.extractOne(model, frames['Model No Brand'], score_cutoff=80)
-    if match is not None:
-        return match[0]
-    else:
-        return model
-# Apply the fuzz_match function to the Model column
-frames['Model No Brand'] = frames.apply(fuzz_match, axis=1)
-# Change the everything after the first word in the Model column to the result of the fuzz_match function
-frames['Model'] = frames['Model'].str.split(' ').str[0] + ' ' + frames['Model No Brand']
+
+# Debug: Print before fuzzy matching
+print(f"Before fuzzy matching - unique models: {len(frames['Model'].unique())}")
+print(f"Sample models before fuzzy matching: {list(frames['Model'].head(10))}")
+
+# Store original models to track changes
+original_models = frames['Model'].copy()
+
+# TOGGLE: Set to False to disable fuzzy matching for comparison
+USE_FUZZY_MATCHING = True
+
+if USE_FUZZY_MATCHING:
+    def fuzz_match(row):
+        model = row['Model No Brand']
+        match = rapidfuzz.process.extractOne(model, frames['Model No Brand'], score_cutoff=80)
+        if match is not None:
+            return match[0]
+        else:
+            return model
+    # Apply the fuzz_match function to the Model column
+    frames['Model No Brand'] = frames.apply(fuzz_match, axis=1)
+    # Change the everything after the first word in the Model column to the result of the fuzz_match function
+    frames['Model'] = frames['Model'].str.split(' ').str[0] + ' ' + frames['Model No Brand']
+    
+    print("Fuzzy matching applied")
+else:
+    print("Fuzzy matching disabled")
+
+# Debug: Analyze fuzzy matching changes
+changed_models = frames[original_models != frames['Model']]
+print(f"\n=== FUZZY MATCHING ANALYSIS ===")
+print(f"Models changed by fuzzy matching: {len(changed_models)}")
+
+if len(changed_models) > 0:
+    print("Examples of fuzzy matching changes:")
+    for i in range(min(10, len(changed_models))):
+        idx = changed_models.index[i]
+        old_name = original_models.iloc[idx]
+        new_name = frames['Model'].iloc[idx]
+        list_name = frames['List'].iloc[idx]
+        print(f"  {list_name}: '{old_name}' -> '{new_name}'")
+    
+    # Check if fuzzy matching improved model overlap
+    original_frames = frames.copy()
+    original_frames['Model'] = original_models
+    
+    # Count overlaps with original names
+    original_overlap_count = 0
+    for model in original_frames['Model'].unique():
+        lists_with_model = original_frames[original_frames['Model'] == model]['List'].nunique()
+        if lists_with_model > 1:
+            original_overlap_count += 1
+    
+    # Count overlaps with fuzzy matched names
+    fuzzy_overlap_count = 0
+    for model in frames['Model'].unique():
+        lists_with_model = frames[frames['Model'] == model]['List'].nunique()
+        if lists_with_model > 1:
+            fuzzy_overlap_count += 1
+    
+    print(f"\nFuzzy matching impact on model overlap:")
+    print(f"  Models with overlap before fuzzy matching: {original_overlap_count}")
+    print(f"  Models with overlap after fuzzy matching: {fuzzy_overlap_count}")
+    print(f"  Net change: {fuzzy_overlap_count - original_overlap_count}")
+else:
+    print("No models were changed by fuzzy matching")
+
+# Debug: Print after fuzzy matching
+print(f"After fuzzy matching - unique models: {len(frames['Model'].unique())}")
+print(f"Sample models after fuzzy matching: {list(frames['Model'].head(10))}")
 
 # reset index
-frames=frames.reset_index(drop=True)
+frames = frames.reset_index(drop=True)
 
-unique=frames['Model'].unique()
-iefmask=frames['List']=='ief'
-cogmask=frames['List']=='cog'
-antmask=frames['List']=='ant'
-timmask=frames['List']=='tim'
-jaytmask=frames['List']=='jayt'
+# Debug: Print total data before filtering
+print(f"Total frames before filtering: {frames.shape}")
+
+unique = frames['Model'].unique()
+iefmask = frames['List'] == 'ief'
+cogmask = frames['List'] == 'cog'
+antmask = frames['List'] == 'ant'
+timmask = frames['List'] == 'tim'
+jaytmask = frames['List'] == 'jayt'
 
 unique_ief = set(frames[iefmask]['Model']) - set(frames[~iefmask]['Model'])
 unique_cog = set(frames[cogmask]['Model']) - set(frames[~cogmask]['Model'])
@@ -379,10 +694,76 @@ unique_ant = set(frames[antmask]['Model']) - set(frames[~antmask]['Model'])
 unique_tim = set(frames[timmask]['Model']) - set(frames[~timmask]['Model'])
 unique_jayt = set(frames[jaytmask]['Model']) - set(frames[~jaytmask]['Model'])
 
-# Add lists together to get all unique models
-all_unique_models = unique_ief.union(unique_cog).union(unique_ant).union(unique_tim)
+# Debug: Print counts of single-list models
+print(f"Models only in ief: {len(unique_ief)}")
+print(f"Models only in cog: {len(unique_cog)}")
+print(f"Models only in ant: {len(unique_ant)}")
+print(f"Models only in tim: {len(unique_tim)}")
+print(f"Models only in jayt: {len(unique_jayt)}")
 
+# Debug: Show some example models from each list to check for naming issues
+print(f"\nSample ief models: {list(frames[iefmask]['Model'].head(10))}")
+print(f"Sample cog models: {list(frames[cogmask]['Model'].head(10))}")
+print(f"Sample ant models: {list(frames[antmask]['Model'].head(10))}")
+print(f"Sample tim models: {list(frames[timmask]['Model'].head(10))}")
+
+# Debug: Check for models that appear in multiple lists
+models_in_multiple_lists = []
+all_models = set(frames['Model'])
+for model in all_models:
+    lists_containing_model = []
+    if model in set(frames[iefmask]['Model']):
+        lists_containing_model.append('ief')
+    if model in set(frames[cogmask]['Model']):
+        lists_containing_model.append('cog')
+    if model in set(frames[antmask]['Model']):
+        lists_containing_model.append('ant')
+    if model in set(frames[timmask]['Model']):
+        lists_containing_model.append('tim')
+    if model in set(frames[jaytmask]['Model']):
+        lists_containing_model.append('jayt')
+    
+    if len(lists_containing_model) > 1:
+        models_in_multiple_lists.append((model, lists_containing_model))
+
+print(f"\n=== MODEL OVERLAP ANALYSIS ===")
+print(f"Total unique models across all lists: {len(all_models)}")
+print(f"Models appearing in multiple lists: {len(models_in_multiple_lists)}")
+if models_in_multiple_lists:
+    print("Examples of multi-list models:")
+    for model, lists in models_in_multiple_lists[:10]:
+        print(f"  '{model}' in {lists}")
+    
+    # Count models by number of lists they appear in
+    overlap_counts = {}
+    for model, lists in models_in_multiple_lists:
+        count = len(lists)
+        overlap_counts[count] = overlap_counts.get(count, 0) + 1
+    
+    print(f"\nModels by overlap count:")
+    for count in sorted(overlap_counts.keys()):
+        print(f"  {count} lists: {overlap_counts[count]} models")
+else:
+    print("WARNING: NO MODELS appear in multiple lists!")
+    print("This suggests model name matching is failing between lists.")
+
+# Add lists together to get all unique models (INTENTIONAL: removing models that appear in only one list)
+all_unique_models = unique_ief.union(unique_cog).union(unique_ant).union(unique_tim).union(unique_jayt)
+
+print(f"\n=== FINAL FILTERING DEBUG ===")
+print(f"Models appearing in only one list (will be removed): {len(all_unique_models)}")
+
+# Keep only models that appear in multiple lists
 trimmedframes = frames[~frames['Model'].isin(all_unique_models)]
+
+# Debug: Print final count after filtering
+print(f"Final trimmed frames: {trimmedframes.shape}")
+print(f"Unique models in final dataset: {len(trimmedframes['Model'].unique())}")
+
+if len(trimmedframes['Model'].unique()) > 0:
+    print(f"Final models retained: {list(trimmedframes['Model'].unique())}")
+else:
+    print("ERROR: No models retained after filtering!")
 
 # Create dataframe 'combined', which has the average 'Normalized Float', 'Tone Float', 'Tech Float', 'Preference Float' for each 'Model', as well as the comments from each list.
 # Use only columns that exist in the DataFrame
@@ -471,12 +852,58 @@ combined = combined.rename(columns=column_renames)
 # combined.to_csv('combined.csv', index=False)
 
 # export the combined dataframe to a db file
+print(f"\n=== DATABASE WRITING DEBUG ===")
+print(f"Combined dataframe shape: {combined.shape}")
+print(f"Combined dataframe columns: {list(combined.columns)}")
+
 db_folder = 'db'
 if not os.path.exists(db_folder):
+    print(f"Creating db folder: {db_folder}")
     os.makedirs(db_folder)
-conn = sqlite3.connect(os.path.join(db_folder, 'combined.db'))
-combined.to_sql('combined', conn, if_exists='replace', index=False)
-conn.close()
+else:
+    print(f"DB folder already exists: {db_folder}")
+
+db_path = os.path.join(db_folder, 'combined.db')
+print(f"Database path: {db_path}")
+
+# Check if file exists before writing
+if os.path.exists(db_path):
+    print(f"Database file exists, size: {os.path.getsize(db_path)} bytes")
+else:
+    print("Database file does not exist, will be created")
+
+try:
+    conn = sqlite3.connect(db_path)
+    print("Successfully connected to database")
+    
+    # Check if table exists before replacement
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='combined';")
+    table_exists = cursor.fetchone() is not None
+    print(f"Table 'combined' exists before writing: {table_exists}")
+    
+    # Write the data
+    combined.to_sql('combined', conn, if_exists='replace', index=False)
+    print("Successfully wrote data to database")
+    
+    # Verify the write
+    cursor.execute("SELECT COUNT(*) FROM combined;")
+    row_count = cursor.fetchone()[0]
+    print(f"Rows in database after writing: {row_count}")
+    
+    conn.close()
+    print("Database connection closed")
+    
+    # Check file size after writing
+    if os.path.exists(db_path):
+        print(f"Database file size after writing: {os.path.getsize(db_path)} bytes")
+        
+except Exception as e:
+    print(f"ERROR writing to database: {e}")
+    import traceback
+    traceback.print_exc()
+    if 'conn' in locals():
+        conn.close()
 
 # Convert data to list of dictionaries (records) format
 result = combined.to_dict('records')
