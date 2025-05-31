@@ -18,7 +18,7 @@ const TopIEMsChart = ({ iems }) => {
               data: iems.map(iem => iem.normalizedFloat),
               backgroundColor: '#8fbcbb', // nord7
               borderColor: '#88c0d0', // nord8
-              borderWidth: 2,
+              borderWidth: 0,
               borderRadius: 6,
               borderSkipped: false,
             }

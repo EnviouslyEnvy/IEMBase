@@ -37,7 +37,7 @@ const ScatterComparisonChart = ({ iems }) => {
             })),
             backgroundColor: validIems.map(iem => getPointColor(iem.normalizedFloat)),
             borderColor: validIems.map(iem => getPointColor(iem.normalizedFloat)),
-            borderWidth: 2,
+            borderWidth: 0, // Remove borders for minimal look
             pointRadius: 6,
             pointHoverRadius: 8
           }]
@@ -48,7 +48,7 @@ const ScatterComparisonChart = ({ iems }) => {
           plugins: {
             legend: {
               labels: {
-                color: '#e5e9f0', // nord5
+                color: '#e5e9f0', // nord5 (light text)
                 font: { size: 12, weight: '600' },
                 generateLabels: () => [
                   { text: 'Excellent (8.0+)', fillStyle: '#a3be8c', strokeStyle: '#a3be8c' },

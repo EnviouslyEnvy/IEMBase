@@ -45,7 +45,7 @@ const RadarComparisonChart = ({ iems }) => {
         ],
         backgroundColor: colors[index] + '40', // Add transparency
         borderColor: borderColors[index],
-        borderWidth: 2,
+        borderWidth: 1,
         pointBackgroundColor: borderColors[index],
         pointBorderColor: '#eceff4', // nord6 (snow storm)
         pointHoverBackgroundColor: '#eceff4', // nord6

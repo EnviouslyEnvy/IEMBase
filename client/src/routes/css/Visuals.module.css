@@ -26,34 +26,29 @@
 }
 
 .visualsContainer {
-  background: linear-gradient(135deg, var(--nord0) 0%, var(--nord1) 100%);
+  background: #2f343f;
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
   color: var(--nord5);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .statsOverview {
   margin: 2rem 0;
-  padding: 1.5rem;
-  background: rgba(59, 66, 82, 0.6); /* nord1 with transparency */
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(76, 86, 106, 0.3); /* nord3 border */
+  padding: 0;
 }
 
 .statCard {
-  padding: 1rem;
-  background: rgba(67, 76, 94, 0.7); /* nord2 with transparency */
-  border-radius: 8px;
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
   margin: 0.5rem 0;
-  border: 1px solid rgba(76, 86, 106, 0.4); /* nord3 border */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .statCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(46, 52, 64, 0.4); /* nord0 shadow */
-  background: rgba(76, 86, 106, 0.8); /* nord3 on hover */
 }
 
 .statCard h3 {
@@ -72,69 +67,59 @@
   font-weight: 500;
 }
 
-.tabNavigation {
-  justify-content: center;
+.tabNavigationRow {
   margin: 2rem 0;
-  background: rgba(59, 66, 82, 0.6); /* nord1 with transparency */
-  border-radius: 12px;
-  padding: 1rem;
-  border: 1px solid rgba(76, 86, 106, 0.3); /* nord3 border */
+  padding: 0 1rem;
 }
 
-.navLink {
-  color: var(--nord4) !important;
-  border-radius: 8px !important;
-  margin: 0 0.5rem;
-  padding: 0.75rem 1.5rem !important;
+.tabButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: rgba(59, 66, 82, 0.6);
+  border: 1px solid rgba(76, 86, 106, 0.3);
+  border-radius: 8px;
+  color: var(--nord4);
   font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid transparent !important;
+  text-decoration: none;
 }
 
-.navLink:hover {
-  color: var(--nord6) !important;
-  background: rgba(67, 76, 94, 0.8) !important; /* nord2 */
-  border-color: rgba(136, 192, 208, 0.3) !important; /* nord8 border */
+.tabButton:hover {
+  color: var(--nord6);
+  background: rgba(67, 76, 94, 0.8);
+  border-color: rgba(136, 192, 208, 0.3);
 }
 
-.navLink.active {
-  background: linear-gradient(45deg, var(--nord8), var(--nord9)) !important;
-  color: var(--nord0) !important;
-  border-color: transparent !important;
+.tabButton.active {
+  background: linear-gradient(45deg, var(--nord8), var(--nord9));
+  color: var(--nord0);
+  border-color: transparent;
 }
 
 .tabContent {
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 
-.chartCard {
-  background: rgba(59, 66, 82, 0.8) !important; /* nord1 */
-  border: 1px solid rgba(129, 161, 193, 0.2) !important; /* nord9 border */
-  border-radius: 12px !important;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(46, 52, 64, 0.3); /* nord0 shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+.chartColumn {
+  padding: 0 1rem;
+  margin-bottom: 2rem;
 }
 
-.chartCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(46, 52, 64, 0.4); /* nord0 shadow */
-  border-color: rgba(136, 192, 208, 0.4) !important; /* nord8 border */
+.chartContainer {
+  background: transparent;
+  border: none;
+  padding: 1rem 0;
 }
 
-.cardHeader {
-  background: rgba(67, 76, 94, 0.9) !important; /* nord2 */
-  border-bottom: 1px solid rgba(129, 161, 193, 0.2) !important; /* nord9 border */
-  border-radius: 12px 12px 0 0 !important;
-  padding: 1rem 1.5rem;
-}
-
-.cardHeader h5 {
-  margin: 0;
-  font-weight: 700;
+.chartTitle {
+  margin: 0 0 1rem 0;
+  font-weight: 600;
   color: var(--nord5);
   font-size: 1.1rem;
+  text-align: center;
 }
 
 .loadingContainer {
@@ -149,7 +134,7 @@
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(76, 86, 106, 0.3); /* nord3 */
+  border: 4px solid rgba(76, 86, 106, 0.3);
   border-left: 4px solid var(--nord8);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -164,33 +149,34 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .visualsContainer {
-    padding: 1rem 0;
+    padding: 1rem 0.75rem;
   }
   
   .statsOverview {
     margin: 1rem 0;
-    padding: 1rem;
+    padding: 0;
   }
   
   .statCard h3 {
     font-size: 2rem;
   }
   
-  .tabNavigation {
+  .tabNavigationRow {
     flex-direction: column;
-    align-items: center;
+    padding: 0 0.5rem;
   }
   
-  .navLink {
+  .tabButton {
     margin: 0.25rem 0;
-    width: 100%;
-    text-align: center;
   }
-}
-
-/* Additional Nord-themed elements */
-.chartCard .card-body {
-  background: transparent !important;
+  
+  .chartColumn {
+    padding: 0 0.5rem;
+  }
+  
+  .tabContent {
+    padding: 0 0.5rem;
+  }
 }
 
 /* Custom scrollbar with Nord colors */

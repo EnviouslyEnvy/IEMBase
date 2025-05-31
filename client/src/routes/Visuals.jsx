@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Card, Nav } from 'react-bootstrap'
+import { Container, Row, Col, Nav } from 'react-bootstrap'
 import config from '../config'
 import TopIEMsChart from '../components/Charts/TopIEMsChart'
 import WorstIEMsChart from '../components/Charts/WorstIEMsChart'
@@ -7,7 +7,6 @@ import ScoreDistributionChart from '../components/Charts/ScoreDistributionChart'
 import ScatterComparisonChart from '../components/Charts/ScatterComparisonChart'
 import RadarComparisonChart from '../components/Charts/RadarComparisonChart'
 import styles from './css/Visuals.module.css'
-import Content from '../components/Content/Content'
 
 const Visuals = () => {
   const [allIems, setAllIems] = useState([])
@@ -61,25 +60,17 @@ const Visuals = () => {
       case 'overview':
         return (
           <Row className="g-4">
-            <Col lg={6}>
-              <Card className={styles.chartCard}>
-                <Card.Header className={styles.cardHeader}>
-                  <h5>🏆 Top 15 IEMs by Overall Score</h5>
-                </Card.Header>
-                <Card.Body>
-                  <TopIEMsChart iems={topIems} />
-                </Card.Body>
-              </Card>
+            <Col lg={6} className={styles.chartColumn}>
+              <div className={styles.chartContainer}>
+                <h5 className={styles.chartTitle}>Top 15 IEMs by Overall Score</h5>
+                <TopIEMsChart iems={topIems} />
+              </div>
             </Col>
-            <Col lg={6}>
-              <Card className={styles.chartCard}>
-                <Card.Header className={styles.cardHeader}>
-                  <h5>💀 Bottom 15 IEMs by Overall Score</h5>
-                </Card.Header>
-                <Card.Body>
-                  <WorstIEMsChart iems={worstIems} />
-                </Card.Body>
-              </Card>
+            <Col lg={6} className={styles.chartColumn}>
+              <div className={styles.chartContainer}>
+                <h5 className={styles.chartTitle}>Bottom 15 IEMs by Overall Score</h5>
+                <WorstIEMsChart iems={worstIems} />
+              </div>
             </Col>
           </Row>
         )
@@ -87,15 +78,11 @@ const Visuals = () => {
       case 'distribution':
         return (
           <Row className="g-4">
-            <Col xl={12}>
-              <Card className={styles.chartCard}>
-                <Card.Header className={styles.cardHeader}>
-                  <h5>📊 Score Distribution Analysis</h5>
-                </Card.Header>
-                <Card.Body>
-                  <ScoreDistributionChart iems={allIems} />
-                </Card.Body>
-              </Card>
+            <Col xl={12} className={styles.chartColumn}>
+              <div className={styles.chartContainer}>
+                <h5 className={styles.chartTitle}>Score Distribution Analysis</h5>
+                <ScoreDistributionChart iems={allIems} />
+              </div>
             </Col>
           </Row>
         )
@@ -103,25 +90,17 @@ const Visuals = () => {
       case 'comparison':
         return (
           <Row className="g-4">
-            <Col lg={6}>
-              <Card className={styles.chartCard}>
-                <Card.Header className={styles.cardHeader}>
-                  <h5>🎯 Tone vs Technical Performance</h5>
-                </Card.Header>
-                <Card.Body>
-                  <ScatterComparisonChart iems={allIems} />
-                </Card.Body>
-              </Card>
+            <Col lg={6} className={styles.chartColumn}>
+              <div className={styles.chartContainer}>
+                <h5 className={styles.chartTitle}>Tone vs Technical Performance</h5>
+                <ScatterComparisonChart iems={allIems} />
+              </div>
             </Col>
-            <Col lg={6}>
-              <Card className={styles.chartCard}>
-                <Card.Header className={styles.cardHeader}>
-                  <h5>🕸️ Top 8 IEMs Radar Comparison</h5>
-                </Card.Header>
-                <Card.Body>
-                  <RadarComparisonChart iems={topIems.slice(0, 8)} />
-                </Card.Body>
-              </Card>
+            <Col lg={6} className={styles.chartColumn}>
+              <div className={styles.chartContainer}>
+                <h5 className={styles.chartTitle}>Top 8 IEMs Radar Comparison</h5>
+                <RadarComparisonChart iems={topIems.slice(0, 8)} />
+              </div>
             </Col>
           </Row>
         )
@@ -133,8 +112,6 @@ const Visuals = () => {
 
   return (
     <Container className={styles.visualsContainer} fluid>
-      <Content title="IEM Data Visualizations" />
-      
       <div className={styles.statsOverview}>
         <Row className="text-center">
           <Col md={3}>
@@ -164,35 +141,32 @@ const Visuals = () => {
         </Row>
       </div>
 
-      <Nav variant="pills" className={styles.tabNavigation}>
-        <Nav.Item>
-          <Nav.Link 
-            active={activeTab === 'overview'} 
+      <Row className={styles.tabNavigationRow}>
+        <Col md={4}>
+          <button 
+            className={`${styles.tabButton} ${activeTab === 'overview' ? styles.active : ''}`}
             onClick={() => setActiveTab('overview')}
-            className={styles.navLink}
           >
-            📈 Overview
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link 
-            active={activeTab === 'distribution'} 
+            Overview
+          </button>
+        </Col>
+        <Col md={4}>
+          <button 
+            className={`${styles.tabButton} ${activeTab === 'distribution' ? styles.active : ''}`}
             onClick={() => setActiveTab('distribution')}
-            className={styles.navLink}
           >
-            📊 Distribution
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link 
-            active={activeTab === 'comparison'} 
+            Distribution
+          </button>
+        </Col>
+        <Col md={4}>
+          <button 
+            className={`${styles.tabButton} ${activeTab === 'comparison' ? styles.active : ''}`}
             onClick={() => setActiveTab('comparison')}
-            className={styles.navLink}
           >
-            🔄 Comparison
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
+            Comparison
+          </button>
+        </Col>
+      </Row>
 
       <div className={styles.tabContent}>
         {renderTabContent()}

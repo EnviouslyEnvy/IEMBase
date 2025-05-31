@@ -3,3 +3,4 @@ venv/
 
 # Flask database
 combined.db
+db/combined.db

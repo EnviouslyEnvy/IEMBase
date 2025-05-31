@@ -51,7 +51,7 @@ const ScoreDistributionChart = ({ iems }) => {
               backgroundColor: 'rgba(136, 192, 208, 0.1)', // nord8 with transparency
               fill: true,
               tension: 0.4,
-              borderWidth: 3
+              borderWidth: 2
             },
             {
               label: 'Tone Score Distribution',
@@ -60,7 +60,7 @@ const ScoreDistributionChart = ({ iems }) => {
               backgroundColor: 'rgba(180, 142, 173, 0.1)', // nord15 with transparency
               fill: true,
               tension: 0.4,
-              borderWidth: 3
+              borderWidth: 2
             },
             {
               label: 'Tech Score Distribution',
@@ -69,7 +69,7 @@ const ScoreDistributionChart = ({ iems }) => {
               backgroundColor: 'rgba(129, 161, 193, 0.1)', // nord9 with transparency
               fill: true,
               tension: 0.4,
-              borderWidth: 3
+              borderWidth: 2
             }
           ]
         },

@@ -18,7 +18,7 @@ const WorstIEMsChart = ({ iems }) => {
               data: iems.map(iem => iem.normalizedFloat),
               backgroundColor: '#bf616a', // nord11 (aurora red)
               borderColor: '#d08770', // nord12 (aurora orange)
-              borderWidth: 2,
+              borderWidth: 0, // Remove borders for minimal look
               borderRadius: 6,
               borderSkipped: false,
             }
