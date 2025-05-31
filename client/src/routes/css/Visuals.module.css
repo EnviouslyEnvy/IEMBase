@@ -112,6 +112,10 @@
   background: transparent;
   border: none;
   padding: 1rem 0;
+  height: 50vh; /* Dynamic height based on viewport height */
+  min-height: 400px; /* Minimum height to ensure readability */
+  max-height: 600px; /* Maximum height to prevent oversizing on large screens */
+  overflow: hidden;
 }
 
 .chartTitle {
@@ -176,6 +180,12 @@
   
   .tabContent {
     padding: 0 0.5rem;
+  }
+  
+  .chartContainer {
+    height: 40vh; /* Smaller dynamic height on mobile */
+    min-height: 300px; /* Smaller minimum height on mobile */
+    max-height: 450px; /* Smaller maximum height on mobile */
   }
 }
 
