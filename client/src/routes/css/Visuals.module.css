@@ -39,11 +39,18 @@
   padding: 0;
 }
 
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
 .statCard {
   padding: 1rem 0;
   background: transparent;
   border: none;
-  margin: 0.5rem 0;
+  margin: 0;
   transition: transform 0.3s ease;
 }
 
@@ -161,6 +168,11 @@
     padding: 0;
   }
   
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
+    gap: 0.75rem;
+  }
+  
   .statCard h3 {
     font-size: 2rem;
   }
@@ -183,9 +195,9 @@
   }
   
   .chartContainer {
-    height: 50vh; /* Increased from 40vh for mobile */
-    min-height: 400px; /* Increased from 300px */
-    max-height: 550px; /* Increased from 450px */
+    height: 60vh; /* Increased from 50vh for mobile label space */
+    min-height: 500px; /* Increased from 400px */
+    max-height: 650px; /* Increased from 550px */
   }
 }
 

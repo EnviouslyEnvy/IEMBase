@@ -113,32 +113,24 @@ const Visuals = () => {
   return (
     <Container className={styles.visualsContainer} fluid>
       <div className={styles.statsOverview}>
-        <Row className="text-center">
-          <Col md={3}>
-            <div className={styles.statCard}>
-              <h3>{allIems.length}</h3>
-              <p>Total IEMs</p>
-            </div>
-          </Col>
-          <Col md={3}>
-            <div className={styles.statCard}>
-              <h3>{topIems.length > 0 ? topIems[0]?.normalizedFloat?.toFixed(1) : '-'}</h3>
-              <p>Highest Score</p>
-            </div>
-          </Col>
-          <Col md={3}>
-            <div className={styles.statCard}>
-              <h3>{worstIems.length > 0 ? worstIems[0]?.normalizedFloat?.toFixed(1) : '-'}</h3>
-              <p>Lowest Score</p>
-            </div>
-          </Col>
-          <Col md={3}>
-            <div className={styles.statCard}>
-              <h3>{allIems.length > 0 ? (allIems.reduce((sum, iem) => sum + iem.normalizedFloat, 0) / allIems.length).toFixed(1) : '-'}</h3>
-              <p>Average Score</p>
-            </div>
-          </Col>
-        </Row>
+        <div className={styles.statsRow}>
+          <div className={styles.statCard}>
+            <h3>{allIems.length}</h3>
+            <p>Total IEMs</p>
+          </div>
+          <div className={styles.statCard}>
+            <h3>{topIems.length > 0 ? topIems[0]?.normalizedFloat?.toFixed(1) : '-'}</h3>
+            <p>Highest Score</p>
+          </div>
+          <div className={styles.statCard}>
+            <h3>{worstIems.length > 0 ? worstIems[0]?.normalizedFloat?.toFixed(1) : '-'}</h3>
+            <p>Lowest Score</p>
+          </div>
+          <div className={styles.statCard}>
+            <h3>{allIems.length > 0 ? (allIems.reduce((sum, iem) => sum + iem.normalizedFloat, 0) / allIems.length).toFixed(1) : '-'}</h3>
+            <p>Average Score</p>
+          </div>
+        </div>
       </div>
 
       <Row className={styles.tabNavigationRow}>
