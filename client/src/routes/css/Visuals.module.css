@@ -1,0 +1,212 @@
+/* Nord Color Palette Implementation */
+:root {
+  /* Polar Night */
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  
+  /* Snow Storm */
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  
+  /* Frost */
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  
+  /* Aurora */
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+}
+
+.visualsContainer {
+  background: linear-gradient(135deg, var(--nord0) 0%, var(--nord1) 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+  color: var(--nord5);
+}
+
+.statsOverview {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(59, 66, 82, 0.6); /* nord1 with transparency */
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(76, 86, 106, 0.3); /* nord3 border */
+}
+
+.statCard {
+  padding: 1rem;
+  background: rgba(67, 76, 94, 0.7); /* nord2 with transparency */
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  border: 1px solid rgba(76, 86, 106, 0.4); /* nord3 border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(46, 52, 64, 0.4); /* nord0 shadow */
+  background: rgba(76, 86, 106, 0.8); /* nord3 on hover */
+}
+
+.statCard h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, var(--nord8), var(--nord7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statCard p {
+  margin: 0;
+  color: var(--nord4);
+  font-weight: 500;
+}
+
+.tabNavigation {
+  justify-content: center;
+  margin: 2rem 0;
+  background: rgba(59, 66, 82, 0.6); /* nord1 with transparency */
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(76, 86, 106, 0.3); /* nord3 border */
+}
+
+.navLink {
+  color: var(--nord4) !important;
+  border-radius: 8px !important;
+  margin: 0 0.5rem;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid transparent !important;
+}
+
+.navLink:hover {
+  color: var(--nord6) !important;
+  background: rgba(67, 76, 94, 0.8) !important; /* nord2 */
+  border-color: rgba(136, 192, 208, 0.3) !important; /* nord8 border */
+}
+
+.navLink.active {
+  background: linear-gradient(45deg, var(--nord8), var(--nord9)) !important;
+  color: var(--nord0) !important;
+  border-color: transparent !important;
+}
+
+.tabContent {
+  margin-top: 2rem;
+}
+
+.chartCard {
+  background: rgba(59, 66, 82, 0.8) !important; /* nord1 */
+  border: 1px solid rgba(129, 161, 193, 0.2) !important; /* nord9 border */
+  border-radius: 12px !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(46, 52, 64, 0.3); /* nord0 shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.chartCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(46, 52, 64, 0.4); /* nord0 shadow */
+  border-color: rgba(136, 192, 208, 0.4) !important; /* nord8 border */
+}
+
+.cardHeader {
+  background: rgba(67, 76, 94, 0.9) !important; /* nord2 */
+  border-bottom: 1px solid rgba(129, 161, 193, 0.2) !important; /* nord9 border */
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1rem 1.5rem;
+}
+
+.cardHeader h5 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--nord5);
+  font-size: 1.1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--nord4);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(76, 86, 106, 0.3); /* nord3 */
+  border-left: 4px solid var(--nord8);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .visualsContainer {
+    padding: 1rem 0;
+  }
+  
+  .statsOverview {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  
+  .statCard h3 {
+    font-size: 2rem;
+  }
+  
+  .tabNavigation {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navLink {
+    margin: 0.25rem 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Additional Nord-themed elements */
+.chartCard .card-body {
+  background: transparent !important;
+}
+
+/* Custom scrollbar with Nord colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nord1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nord3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nord9);
+}
