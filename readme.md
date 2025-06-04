@@ -7,10 +7,8 @@ Currently deployed. Check it out [here](https://www.iemindex.com/)!
 
 ### Inspiration
 
-Making purchase decision is a tough call to make in the hobby of IEMs, especially given the subjectivity of audio preferences, the potentially sky-high costs of the hobby, and the sheer volume of IEM releases at present. My goal was to make this arduous process of researching information on IEMs less difficult by giving a general idea of what to consider about each IEM model. To go about this, I chose to develop my frontend with ReactJS from scratch for the first time, while honing my skills in using Python's data libraries with a Flask backend that congregates and combine several reviewer opinions into one.
 Making purchase decisions is a tough call to make in the hobby of IEMs, especially given the subjectivity of audio preferences, the potentially sky-high costs of the hobby, and the sheer volume of IEM releases at present. My goal was to make this arduous process of researching information on IEMs less difficult by giving a general idea of what to consider about each IEM model. To go about this, I chose to develop my frontend with ReactJS from scratch for the first time, while honing my skills in using Python's data libraries with a Flask backend that congregates and combines several reviewer opinions into one.
 
-In the end, the aim of the app is to be give users a general but informative perspective of an IEM and how it stacks up against others, making navigating through this hobby just that bit easier for overthinkers like me.
 In the end, the aim of the app is to give users a general but informative perspective of an IEM and how it stacks up against others, making navigating through this hobby just that bit easier for overthinkers like me.
 
 ### What did I learn?
