@@ -5,6 +5,7 @@ import rapidfuzz
 import sqlite3
 import os
 from io import StringIO
+from datetime import datetime
 
 r = requests.get('https://crinacle.com/rankings/iems/')
 soup = BeautifulSoup(r.text, 'html.parser')
@@ -813,9 +814,22 @@ combined.loc[combined['Max Comments']=='nan', 'Max Comments'] = "N/A"
 combined.loc[combined['Min Comments']=='', 'Min Comments'] = "N/A"
 combined.loc[combined['Max Comments']=='', 'Max Comments'] = "N/A"
 
-# If 'minlist' is the same as 'maxlist', then set minlist and maxlist to N/A
-combined.loc[combined['minlist']==combined['maxlist'], 'minlist'] = "N/A"
-combined.loc[combined['maxlist']==combined['minlist'], 'maxlist'] = "N/A"
+# Remove IEMs where the same reviewer gave both min and max scores (insufficient reviewer diversity)
+same_reviewer_mask = combined['minlist'] == combined['maxlist']
+
+# Debug: Log same reviewer cases before removal
+same_reviewer_cases = combined[same_reviewer_mask]
+if len(same_reviewer_cases) > 0:
+    print(f"\n=== REMOVING INSUFFICIENT REVIEWER DIVERSITY ===")
+    print(f"Removing {len(same_reviewer_cases)} IEMs where min and max reviewer are the same:")
+    for _, row in same_reviewer_cases.iterrows():
+        print(f"  Removing '{row['Model']}': only reviewer '{row['maxlist']}' or identical scores")
+    print("This ensures all retained IEMs have genuine multi-reviewer perspectives.")
+
+# Remove rows with insufficient reviewer diversity
+combined = combined[~same_reviewer_mask].reset_index(drop=True)
+
+print(f"Final dataset after reviewer diversity filter: {len(combined)} IEMs")
 
 # Make sure all columns are correct type.
 combined['Model'] = combined['Model'].astype(str)
@@ -856,7 +870,8 @@ print(f"\n=== DATABASE WRITING DEBUG ===")
 print(f"Combined dataframe shape: {combined.shape}")
 print(f"Combined dataframe columns: {list(combined.columns)}")
 
-db_folder = 'db'
+script_dir = os.path.dirname(os.path.abspath(__file__))
+db_folder = os.path.join(script_dir, 'db')
 if not os.path.exists(db_folder):
     print(f"Creating db folder: {db_folder}")
     os.makedirs(db_folder)
@@ -864,7 +879,8 @@ else:
     print(f"DB folder already exists: {db_folder}")
 
 db_path = os.path.join(db_folder, 'combined.db')
-print(f"Database path: {db_path}")
+print(f"Database will be created at: {db_path}")
+print(f"Script running from: {script_dir}")
 
 # Check if file exists before writing
 if os.path.exists(db_path):
@@ -882,17 +898,134 @@ try:
     table_exists = cursor.fetchone() is not None
     print(f"Table 'combined' exists before writing: {table_exists}")
     
-    # Write the data
-    combined.to_sql('combined', conn, if_exists='replace', index=False)
-    print("Successfully wrote data to database")
+    # Add timestamp to combined data for historical tracking
+    current_timestamp = datetime.now().isoformat()
+    combined_with_timestamp = combined.copy()
+    combined_with_timestamp['timestamp'] = current_timestamp
+    combined_with_timestamp['run_date'] = datetime.now().strftime('%Y-%m-%d')
     
-    # Verify the write
+    # Write current snapshot (replace existing)
+    combined.to_sql('combined', conn, if_exists='replace', index=False)
+    print("Successfully wrote current snapshot to 'combined' table")
+    
+    # Write to historical table (append)
+    combined_with_timestamp.to_sql('combined_history', conn, if_exists='append', index=False)
+    print("Successfully appended to historical table")
+    
+    # Create a summary table for tracking runs over time
+    run_summary = {
+        'timestamp': [current_timestamp],
+        'run_date': [datetime.now().strftime('%Y-%m-%d')],
+        'total_models': [len(combined)],
+        'ief_models': [len(trimmedframes[trimmedframes['List'] == 'ief'])],
+        'ant_models': [len(trimmedframes[trimmedframes['List'] == 'ant'])], 
+        'cog_models': [len(trimmedframes[trimmedframes['List'] == 'cog'])],
+        'tim_models': [len(trimmedframes[trimmedframes['List'] == 'tim'])],
+        'jayt_models': [len(trimmedframes[trimmedframes['List'] == 'jayt'])],
+        'avg_normalized_score': [combined['normalizedFloat'].mean().round(2)],
+        'avg_tone_score': [combined['toneFloat'].mean().round(2)],
+        'avg_tech_score': [combined['techFloat'].mean().round(2)]
+    }
+    
+    if 'preferenceFloat' in combined.columns:
+        run_summary['avg_preference_score'] = [combined['preferenceFloat'].mean().round(2)]
+    
+    import pandas as pd
+    run_summary_df = pd.DataFrame(run_summary)
+    run_summary_df.to_sql('run_summary', conn, if_exists='append', index=False)
+    print("Successfully logged run summary")
+    
+    # Verify the writes
     cursor.execute("SELECT COUNT(*) FROM combined;")
-    row_count = cursor.fetchone()[0]
-    print(f"Rows in database after writing: {row_count}")
+    current_count = cursor.fetchone()[0]
+    print(f"Rows in current snapshot: {current_count}")
+    
+    cursor.execute("SELECT COUNT(*) FROM combined_history;")
+    history_count = cursor.fetchone()[0]
+    print(f"Total historical rows: {history_count}")
+    
+    cursor.execute("SELECT COUNT(*) FROM run_summary;")
+    summary_count = cursor.fetchone()[0]
+    print(f"Total runs logged: {summary_count}")
     
     conn.close()
     print("Database connection closed")
+    
+    # Optional: Analyze recent changes (if there's historical data)
+    try:
+        conn = sqlite3.connect(db_path)
+        
+        # Check if we have previous runs to compare against
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(DISTINCT run_date) FROM combined_history;")
+        unique_days = cursor.fetchone()[0]
+        
+        if unique_days > 1:
+            print(f"\n=== HISTORICAL ANALYSIS ===")
+            print(f"Historical data available for {unique_days} different dates")
+            
+            # Get the two most recent dates
+            cursor.execute("""
+                SELECT run_date, COUNT(*) as model_count, AVG(normalizedFloat) as avg_score
+                FROM combined_history 
+                GROUP BY run_date 
+                ORDER BY run_date DESC 
+                LIMIT 2
+            """)
+            recent_runs = cursor.fetchall()
+            
+            if len(recent_runs) == 2:
+                current_run = recent_runs[0]
+                previous_run = recent_runs[1]
+                
+                model_change = current_run[1] - previous_run[1]
+                score_change = round(current_run[2] - previous_run[2], 3)
+                
+                print(f"Model count change since {previous_run[0]}: {model_change:+d}")
+                print(f"Average score change: {score_change:+.3f}")
+                
+            # Show models that had significant score changes
+            cursor.execute("""
+                WITH latest_two_dates AS (
+                    SELECT DISTINCT run_date 
+                    FROM combined_history 
+                    ORDER BY run_date DESC 
+                    LIMIT 2
+                ),
+                current_scores AS (
+                    SELECT model, normalizedFloat as current_score
+                    FROM combined_history 
+                    WHERE run_date = (SELECT run_date FROM latest_two_dates ORDER BY run_date DESC LIMIT 1)
+                ),
+                previous_scores AS (
+                    SELECT model, normalizedFloat as previous_score
+                    FROM combined_history 
+                    WHERE run_date = (SELECT run_date FROM latest_two_dates ORDER BY run_date ASC LIMIT 1)
+                )
+                SELECT 
+                    c.model,
+                    p.previous_score,
+                    c.current_score,
+                    ROUND(c.current_score - p.previous_score, 2) as score_change
+                FROM current_scores c
+                JOIN previous_scores p ON c.model = p.model
+                WHERE ABS(c.current_score - p.previous_score) > 0.1
+                ORDER BY ABS(c.current_score - p.previous_score) DESC
+                LIMIT 10
+            """)
+            
+            significant_changes = cursor.fetchall()
+            if significant_changes:
+                print(f"\nModels with significant score changes (>0.1):")
+                for model, prev_score, curr_score, change in significant_changes:
+                    print(f"  {model}: {prev_score:.2f} → {curr_score:.2f} ({change:+.2f})")
+        
+        conn.close()
+        
+    except Exception as e:
+        print(f"Note: Could not perform historical analysis: {e}")
+        if 'conn' in locals():
+            conn.close()
     
     # Check file size after writing
     if os.path.exists(db_path):
