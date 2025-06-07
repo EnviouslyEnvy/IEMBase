@@ -3,7 +3,8 @@ flask/venv/
 
 # Flask database
 flask/combined.db
-
+flask/db/
+db/combined.db
 # React .env
 react/.env
 flask/combined.csv

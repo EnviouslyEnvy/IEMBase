@@ -1,6 +1,12 @@
 # Flask virtual environment
 venv/
 
-# Flask database
+# Flask database files
 combined.db
-db/combined.db
+db/
+combined.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
