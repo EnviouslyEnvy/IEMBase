@@ -1,6 +1,6 @@
-# Welcome to IEMBase!
+# Welcome to IEMIndex!
 
-A web app made to congregate a collective score on IEMs (In-Ear Monitors) based on individual reviewer scores, as well as display curated comments of the most complimentary and critical scorers.
+IEMIndex (formerly IEMBase) is a web app made to congregate a collective score on IEMs (In-Ear Monitors) based on individual reviewer scores, as well as display curated comments of the most complimentary and critical scorers.
 This web app is not meant to replace visiting reviewers' databases, and only contains data on IEMs that have been given grades or scores by multiple reviewers, encouraging users to explore the reviewers' original lists and reviewers for further details, opinions, and to support them.
 
 Currently deployed. Check it out [here](https://www.iemindex.com/)!
@@ -19,7 +19,7 @@ In the end, the aim of the app is to give users a general but informative perspe
 - Utilizing RESTFul API endpoints with Flask and ReactJS
 - Utilizing RESTful API endpoints with Flask and ReactJS
 
-### What's next for IEMBase?
+### What's next for IEMIndex?
 
 - Adding visuals to the IEMs using something like D3.js for even better interactivity and customization
 - A visual on disparity between the highest score and lowest score.
